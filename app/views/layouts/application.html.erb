@@ -10,17 +10,82 @@
   </head>
 
   <header>
-    
-
+    <% if user_signed_in? %>
+      <div class="sign_out_button">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "" %>
+      </div>
+    <!-- ユーザがログインしていなかった場合 -->
+    <% else %>
+      <div class="button sign_up_button">新規登録</div>
+      <div class="button sign_in_button">ログイン</div>
+    <% end %>
   </header>
 
   <body>
+
+    <!-- ボックスが表示されている間の背景 -->
+    <div class="sign_modal_wrapper"></div>
+    <!-- フォームの枠 -->
+    <div class="sign_modal">
+      <!--フォームを消すためのボタンを配置する領域  -->
+      <div class="sign_modal_head"></div>
+      <!-- 入力フォーム -->
+      <div class="sign_modal_body">
+        <div class="sign_modal_up">
+          <form class="new_user" action="/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="zaWPa69TQbS3WaB1t9cAnUmmFcuA5BNYc9sSJ0cFFy60r3smDjGYTEM0U7PFfcVZnwTrxh7cNEDkJOWEGSAAzw==">
+            <div class="field">
+              <label for="user_email">Email</label><br>
+              <input autofocus="autofocus" autocomplete="email" type="email" value="" name="user[email]">
+            </div>
+
+            <div class="field">
+              <label for="user_password">Password</label>
+              <em>(6 characters minimum)</em>
+              <br>
+              <input autocomplete="new-password" type="password" name="user[password]" aria-autocomplete="list">
+            </div>
+
+            <div class="field">
+              <label for="user_password_confirmation">Password confirmation</label><br>
+              <input autocomplete="new-password" type="password" name="user[password_confirmation]">
+            </div>
+
+            <div class="actions">
+              <input type="submit" name="commit" value="Sign up" data-disable-with="Sign up">
+            </div>
+          </form>
+        </div>
+        <div class="sign_modal_in">
+          <form class="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="afGFsJ9Ql1eL+k/GqHv+ADOmyM1/IQiSGQWm9NSvQrUQ+3H9PjJOr3+XvADa0TvE5QQ2wOEZL4qO+lFXiopVVA==">
+            <div class="field">
+              <label for="user_email">Email</label><br>
+              <input autofocus="autofocus" autocomplete="email" type="email" value="" name="user[email]">
+            </div>
+
+            <div class="field">
+              <label for="user_password">Password</label><br>
+              <input autocomplete="current-password" type="password" name="user[password]">
+            </div>
+
+              <div class="field">
+                <input name="user[remember_me]" type="hidden" value="0"><input type="checkbox" value="1" name="user[remember_me]">
+                <label for="user_remember_me">Remember me</label>
+              </div>
+
+            <div class="actions">
+              <input type="submit" name="commit" value="Log in" data-disable-with="Log in">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <%= yield %>
   </body>
 
 <footer>
-  
-  
+
+
 </footer>
 
 </html>

@@ -14,3 +14,27 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery
+
+
+
+	$(function() {
+		$(document).on('click', '.button', function() {
+			$('.sign_modal_wrapper').css('display', 'block');
+			$('.sign_modal').fadeIn(500);
+			if ($(this).hasClass('sign_up_button')) {
+				$('.sign_modal_up').fadeIn(500);
+			} else {
+				$('.sign_modal_in').fadeIn(500);
+			}
+		})
+
+	$('.sign_modal_wrapper').click(function(e) {
+		if (!$(e.target).closest('.sign_modal').length) {
+			$('.sign_modal_wrapper').fadeOut(500);
+			$('.sign_modal').fadeOut(500);
+			$('.sign_modal_up').fadeOut(500);
+			$('.sign_modal_in').fadeOut(500);
+		}
+	})
+	})
