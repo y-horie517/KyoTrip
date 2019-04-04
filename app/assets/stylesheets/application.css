@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+/*和風な色のカラーコード https://www.colordic.org/w/*/
+
+header{
+	width: 100%;
+	height: 200px;
+	/*木賊色とくさいろ*/
+	background-color: #3b7960;
+}
+
+footer{
+	width: 100%;
+	height: 300px;
+	/*烏羽色 からすばいろ*/
+	background-color: #180614;
+}
