@@ -51,7 +51,7 @@ footer{
 		height: 100%;
 		top: 0;
 		left: 0;
-		background-color: #fff;
+		background-color: #16160e;
 		opacity: .7;
 		z-index: 100;
 		display: none;
@@ -80,7 +80,7 @@ footer{
 	}
 
 	.sign_modal_body {
-
+		
 	}
 
 	.sign_modal_up {
