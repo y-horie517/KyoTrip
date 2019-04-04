@@ -1,5 +1,19 @@
-<h1>Users#show</h1>
+<h1>マイページ</h1>
+<div class="flash_area">
+	<%= flash[:notice] %>
+</div>
 
-
-<label>ユーザ名</label>
-<%= current_user.username %>
+<div class="userinfo">
+	<% if @user.userimage.attached? %>
+		<%= image_tag @user.userimage %>
+	<% else %>
+		<%= image_tag("no_userimage.jpg", :size => "200x200") %>
+	<% end %>
+	<!-- local:trueを外すと、remote:trueになる -->
+	<%= form_with model: @user, local: true  do |f| %>
+	  <%= f.file_field :userimage %><br>
+	  <label>ユーザ名</label>
+	  <%= f.text_field :username %><br>
+	  <%= f.submit '更新' %>
+	<% end %>
+</div>
