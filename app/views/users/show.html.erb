@@ -5,10 +5,12 @@
 
 <div class="userinfo">
 	<% if @user.userimage.attached? %>
-		<%= image_tag @user.userimage %>
+		<%= image_tag @user.userimage, :size => "200x200", class: "profileimg" %>
 	<% else %>
 		<%= image_tag("no_userimage.jpg", :size => "200x200") %>
 	<% end %>
+
+
 	<!-- local:trueを外すと、remote:trueになる -->
 	<%= form_with model: @user, local: true  do |f| %>
 	  <%= f.file_field :userimage %><br>
@@ -17,3 +19,32 @@
 	  <%= f.submit '更新' %>
 	<% end %>
 </div>
+
+
+<div id="map"></div>
+
+<br>
+
+<iframe width="600"
+    height="400" src="https://maps.google.co.jp/maps?output=embed&q=京都駅"></iframe>
+
+
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyDSm9JoN7yTni_Q6NOHxFPl9WxiGKn5J9U&language=ja"></script>
+
+<style>
+#map { height: 400px; width: 600px;}
+/*投稿画像を表示サイズにトリミングして表示*/
+.profileimg{
+	object-fit: cover;
+}
+</style>
+
+<script>
+var MyLatLng = new google.maps.LatLng(34.985458, 135.757755);
+var Options = {
+ zoom: 12,      //地図の縮尺値
+ center: MyLatLng,    //地図の中心座標
+ mapTypeId: 'roadmap'   //地図の種類
+};
+var map = new google.maps.Map(document.getElementById('map'), Options);
+</script>
