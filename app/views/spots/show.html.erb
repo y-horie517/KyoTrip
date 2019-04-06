@@ -1,2 +1,24 @@
 <h1>Spots#show</h1>
-<p>Find me in app/views/spots/show.html.erb</p>
+<div class="flash_area">
+	<%= flash[:notice] %>
+	<%= flash[:warning] %>
+</div>
+
+<div class="spotinfo">
+	<% if @spot.spotimage.attached? %>
+		<%= image_tag @spot.spotimage, :size => "350x200", class: "spotimg" %><br>
+	<% else %>
+		<%= image_tag("no_spotimage.jpg", :size => "350x200") %><br>
+	<% end %>
+
+	<label>名称:</label>
+	<%= @spot.name %><br>
+	<label>詳細情報:</label>
+	<%= @spot.description %><br>
+	<label>住所:</label>
+	<%= @spot.address %><br>
+	<label>ホームページのURL:</label>
+	<%= link_to @spot.url %><br>
+	<label>カテゴリ:</label>
+	<%= @spot.category.category_name %><br>
+</div>
