@@ -1,12 +1,23 @@
+<!-- <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet"> -->
+
 <!-- 背景画像 -->
 <div class="topbg">
 	<!-- 背景を覆う半透明の黒領域 -->
 	<div class="bgcover">
-		<!-- 右上のテキスト部分 -->
-		<div class="top-text-area"></div>
-		
+
+	</div>
+	<!-- 右上のテキスト部分 -->
+	<div class="top-text-area">
+		<p>日本文化のふるさと京都</p>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		その四季折々の素晴らしさを世界へ</p>
 	</div>
 	<!-- サイト名を表示する領域 -->
-		<div class="top-title-area"></div>
+	<div class="top-title-area">
+		<%= image_tag '', :size =>'350x350' %>
+	<!-- メニューページへのボタン -->
+		<%= link_to "ENTER", index_path, class: 'enter' %>
+		<!-- <button class="enter" type="button">中に入る</button> -->
+	</div>
 </div>
 

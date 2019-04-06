@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .topbg{
 	width: 100%;
 	height: 1000px;
@@ -21,15 +22,56 @@
 }
 
 .top-text-area{
-
+	position: absolute;
+	width: 150px;
+	height: 600px;
+	top: 100px;
+	left: 1000px;
+	// background-color: white;
+	z-index: 20;
+	font-size: 30px;
+	color: #eaedf7;
+	font-family: 'HiraMinPro-W6','MS Mincho';
+//縦書き
+	-ms-writing-mode: tb-rl;
+  	writing-mode: vertical-rl;
 }
 
 .top-title-area{
 	position: absolute;
-	width: 400px;
-	height: 400px;
+	width: 350px;
+	height: 350px;
 	top: 500px;
-	left: 520px;
-	background-color: white;
+	left: 545px;
+	// background-color: white;
 	z-index: 20;
+	text-align: center;
+}
+
+.enter {
+    border: 0;
+    line-height: 2.5;
+    padding: 8px 40px;
+    font-size: 1rem;
+    font-family: 'HiraMinPro-W6','MS Mincho';
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(168, 168, 169, 1);
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.enter:hover {
+    background-color: rgba(188, 188, 189, 1);
+}
+
+.enter:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
