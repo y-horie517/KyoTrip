@@ -22,6 +22,14 @@
 
 	<label>カテゴリ:</label>
 	<%= @spot.category.category_name %><br>
+
+	<% if user_signed_in? %>
+	<!-- ここにログインしているときだけに表示する処理を書く -->
+		<!-- 管理者または投稿ユーザのみ編集可能 -->
+		<% if (current_user.id == @spot.user_id) || (current_user.is_admin == true) %>
+			<%= link_to '編集', edit_spot_path %>
+		<% end %>
+	<% end %>
 </div>
 
 <!-- レビュー投稿フォーム -->
