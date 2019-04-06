@@ -18,7 +18,18 @@
 	<label>住所:</label>
 	<%= @spot.address %><br>
 	<label>ホームページのURL:</label>
-	<%= link_to @spot.url %><br>
+	<%= link_to @spot.url,"http://www.#{@spot.url}", :target => "_blank" %><br>
+
 	<label>カテゴリ:</label>
 	<%= @spot.category.category_name %><br>
+</div>
+
+<!-- レビュー投稿フォーム -->
+<div class="">
+	
+</div>
+
+<!-- レビュー一覧 -->
+<div class="">
+	
 </div>
