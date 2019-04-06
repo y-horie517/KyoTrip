@@ -8,4 +8,15 @@ class ApplicationController < ActionController::Base
     	# devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:username, :password, :remember_me) }
   	end
 
+	def after_sign_up_path_for(resource)
+  		index_path
+	end
+
+  	def after_sign_in_path_for(resource)
+  		index_path
+	end
+
+	def after_sign_out_path_for(resource)
+  		index_path
+	end
 end

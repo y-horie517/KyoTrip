@@ -1,7 +1,8 @@
 class User < ApplicationRecord
 	# ユーザが消えても投稿したスポットは消えないようにする。
 	has_many :spots
-
+	# レビューはユーザと一緒に消えて良い
+	has_many :reviews, dependent: :destroy
 
 	# Active Storageを用いたプロフィール画像用
 	has_one_attached :userimage
