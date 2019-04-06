@@ -13,9 +13,12 @@
     <div class="">
         <%= link_to "ホーム", index_path, class: "" %>
     </div>
+     <div class="">
+        <%= link_to "スポットを探す", spots_path, class: "" %>
+      </div>
     <% if user_signed_in? %>
       <div class="">
-        <%= link_to "新規登録", new_spot_path, class: "" %>
+        <%= link_to "スポット登録", new_spot_path, class: "" %>
       </div>
       <div class="">
         <%= link_to "マイページ", user_path(current_user.id), class: "" %>

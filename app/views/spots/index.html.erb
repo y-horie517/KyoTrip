@@ -1,2 +1,18 @@
-<h1>Spots#index</h1>
-<p>Find me in app/views/spots/index.html.erb</p>
+<h1>スポット検索</h1>
+<div class="spot-index">
+	<% @spots.each do |s| %>
+		<div class="spot-content">
+			<%= link_to spot_path(s.id) do %>
+				<% if s.spotimage.attached? %>
+					<%= image_tag s.spotimage, :size => "350x200", class: "spotimg" %><br>
+				<% else %>
+					<%= image_tag("no_spotimage.jpg", :size => "350x200") %><br>
+				<% end %>
+			<% end %>
+			<%= link_to spot_path(s.id) do %>
+				<p><%= s.name %></p>
+			<% end %>
+		</div>
+	<% end %>
+
+</div>
