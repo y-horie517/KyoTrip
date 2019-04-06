@@ -1,0 +1,30 @@
+<!-- 別ユーザによるurl直打ちは弾くようにする -->
+<div class="flash_area">
+	<%= flash[:notice] %>
+	<%= flash[:warning] %>
+</div>
+
+<div class="spotinfo">
+	<% if @spot.spotimage.attached? %>
+		<%= image_tag @spot.spotimage, :size => "350x200", class: "spotimg" %><br>
+	<% else %>
+		<%= image_tag("no_spotimage.jpg", :size => "350x200") %><br>
+	<% end %>
+
+	<!-- local:trueを外すと、remote:trueになる -->
+	<%= form_with model: @spot, local: true  do |f| %>
+	  <%= f.file_field :spotimage %><br>
+	  <label>名称</label>
+	  <%= f.text_field :name %><br>
+	  <label>詳細情報</label>
+	  <%= f.text_field :description %><br>
+	  <label>住所</label>
+	  <%= f.text_field :address %><br>
+	  <label>ホームページのURL</label>
+	  <%= f.text_field :url %><br>
+	  <label>カテゴリ</label>
+	  <%= f.collection_select :category_id, Category.all, :id, :category_name, { include_blank: true}, class: "form" %>
+<br>
+	  <%= f.submit '更新' %>
+	<% end %>
+</div>
