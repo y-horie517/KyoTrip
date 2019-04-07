@@ -29,7 +29,7 @@
 
 
 <script>
-	function topSlide(area, btn, spead) {
+	function topSlide(area, btn, speed) {
 		var windowWidth  = $(window).outerWidth();
 		var windowHeight = $(window).outerHeight();
 
@@ -41,8 +41,10 @@
 			$(area).animate({
 				top: -(windowHeight),
 				// 'opacity' : 0
-			}, spead, 'swing');
+			}, speed, 'swing');
+			$(area).hide(speed);
 		});
+
 	}
 
 	$(window).on('load resize', function(){

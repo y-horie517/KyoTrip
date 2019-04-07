@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_06_072750) do
+ActiveRecord::Schema.define(version: 2019_04_07_165529) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_072750) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "title", default: "無題"
+    t.string "title", default: ""
     t.text "body"
     t.integer "spot_id"
     t.integer "user_id"

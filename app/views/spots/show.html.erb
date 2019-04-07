@@ -1,4 +1,4 @@
-<h1>Spots#show</h1>
+
 <div class="flash_area">
 	<%= flash[:notice] %>
 	<%= flash[:warning] %>
@@ -37,9 +37,9 @@
 <% if user_signed_in? %>
 	<div class="panel panel-default review_form">
 		<div class="panel-body">
-			<%= form_with model: @review, local: true  do |f| %>
+			<%= form_with model: [@spot, @review], local: true  do |f| %>
 				<label>タイトル</label>
-				<%= f.text_field :title %>
+				<%= f.text_field :title, value: '無題' %>
 				<br><br>
 				<label>本文</label>
 				<%= f.text_area :body %>
@@ -54,25 +54,28 @@
 <h3>レビュー</h3>
 <div class="">
 		<!-- current_userにレビュー削除機能を追加する -->
-	<% if @spot.reviews.length == 0 %>
-		<h4 class="space">商品レビューがありません</h4>
+	<% if @spot.reviews.count == 0 %>
+		<h4 class="">レビューがありません</h4>
+	<% else %>
+		<p>投稿件数<%= @spot.reviews.count %>件</p>
 	<% end %>
 
-	<% @spot.reviews.each do |review| %>
-	<div class="panel panel-default review_form">
-		<div class="panel-body">
-			<div class="review_index">
+	<% @reviews.each do |review| %>
+	<div class="">
+		<div class="">
+			<div class="">
 				<p>投稿者：<%= review.user.username %></p>
+				<p><%= review.id %></p>
 				<p><strong><%= review.title %></strong><p>
 				<p><%= review.body %></p>
 			</div>
-			<div class="review_created_at">
+			<div class="">
 				<p><%= review.created_at.strftime('%Y年%m月%d日') %></p>
-				<br>
-				<br>
-				<% if review.user == current_user %>
-					<%= link_to '削除', review_path(@product), :method => :delete, data: { confirm: '削除しますか？' } , class: "btn btn-danger btn-sm" %>
+				<!-- .strftime('%Y年%m月%d日') -->
+				<% if (user_signed_in? && review.user == current_user) || (current_user.is_admin == true) %>
+					<%= link_to '削除', [@spot,review], :method => :delete, data: { confirm: '削除しますか？' } , class: "" %>
 				<% end %>
+				<br><br>
 			</div>
 		</div>
 	</div>

@@ -3,6 +3,7 @@ class Spot < ApplicationRecord
 	belongs_to :category
 
 	has_many :reviews, dependent: :destroy
+	
 	# Active Storageを用いたプロフィール画像用
 	has_one_attached :spotimage
 
