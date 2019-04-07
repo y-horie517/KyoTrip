@@ -1,54 +1,107 @@
 // Place all the styles related to the top controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-.topbg{
-	width: 100%;
-	height: 1000px;
-	background-image: url(/images/topbg.jpg);
-	background-size: cover;
+* {
+	padding: 0;
+	margin: 0;
 }
 
-.bgcover{
+// .topbg{
+// 	width: 100%;
+// 	height: 1000px;
+// 	background-image: url(/images/topbg.jpg);
+// 	background-size: cover;
+// }
+
+.topbg {
+	width:  100vw;
+	height: 100vh;
+	background-image: url(/images/topbg.jpg);
+	background-size: cover;
+	background-position: top center;
+	background-repeat: no-repeat;
 	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+// .bgcover{
+// 	position: fixed;
+// 	width: 100%;
+// 	height: 100%;
+// 	top: 0;
+// 	left: 0;
+// 	background-color: black;
+// 	opacity: .5;
+// 	z-index: 10;
+// }
+
+.bgcover {
+	position: absolute;
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
-	background-color: black;
-	opacity: .5;
-	z-index: 10;
+	background-color: rgba(#000, .5);
 }
 
-.top-text-area{
+.top-area {
 	position: absolute;
-	width: 150px;
-	height: 600px;
-	top: 100px;
-	left: 1000px;
-	// background-color: white;
-	z-index: 20;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+// .top-text-area{
+// 	position: absolute;
+// 	width: 150px;
+// 	height: 600px;
+// 	top: 100px;
+// 	left: 1000px;
+// 	// background-color: white;
+// 	z-index: 20;
+// 	font-size: 30px;
+// 	color: #eaedf7;
+// 	font-family: 'HiraMinPro-W6','MS Mincho';
+// //縦書き
+// 	-ms-writing-mode: tb-rl;
+//   	writing-mode: vertical-rl;
+// }
+
+.top-text-area {
+	width: 90px;
+	height: 580px;
 	font-size: 30px;
 	color: #eaedf7;
 	font-family: 'HiraMinPro-W6','MS Mincho';
-//縦書き
 	-ms-writing-mode: tb-rl;
   	writing-mode: vertical-rl;
+  	position: absolute;
+  	right: 50%;
+    top: 50%;
+    transform: translate(300px, -58%);
 }
 
+// .top-title-area{
+// 	position: absolute;
+// 	width: 350px;
+// 	height: 350px;
+// 	top: 500px;
+// 	left: 545px;
+// 	// background-color: white;
+// 	z-index: 20;
+// 	text-align: center;
+// }
+
 .top-title-area{
-	position: absolute;
 	width: 350px;
 	height: 350px;
-	top: 500px;
-	left: 545px;
-	// background-color: white;
-	z-index: 20;
-	text-align: center;
 }
 
 .enter {
+	display: none;
     border: 0;
     line-height: 2.5;
     padding: 8px 40px;

@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :update]
   # resources :users, only: [:create, :destroy]
   resources :spots do
-  	resources :reviews, only: [:create, :destroy]
+  	resource :reviews, only: [:create, :destroy]
   end
 end
