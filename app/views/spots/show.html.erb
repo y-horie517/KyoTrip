@@ -1,43 +1,101 @@
-<h1>Spots#show</h1>
+
 <div class="flash_area">
 	<%= flash[:notice] %>
 	<%= flash[:warning] %>
 </div>
 
-<div class="spotinfo">
-	<% if @spot.spotimage.attached? %>
-		<%= image_tag @spot.spotimage, :size => "350x200", class: "spotimg" %><br>
-	<% else %>
-		<%= image_tag("no_spotimage.jpg", :size => "350x200") %><br>
-	<% end %>
-
-	<label>名称:</label>
-	<%= @spot.name %><br>
-	<label>詳細情報:</label>
-	<%= @spot.description %><br>
-	<label>住所:</label>
-	<%= @spot.address %><br>
-	<label>ホームページのURL:</label>
-	<%= link_to @spot.url,"http://www.#{@spot.url}", :target => "_blank" %><br>
-
-	<label>カテゴリ:</label>
-	<%= @spot.category.category_name %><br>
-
-	<% if user_signed_in? %>
-	<!-- ここにログインしているときだけに表示する処理を書く -->
-		<!-- 管理者または投稿ユーザのみ編集可能 -->
-		<% if (current_user.id == @spot.user_id) || (current_user.is_admin == true) %>
-			<%= link_to '編集', edit_spot_path %>
+<div class="spot-area">
+	<div class="spot-show-title">
+		<h2><%= @spot.name %></h2>
+	</div>
+	<div class="spot-img">
+		<% if @spot.spotimage.attached? %>
+			<%= image_tag @spot.spotimage, :size => '500x350', class: "img-trim" %><br>
+		<% else %>
+			<%= image_tag("no_spotimage.jpg", :size => '500x350') %><br>
 		<% end %>
-	<% end %>
+	</div>
+
+	<div class="spot-map">
+		<iframe width="500"
+	    height="345" src="https://maps.google.co.jp/maps?output=embed&z=12&q=<%= @spot.name %>}"></iframe><br>
+	    <label>住所:<%= @spot.address %></label>
+	</div>
+	<div class="spot-info">
+		<label>詳細情報: <%= @spot.description %></label><br>
+
+
+		<label>ホームページのURL: <%= link_to @spot.url,"http://www.#{@spot.url}", :target => "_blank" %></label><br>
+
+		<label>カテゴリ: <%= @spot.category.category_name %></label><br>
+
+		<% if user_signed_in? %>
+		<!-- ここにログインしているときだけに表示する処理を書く -->
+			<!-- 管理者または投稿ユーザのみ編集可能 -->
+			<% if (current_user.id == @spot.user_id) || (current_user.is_admin == true) %>
+				<%= link_to '編集', edit_spot_path %>
+			<% end %>
+		<% end %>
+	</div>
 </div>
 
 <!-- レビュー投稿フォーム -->
-<div class="">
-	
-</div>
+<% if user_signed_in? %>
+	<div class="panel panel-default review_form">
+		<h2>レビュー投稿</h2>
+		<div class="panel-body">
+			<%= form_with model: [@spot, @review], local: true  do |f| %>
+				<label>投稿写真</label>
+				 <%= f.file_field :reviewimages, multiple: true %><br>
+				<label>タイトル</label>
+				<%= f.text_field :title, value: '無題' %>
+				<br><br>
+				<label>本文</label>
+				<%= f.text_area :body %>
+				<br><br>
+				<%= f.submit "投稿", class: "btn btn-primary btn-sm" %>
+			<% end %>
+		</div>
+	</div>
+<% end %>
+
 
 <!-- レビュー一覧 -->
-<div class="">
-	
+<div class="review-index">
+	<h2>レビュー一覧</h2>
+	<% if @spot.reviews.count == 0 %>
+		<p class="">レビューがありません</p>
+	<% else %>
+		<p>投稿件数<%= @spot.reviews.count %>件</p>
+	<% end %>
+
+	<% @reviews.each do |review| %>
+	<div class="review">
+			<div class="">
+				<div class="review-img-area">
+					<!-- 投稿画像 後ほど５件までなど制限する-->
+					<% if review.reviewimages.attached? %>
+	  					<% review.reviewimages.each do |image| %>
+	    					<%= image_tag image, :height => 250, class: "review-img" %>
+						<% end %>
+					<% else %>
+						<%= image_tag("no_spotimage.jpg", :size => '320x200',class: "review-img") %>
+					<% end %>
+				</div>
+				<div class="review-info">
+					<p>投稿日：<%= review.created_at.strftime('%Y年%m月%d日') %></p>
+					<p>投稿者：<%= review.user.username %></p>
+					<p><strong><%= review.title %></strong></p>
+					<p><%= review.body %></p>
+				</div>
+			</div>
+			<div class="">
+				<% if (user_signed_in? && review.user == current_user) || (current_user.is_admin == true) %>
+					<%= link_to '削除', [@spot,review], :method => :delete, data: { confirm: '削除しますか？' } , class: "" %>
+				<% end %>
+				<br>
+			</div>
+	</div>
+	<% end %>
 </div>
+

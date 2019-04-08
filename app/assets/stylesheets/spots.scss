@@ -1,3 +1,51 @@
 // Place all the styles related to the spots controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.spot-area{
+	overflow:hidden;
+}
+
+.img-trim{
+	object-fit: cover;
+}
+
+.spot-img{
+	width: 45%;
+	margin-right: 10px;
+	float: left;
+}
+
+.spot-map{
+	width: 45%;
+	float: left;
+}
+
+.spot-info{
+	width: 100%;
+	margin-top: 50px;
+	// overflow:hidden;
+	float: left;
+}
+
+.review_form{
+	margin-top: 50px;
+	// float: none;
+}
+
+.review-img{
+	margin-right: 10px;
+	float: left;
+}
+
+.review{
+	padding-top: 20px;
+	background-color: #ede4cd;
+	border-bottom: solid 3px #16160e;
+	overflow:hidden;
+}
+
+.review-info{
+	padding-top: 15px;
+	clear: left;
+}

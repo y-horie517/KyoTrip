@@ -91,3 +91,9 @@ footer{
 		display: none;
 	}
 
+	/*スポット詳細ページのスポット名*/
+	h2{
+		margin-top: 30px;
+		margin-bottom: 20px;
+	}
+
