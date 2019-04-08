@@ -10,7 +10,7 @@
 	</div>
 	<div class="spot-img">
 		<% if @spot.spotimage.attached? %>
-			<%= image_tag @spot.spotimage, :height => 350 %><br>
+			<%= image_tag @spot.spotimage, :size => '500x350', class: "img-trim" %><br>
 		<% else %>
 			<%= image_tag("no_spotimage.jpg", :size => '500x350') %><br>
 		<% end %>

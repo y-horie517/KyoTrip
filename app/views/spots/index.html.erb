@@ -4,7 +4,7 @@
 		<div class="spot-content">
 			<%= link_to spot_path(s.id) do %>
 				<% if s.spotimage.attached? %>
-					<%= image_tag s.spotimage, :size => "350x200", class: "spotimg" %><br>
+					<%= image_tag s.spotimage, :size => "350x200", class: "img-trim" %><br>
 				<% else %>
 					<%= image_tag("no_spotimage.jpg", :size => "350x200") %><br>
 				<% end %>
