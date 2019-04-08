@@ -9,7 +9,6 @@ class ReviewsController < ApplicationController
 		spot = Spot.find(params[:spot_id])
 		review = current_user.reviews.new(review_params)
 		review.spot_id = spot.id
-		# review.user_id = current_user.id
 		if review.save
 			flash[:notice] = "投稿が完了しました。"
 			redirect_to spot_path(spot)
