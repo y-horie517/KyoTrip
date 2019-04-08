@@ -23,12 +23,12 @@
 		</div>
 	</div>
 </div>
-<div class="lastreview-area center">
+<div class="lastreview-area">
 	<h3>最新のレビュー</h3>
 	<% @reviews.each do |review| %>
 	<div class="review-box">
 		<div class="review-img-area">
-			<p><%= review.spot.name %></p>
+			<p><%= review.spot.name.truncate(18) %></p>
 			<!-- 投稿画像 後ほど５件までなど制限する-->
 			<% if review.reviewimages.attached? %>
 			<!-- 1件目のみ表示してリンクにする -->

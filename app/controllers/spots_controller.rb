@@ -24,7 +24,7 @@ class SpotsController < ApplicationController
   	@spot = Spot.find(params[:id])
     # ユーザ情報を紐付ける
     @review  = @spot.reviews.build(user_id: current_user.id)
-    @reviews = @spot.reviews.all
+    @reviews = @spot.reviews.all.reverse_order
   end
 
   def edit
