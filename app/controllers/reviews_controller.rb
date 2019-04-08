@@ -28,6 +28,7 @@ class ReviewsController < ApplicationController
 	private
 
 	def review_params
-		params.require(:review).permit(:title, :body)
+		# active storageで複数枚画像を登録する際の書き方
+		params.require(:review).permit(:title, :body, reviewimages: [])
 	end
 end

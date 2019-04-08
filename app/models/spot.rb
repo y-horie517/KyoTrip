@@ -4,7 +4,7 @@ class Spot < ApplicationRecord
 
 	has_many :reviews, dependent: :destroy
 	
-	# Active Storageを用いたプロフィール画像用
+	# Active Storageを用いた画像投稿用
 	has_one_attached :spotimage
 
 	# ユーザがお気に入りに登録しているか判定
