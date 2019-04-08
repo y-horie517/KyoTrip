@@ -1,2 +1,29 @@
-<h1>Favorites#index</h1>
-<p>Find me in app/views/favorites/index.html.erb</p>
+
+<div class="flash_area">
+	<%= flash[:notice] %>
+	<%= flash[:warning] %>
+</div>
+
+<div class="favorites">
+	<div class="favorite-head">
+		<h2>気になるスポット</h2>
+	</div>
+	<div class="favorite-content-area">
+		<% @favorites.each do |f|%>
+			<div class="favorite-content">
+				<%= link_to spot_path(f.spot_id) do %>
+					<% if f.spot.spotimage.attached? %>
+						<%= image_tag f.spot.spotimage, :size => "350x200", class: "img-trim" %><br>
+					<% else %>
+						<%= image_tag("no_spotimage.jpg", :size => "350x200") %><br>
+					<% end %>
+				<% end %>
+				
+				<%= link_to spot_path(f.spot_id) do %>
+					<%= f.spot.name %><br>
+				<% end %>
+				<%= link_to '削除',[@user, f], :method => :delete, data: { confirm: '削除しますか？' } , class: ""  %>
+			</div>
+		<% end %>
+	</div>
+</div>

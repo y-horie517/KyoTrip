@@ -12,9 +12,14 @@ class FavoritesController < ApplicationController
     end
 
 	def destroy
-        spot = Spot.find(params[:spot_id])
-        favorite = current_user.favorites.find_by(spot_id: spot.id)
-        favorite.destroy
-        redirect_to spot_path(spot)
+        favorite = Favorite.find(params[:id])
+        @user = favorite.user
+		if favorite.destroy
+			flash[:notice] = "投稿を削除しました。"
+			redirect_back(fallback_location: user_favorites_path(@user))
+		else
+			flash[:warning] = "投稿を削除できませんでした。"
+			redirect_back(fallback_location: user_favorites_path(@user))
+		end
     end
 end
