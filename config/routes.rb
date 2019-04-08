@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   resources :spots do
   	resources :reviews, only: [:create, :destroy]
   end
+
+  resources :favorites, only: [:create, :destroy, :index]
 end
