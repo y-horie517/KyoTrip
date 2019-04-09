@@ -22,7 +22,9 @@
 				<%= link_to spot_path(f.spot_id) do %>
 					<%= f.spot.name %><br>
 				<% end %>
-				<%= link_to '削除',[@user, f], :method => :delete, data: { confirm: '削除しますか？' } , class: ""  %>
+				<!-- [@user, f.spot], -->
+				
+				<%= link_to '削除',user_favorite_path(@user,f.spot_id), :method => :delete, data: { confirm: '削除しますか？' } , class: ""  %>
 			</div>
 		<% end %>
 	</div>

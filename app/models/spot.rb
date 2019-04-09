@@ -13,4 +13,9 @@ class Spot < ApplicationRecord
 	def favorited_by?(user)
     	favorites.where(user_id: user.id).exists?
   	end
+
+  	# ユーザが訪れたことがあるか判定
+	def visited_by?(user)
+    	visits.where(user_id: user.id).exists?
+  	end
 end

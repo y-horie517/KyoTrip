@@ -1,11 +1,13 @@
-<!-- <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet"> -->
-
+<div class="flash_area">
+	<%= flash[:notice] %>
+</div>
 <!-- 背景画像 -->
 <div class="topbg">
 	<!-- 背景を覆う半透明の黒領域 -->
 	<div class="bgcover">
+
 	</div>
-	
+	<div class="top-area">
 		<!-- 右上のテキスト部分 -->
 		<div class="top-text-area">
 			<p>日本文化のふるさと京都</p>
@@ -16,9 +18,63 @@
 		<div class="top-title-area">
 			<%= image_tag '', :size =>'350x350' %>
 		<!-- メニューページへのボタン -->
-			<%= link_to "ENTER", index_path, class: 'enter' %>
-			<!-- <button class="enter" type="button">中に入る</button> -->
+
+		<button class="enter" type="button">中に入る</button>
 		</div>
-	
+	</div>
 </div>
+<div class="lastreview-area">
+	<h3>最新のレビュー</h3>
+	<% @reviews.each do |review| %>
+	<div class="review-box">
+		<div class="review-img-area">
+			<p><%= review.spot.name.truncate(18) %></p>
+			<!-- 投稿画像 後ほど５件までなど制限する-->
+			<% if review.reviewimages.attached? %>
+			<!-- 1件目のみ表示してリンクにする -->
+				<%= link_to spot_path(review.spot.id) do %>
+	   				<%= image_tag review.reviewimages[0], :size => '275x200', class: "review-img img-trim" %>
+	   			<% end %>
+			<% else %>
+			<!-- 投稿がなければNoイメージかスポットの画像を表示する -->
+				<%= link_to spot_path(review.spot.id) do %>
+					<%= image_tag("no_spotimage.jpg", :size => '275x200',class: "review-img img-trim") %>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="review-info">
+			<p>投稿者：<%= review.user.username %></p>
+			<p><strong><%= review.title %></strong></p>
+		</div>
+	</div>
+	<% end %>
+</div>
+
+
+<script>
+	function topSlide(area, btn, speed) {
+		var windowWidth  = $(window).outerWidth();
+		var windowHeight = $(window).outerHeight();
+
+		$('.content').css('height', windowHeight); //コンテンツ充実すればいらない
+
+		$(btn).on('click', function(){ //ボタン変えてね
+			$('html, body').scrollTop(0);
+
+			$(area).animate({
+				top: -(windowHeight),
+				// 'opacity' : 0
+			}, speed, 'swing');
+			$(area).hide(speed);
+		});
+
+	}
+
+	$(window).on('load resize', function(){
+		topSlide('.topbg', '.top-title-area', 2000);
+	});
+</script>
+
+
+
 
