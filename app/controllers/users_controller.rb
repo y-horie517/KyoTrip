@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   def index
+    # 管理者以外表示
+    # @users = User.where(is_admin: false)
+    @users = User.all
   end
 
   def show
