@@ -6,6 +6,9 @@ class Spot < ApplicationRecord
 	has_many :favorites, dependent: :destroy
 	has_many :visits, dependent: :destroy
 
+	# バリデーション
+	validates :name, presence: true
+
 	# Active Storageを用いた画像投稿用
 	has_one_attached :spotimage
 

@@ -14,7 +14,7 @@ class SpotsController < ApplicationController
   	spot = Spot.new(spot_params)
   	spot.user_id = current_user.id
   	# DBへ保存する
-    if spot.save!
+    if spot.save
      	flash[:notice] = "スポットが1件登録されました。"
      	redirect_to spot_path(spot.id)
     else

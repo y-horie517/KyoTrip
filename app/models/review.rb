@@ -11,6 +11,20 @@ class Review < ApplicationRecord
   	# Active Storageを用いた画像投稿用(複数枚)
 	has_many_attached :reviewimages
 
+	validate :reviewimages_length
+
+	def reviewimages_length
+		if reviewimages.attached?
+			if reviewimages.length > 3
+				errors[:base] << "画像の投稿数は3枚までです。"
+			end
+		end
+	end
+
+	def blob_is_image?
+    	
+  	end
+
 	# validate :validate_img
 
  #  def validate_img
