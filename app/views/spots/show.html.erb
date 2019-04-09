@@ -75,8 +75,8 @@
 				<label>タイトル</label>
 				<%= f.text_field :title, value: '無題' %>
 				<br><br>
-				<label>本文</label>
-				<%= f.text_area :body %>
+				<label>本文</label><br>
+				<%= f.text_area :body, :maxlength => 300, class: "review-body char-count" %><span class="count"></span>/300
 				<br><br>
 				<%= f.submit "投稿", class: "btn btn-primary btn-sm" %>
 			<% end %>
@@ -123,4 +123,3 @@
 	</div>
 	<% end %>
 </div>
-
