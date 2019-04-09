@@ -8,9 +8,13 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :update] do
     resources :reviews, only: [:index, :destroy]
+    resources :favorites, only: [:index, :destroy]
   end
 
   resources :spots do
   	resources :reviews, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
   end
+
+
 end
