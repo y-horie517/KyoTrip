@@ -1,0 +1,21 @@
+<div class="favorites">
+	<h2>訪問履歴</h2>
+	<% @visits.each do |v| %>
+	<div class="visit-content">
+		<%= link_to spot_path(v.spot_id) do %>
+		<% if v.spot.spotimage.attached? %>
+		<%= image_tag v.spot.spotimage, :size => "350x200", class: "img-trim" %><br>
+		<% else %>
+		<%= image_tag("no_spotimage.jpg", :size => "350x200") %><br>
+		<% end %>
+		<% end %>
+		<p>訪問日時：<%= v.date %></p>
+		<%= link_to spot_path(v.spot_id) do %>
+		<%= v.spot.name %><br>
+		<% end %>
+		<%= v.visitcount %>回目の訪問<br>
+		
+		<%= link_to '削除',[@user, v], :method => :delete, data: { confirm: '削除しますか？' } , class: ""  %>
+	</div>
+	<% end %>
+</div>

@@ -11,10 +11,10 @@ class ReviewsController < ApplicationController
 		review.spot_id = spot.id
 		if review.save
 			flash[:notice] = "投稿が完了しました。"
-			redirect_to spot_path(spot)
+			redirect_back(fallback_location: spot_path(spot))
 		else
 			flash[:warning] = "投稿ができませんでした。"
-			redirect_to spot_path(spot)
+			redirect_back(fallback_location: spot_path(spot))
 		end
 	end
 

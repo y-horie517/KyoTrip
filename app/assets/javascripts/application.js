@@ -17,7 +17,7 @@
 //= require jquery
 
 
-
+// モーダルログイン用
 	$(function() {
 		$(document).on('click', '.button', function() {
 			$('.sign_modal_wrapper').css('display', 'block');
@@ -38,3 +38,12 @@
 		}
 	})
 	})
+
+//テキストエリア内の文字数カウント
+$(function(){
+    $(".count").text($(".char-count").val().length);
+    $(".char-count").on("keydown keyup keypress change",function(){
+        var text_length = $(this).val().length;
+        $(".count").text(text_length);
+    });
+});

@@ -7,7 +7,8 @@
 <div class="spot-area">
 	<div class="spot-show-head">
 		<h2><%= @spot.name %></h2>
-
+	<!-- お気に入り登録ボタン -->
+	<% if user_signed_in? %>
 		<% if @spot.favorited_by?(current_user) %>
 			<p>気になるスポットに登録済み
 		    <%= link_to '解除する', spot_favorite_path(@spot), method: :delete %>
@@ -15,7 +16,22 @@
 		<% else %>
 		    <%= link_to '気になるスポットに登録する', spot_favorites_path(@spot), method: :post %>
 		<% end %>
-		<p><%= @spot.favorites.count %>人のユーザがこのスポットを登録しています</p>
+	<% end %>
+	<p><%= @spot.favorites.count %>人のユーザがこのスポットを登録しています</p>
+
+		<!-- 訪問した日登録 -->
+	<% if user_signed_in? %>
+	<div class="panel panel-default review_form">
+		<div class="panel-body">
+			<%= form_with model: [@spot, @visit], local: true  do |f| %>
+				<label>訪問日時：</label>
+				<%= f.datetime_select :date, {default: Date.today + 0.hour}   %>
+				<%= f.submit "追加", class: "" %>
+			<% end %>
+		</div>
+	</div>
+	<% end %>
+
 	</div>
 	<div class="spot-img">
 		<% if @spot.spotimage.attached? %>
@@ -54,13 +70,17 @@
 		<h2>レビュー投稿</h2>
 		<div class="panel-body">
 			<%= form_with model: [@spot, @review], local: true  do |f| %>
-				<label>投稿写真</label>
+			<!-- エラーメッセージ表示 -->
+			
+
+			
+				<label>投稿写真(3枚まで)</label>
 				 <%= f.file_field :reviewimages, multiple: true %><br>
 				<label>タイトル</label>
 				<%= f.text_field :title, value: '無題' %>
 				<br><br>
-				<label>本文</label>
-				<%= f.text_area :body %>
+				<label>本文</label><br>
+				<%= f.text_area :body, :maxlength => 300, class: "review-body char-count" %><span class="count"></span>/300
 				<br><br>
 				<%= f.submit "投稿", class: "btn btn-primary btn-sm" %>
 			<% end %>
@@ -107,4 +127,3 @@
 	</div>
 	<% end %>
 </div>
-

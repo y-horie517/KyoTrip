@@ -1,6 +1,9 @@
 class SpotsController < ApplicationController
   def index
   	@spots = Spot.all
+    if user_signed_in?
+      @user = current_user
+    end
   end
 
   def new
@@ -11,7 +14,7 @@ class SpotsController < ApplicationController
   	spot = Spot.new(spot_params)
   	spot.user_id = current_user.id
   	# DBへ保存する
-    if spot.save!
+    if spot.save
      	flash[:notice] = "スポットが1件登録されました。"
      	redirect_to spot_path(spot.id)
     else
@@ -26,6 +29,7 @@ class SpotsController < ApplicationController
     @review  = @spot.reviews.build(user_id: current_user.id)
     @reviews = @spot.reviews.all.reverse_order
     @favorite  = @spot.favorites.build(user_id: current_user.id)
+    @visit = @spot.visits.build(user_id: current_user.id)
   end
 
   def edit
