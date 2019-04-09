@@ -4,6 +4,8 @@ class Spot < ApplicationRecord
 
 	has_many :reviews, dependent: :destroy
 	has_many :favorites, dependent: :destroy
+	has_many :visits, dependent: :destroy
+
 	# Active Storageを用いた画像投稿用
 	has_one_attached :spotimage
 

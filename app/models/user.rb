@@ -4,6 +4,7 @@ class User < ApplicationRecord
 	# レビューはユーザと一緒に消えて良い
 	has_many :reviews, dependent: :destroy
 	has_many :favorites, dependent: :destroy
+	has_many :visits, dependent: :destroy
 
 	# Active Storageを用いたプロフィール画像用
 	has_one_attached :userimage
