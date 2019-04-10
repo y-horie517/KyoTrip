@@ -21,17 +21,19 @@
      <div class="">
         <%= link_to "スポットを探す", spots_path, class: "" %>
       </div>
+<!-- ユーザがログインしていた場合 -->
     <% if user_signed_in? %>
       <div class="">
         <%= link_to "スポット登録", new_spot_path, class: "" %>
       </div>
+      <p><%= current_user.username %>さん</p>
       <div class="">
         <%= link_to "マイページ", user_path(current_user.id), class: "" %>
       </div>
       <div class="sign_out_button">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "" %>
       </div>
-    <!-- ユーザがログインしていなかった場合 -->
+<!-- ユーザがログインしていなかった場合 -->
     <% else %>
       <div class="button sign_up_button">新規登録</div>
       <div class="button sign_in_button">ログイン</div>
