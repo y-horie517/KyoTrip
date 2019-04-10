@@ -1,6 +1,9 @@
 // Place all the styles related to the spots controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.spot-index{
+	margin-bottom: 50px;
+}
 
 .spot-area{
 	overflow:hidden;
@@ -56,4 +59,8 @@
   resize: none;
   width:500px;
   height:130px;
+}
+
+.paginate{
+	margin-bottom: 50px;
 }

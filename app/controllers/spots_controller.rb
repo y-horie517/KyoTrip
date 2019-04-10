@@ -1,6 +1,8 @@
 class SpotsController < ApplicationController
+
   def index
-  	@spots = Spot.all
+    @search = Spot.ransack(params[:q]) #ransackメソッド推奨
+  	@spots = @search.result.page(params[:page])
     if user_signed_in?
       @user = current_user
     end
