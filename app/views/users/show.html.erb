@@ -2,6 +2,8 @@
 <div class="flash_area">
 	<%= flash[:notice] %>
 </div>
+<!-- 取得データをJSONに変換し、HTML要素のdata属性に設定(viewに埋め込む) -->
+<div id="tag_info" data-json="<%= @category_names.to_json %>" ></div>
 
 <div class="userinfo">
 	<% if @user.userimage.attached? %>
@@ -20,6 +22,57 @@
 	<% end %>
 </div>
 
+<!-- チャート部分 -->
+<div id="userchart" style="width:800px; height:800px;">
+	<canvas id="myPieChart" style="position: relative"></canvas>
+</div>
+ <script>
+ // 設定した要素のdata属性の値を取得
+  var tags = JSON.parse(document.getElementById('tag_info').dataset.json);
+　//各スポットごとの訪問数を出す。その後各値を合計値で割ってパーセンテージ	を出し、配列に入れる
+
+　var ctx = document.getElementById("myPieChart");
+  var myPieChart = new Chart(ctx, {
+
+    // 円グラフを指定
+    type: 'pie',
+    // グラフのデータ
+    data: {
+    //カテゴリテーブルのカテゴリ名を全件表示
+      labels:tags,
+      datasets: [{
+          backgroundColor: [
+          	  "#001950",
+              "#003e7d",
+              "#1168ad",
+              "#509458",
+              "#80c686",
+              "#ffef00",
+              "#f4d002",
+              "gray"
+              // "#C7000B",
+              // "#D28300",
+              // "#DFD000",
+              // "#00873C",
+              // "#005AA0",
+              // "#181878",
+              // "#800073",
+              // "gray"
+          ],
+          // それぞれの訪問数
+          data: [62, 38, 13, 10, 11, 12, 7, 7]
+      }]
+    },
+    plugins: [dataLabelPlugin],
+    // グラフ自体のタイトル
+    options: {
+      title: {
+        display: true,
+        text: '訪れたスポット数（カテゴリ別）'
+      }
+    }
+  });
+  </script>
 
 <%= link_to '投稿一覧へ', user_reviews_path(@user) %>
 <%= link_to '気になるスポット一覧へ', user_favorites_path(@user) %>

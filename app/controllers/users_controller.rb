@@ -8,12 +8,22 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
     @review = Review.new
+    # カテゴリ名の配列を取得
+    @category_names = Category.all.pluck(:category_name)
+
+    # 重複無しで訪問済みのスポットIDを配列で取得
+    @visits = @user.visits.pluck(:spot_id).uniq
+    # 各カテゴリの訪問回数を保存する配列を用意(ID順)
+    @visitcategory = Array.new(Category.count, 0)
+    # 訪問済みスポットの数だけ回す
+
+    i = 0
+    @visits.each do |v|
+      # カウントを+１する対象のIDを設定
+      id = Spot.find(v).category_id - 1
+      @visitcategory[id] += 1
+    end
   end
-
-  # def edit
-  # 	@user = User.find(params[:id])
-
-  # end
 
   def update
    	user = User.find(params[:id])
