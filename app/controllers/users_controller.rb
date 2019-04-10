@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  # before_action :require_login
+  before_action :require_admin, only: [:index]
+
   def index
     # 管理者以外表示
     # @users = User.where(is_admin: false)
