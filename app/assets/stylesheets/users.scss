@@ -7,7 +7,34 @@
 }
 
 #userchart{
+	float: right;
 	// height: 300px;
 	// width: 300px;
 	// position:relative;
+}
+
+.userinfo{
+	margin-top: 80px;
+	margin-left: 10%;
+	float: left;
+}
+
+.profileimg{
+ 	border-radius: 50%;
+ 	margin-bottom: 20px;
+}
+
+.user-link{
+	margin-top: 100px;
+	margin-bottom: 50px;
+}
+
+.user-map-area{
+	width: 100%;
+	text-align: center;
+	clear: both;
+}
+
+#map{
+	margin: 0 auto;
 }

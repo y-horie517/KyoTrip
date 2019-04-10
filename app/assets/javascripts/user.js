@@ -25,7 +25,9 @@ var dataLabelPlugin =({
 
                     var padding = 5;
                     var position = element.tooltipPosition();
-                    ctx.fillText(dataString, position.x, position.y - (fontSize / 2) + padding);
+                    if (dataset.data[index] != 0) {
+                        ctx.fillText(dataString, position.x, position.y - (fontSize / 2) + padding);
+                    };
                 });
             }
         });
