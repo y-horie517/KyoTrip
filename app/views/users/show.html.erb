@@ -4,6 +4,8 @@
 </div>
 <!-- 取得データをJSONに変換し、HTML要素のdata属性に設定(viewに埋め込む) -->
 <div id="tag_info" data-json="<%= @category_names.to_json %>" ></div>
+<!-- ユーザのカテゴリ別訪問数 -->
+<!-- <div id="date_info" data-json="<%= @visitcategory.to_json %>" ></div> -->
 
 <div class="userinfo">
 	<% if @user.userimage.attached? %>
@@ -28,8 +30,12 @@
 </div>
  <script>
  // 設定した要素のdata属性の値を取得
+ // var tags = JSON.parse('<%= @category_names %>');
   var tags = JSON.parse(document.getElementById('tag_info').dataset.json);
-　//各スポットごとの訪問数を出す。その後各値を合計値で割ってパーセンテージ	を出し、配列に入れる
+　//各スポットごとの訪問数取得
+// 　var categorycount = JSON.parse(document.getElementById('data_info').dataset.json);
+  var categorycount = JSON.parse('<%= @visitcategory %>');
+
 
 　var ctx = document.getElementById("myPieChart");
   var myPieChart = new Chart(ctx, {
@@ -41,6 +47,7 @@
     //カテゴリテーブルのカテゴリ名を全件表示
       labels:tags,
       datasets: [{
+      	// 色も後ほど配列でカテゴリ数だけ用意するようにする
           backgroundColor: [
           	  "#001950",
               "#003e7d",
@@ -60,7 +67,7 @@
               // "gray"
           ],
           // それぞれの訪問数
-          data: [62, 38, 13, 10, 11, 12, 7, 7]
+          data: categorycount
       }]
     },
     plugins: [dataLabelPlugin],
