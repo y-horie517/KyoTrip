@@ -2,35 +2,49 @@
 <div class="flash_area">
 	<%= flash[:notice] %>
 </div>
+<!-- 取得データをJSONに変換し、HTML要素のdata属性に設定(viewに埋め込む) -->
+<div id="tag_info" data-json="<%= @category_names.to_json %>" ></div>
+<!-- ユーザのカテゴリ別訪問数 -->
+<!-- <div id="date_info" data-json="<%= @visitcategory.to_json %>" ></div> -->
 
 <div class="userinfo">
 	<% if @user.userimage.attached? %>
-		<%= image_tag @user.userimage, :size => "200x200", class: "profileimg" %>
+		<%= image_tag @user.userimage, :size => "300x300", class: "profileimg" %>
 	<% else %>
-		<%= image_tag("no_userimage.jpg", :size => "200x200") %>
+		<%= image_tag("no_userimage.jpg", :size => "300x300") %>
 	<% end %>
 
 
 	<!-- local:trueを外すと、remote:trueになる -->
 	<%= form_with model: @user, local: true  do |f| %>
+    <label>プロフィール画像</label>
 	  <%= f.file_field :userimage %><br>
 	  <label>ユーザ名</label>
 	  <%= f.text_field :username %><br>
 	  <%= f.submit '更新' %>
 	<% end %>
+
+  <div class="user-link">
+    <%= link_to '投稿一覧へ', user_reviews_path(@user) %><br>
+    <%= link_to '気になるスポット一覧へ', user_favorites_path(@user) %><br>
+    <%= link_to '訪問履歴へ', user_visits_path(@user) %><br>
+  </div>
 </div>
 
+<!-- チャート部分 -->
+<div id="userchart" style="width:900px; height:900px;">
+	<canvas id="myPieChart" style=""></canvas>
+</div>
 
-<%= link_to '投稿一覧へ', user_reviews_path(@user) %>
-<%= link_to '気になるスポット一覧へ', user_favorites_path(@user) %>
-<%= link_to '訪問履歴へ', user_visits_path(@user) %>
+<div class="user-map-area">
+  <h2>マイMAP</h2>
+  <div id="map"></div>
 
-<div id="map"></div>
+  <br>
 
-<br>
-
-<iframe width="600"
-    height="400" src="https://maps.google.co.jp/maps?output=embed&q=京都駅"></iframe>
+  <iframe width="600"
+      height="400" src="https://maps.google.co.jp/maps?output=embed&q=京都駅"></iframe>
+</div>
 
 
 <script src="http://maps.google.com/maps/api/js?key=AIzaSyDSm9JoN7yTni_Q6NOHxFPl9WxiGKn5J9U&language=ja"></script>
@@ -52,3 +66,56 @@ var Options = {
 };
 var map = new google.maps.Map(document.getElementById('map'), Options);
 </script>
+
+<script>
+ // 設定した要素のdata属性の値を取得
+ // var tags = JSON.parse('<%= @category_names %>');
+  var tags = JSON.parse(document.getElementById('tag_info').dataset.json);
+　//各スポットごとの訪問数取得
+// 　var categorycount = JSON.parse(document.getElementById('data_info').dataset.json);
+  var categorycount = JSON.parse('<%= @visitcategory %>');
+
+
+　var ctx = document.getElementById("myPieChart");
+  var myPieChart = new Chart(ctx, {
+
+    // 円グラフを指定
+    type: 'pie',
+    // グラフのデータ
+    data: {
+    //カテゴリテーブルのカテゴリ名を全件表示
+      labels:tags,
+      datasets: [{
+        // 色も後ほど配列でカテゴリ数だけ用意するようにする
+          backgroundColor: [
+              "#001950",
+              "#003e7d",
+              "#1168ad",
+              "#509458",
+              "#80c686",
+              "#ffef00",
+              "#f4d002",
+              "gray"
+              // "#C7000B",
+              // "#D28300",
+              // "#DFD000",
+              // "#00873C",
+              // "#005AA0",
+              // "#181878",
+              // "#800073",
+              // "gray"
+          ],
+          // それぞれの訪問数
+          data: categorycount
+      }]
+    },
+    plugins: [dataLabelPlugin],
+    // グラフ自体のタイトル
+    options: {
+      title: {
+        display: true,
+        text: '訪れたスポット数（カテゴリ別）'
+      }
+    }
+  });
+  </script>
