@@ -39,6 +39,18 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def destroy
+    user = User.find(params[:id])
+    if user.destroy
+      flash[:notice] = '退会処理が完了しました。関連する投稿も削除されました。'
+      redirect_to destroy_session_path(user)
+    else
+      flash[:warning] = '退会処理が行えませんでした。'
+      redirect_to user_path(user.id)
+    end
+  end
+
   private
 
 	def user_params

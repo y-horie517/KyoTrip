@@ -28,7 +28,7 @@
     <%= link_to '投稿一覧へ', user_reviews_path(@user) %><br>
     <%= link_to '気になるスポット一覧へ', user_favorites_path(@user) %><br>
     <%= link_to '訪問履歴へ', user_visits_path(@user) %><br>
-  </div>
+    <%= link_to '退会する', user_path(@user), :method => :delete, data: { confirm: '退会するとそのアカウントではログイン不可となり、これまでに投稿してきたレビューも削除されます。本当に退会しますか？' } , class: "" %>
 </div>
 
 <!-- チャート部分 -->
