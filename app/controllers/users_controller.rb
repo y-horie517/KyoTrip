@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :require_login
+  before_action :check_mypage_authority, only: [:show]
   before_action :require_admin, only: [:index]
 
   def index
@@ -44,4 +44,19 @@ class UsersController < ApplicationController
 	def user_params
 		params.require(:user).permit(:username, :userimage)
 	end
+
+    # マイページへのアクセス権チェック
+  def check_mypage_authority
+    if user_signed_in?
+      # マイページのユーザ
+      user = User.find(params[:id])
+      if ((current_user != user)&&(current_user.is_admin == false))
+        flash[:warning] = "閲覧権限のないページが指定されたためTOPページへ遷移しました"
+        redirect_to index_path
+      end
+    else
+      flash[:warning] = "ログインしてください"
+      redirect_to index_path
+    end
+  end
 end

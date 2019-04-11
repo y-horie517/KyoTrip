@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+	before_action :check_mydata_authority, only: [:index]
 	# ユーザごとの投稿一覧
 	def index
 		@user = User.find(params[:user_id])

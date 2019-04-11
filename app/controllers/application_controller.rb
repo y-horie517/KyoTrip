@@ -1,7 +1,13 @@
 class ApplicationController < ActionController::Base
-
-  def require_login
-    unless user_signed_in?
+  # ユーザの持つお気に入り一覧などの情報へのアクセス権チェック
+  def check_mydata_authority
+    if user_signed_in?
+      user = User.find(params[:user_id])
+      if ((current_user != user) && (current_user.is_admin == false))
+        flash[:warning] = "閲覧権限のないページが指定されたためTOPページへ遷移しました"
+        redirect_to index_path
+      end
+    else
       flash[:warning] = "ログインしてください"
       redirect_to index_path
     end

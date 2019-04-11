@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+    before_action :check_mydata_authority, only: [:index]
+    
  	def index
 		@user = User.find(params[:user_id])
 		@favorites = @user.favorites.reverse_order
