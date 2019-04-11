@@ -71,9 +71,6 @@
 		<div class="panel-body">
 			<%= form_with model: [@spot, @review], local: true  do |f| %>
 			<!-- エラーメッセージ表示 -->
-			
-
-			
 				<label>投稿写真(3枚まで)</label>
 				 <%= f.file_field :reviewimages, multiple: true %><br>
 				<label>タイトル</label>
