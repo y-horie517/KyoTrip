@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'index' => 'top#index'
   get 'top' => 'top#top'
+  get 'about' => 'top#about'
   root to: 'top#top'
 
   devise_for :users
