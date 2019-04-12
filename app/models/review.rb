@@ -16,7 +16,7 @@ class Review < ApplicationRecord
 	def reviewimages_length
 		if reviewimages.attached?
 			if reviewimages.length > 3
-				errors[:reviewimages] << "画像の投稿数は3枚までです。"
+				errors[:base] << "画像の投稿数は3枚までです。"
 			end
 		end
 	end

@@ -89,10 +89,10 @@
 <!-- レビュー一覧 -->
 <div class="review-index">
 	<h2>レビュー一覧</h2>
-	<% if @spot.reviews.count == 0 %>
+	<% if @spot.reviewcount == 0 %>
 		<p class="">レビューがありません</p>
 	<% else %>
-		<p>投稿件数<%= @spot.reviews.count %>件</p>
+		<p>投稿件数<%= @spot.reviewcount %>件</p>
 	<% end %>
 
 	<% @reviews.each do |review| %>

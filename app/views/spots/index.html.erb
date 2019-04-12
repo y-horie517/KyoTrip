@@ -5,7 +5,9 @@
     <dt><label>カテゴリー</label>
 		<%= f.collection_select :category_id_eq, Category.all, :id, :category_name, { include_blank: true, placeholder: "カテゴリー"} ,class: "form" %></dt>
     <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+    <%= sort_link(@search, :reviewcount, 'レビュー件数') %>
   <% end %>
+  
 </dl>
 
 <div class="">
@@ -32,7 +34,7 @@
 			<% end %>
 
 			<p>カテゴリ：<%= s.category.category_name %></p>
-			<p>レビュー数：<%= s.reviews.count %>件</p>
+			<p>この場所を訪れたユーザ：<%= s.visits.count %></p>
 			<p>このスポットが気になっているユーザ：<%= s.favorites.count %>人</p>
 			<% if user_signed_in? %>
 				<% if s.favorited_by?(current_user) %>
@@ -43,6 +45,7 @@
 		    		<%= link_to '気になるスポットに登録する', spot_favorites_path(s), method: :post %>
 				<% end %>
 			<% end %>
+			<p>レビュー数：<%= s.reviewcount %>件</p>
 		</div>
 	<% end %>
 </div>
