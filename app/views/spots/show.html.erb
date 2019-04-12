@@ -11,10 +11,10 @@
 	<% if user_signed_in? %>
 		<% if @spot.favorited_by?(current_user) %>
 			<p>気になるスポットに登録済み
-		    <%= link_to '解除する', spot_favorite_path(@spot), method: :delete %>
+		    <%= link_to '解除する', spot_favorite_path(@spot), method: :delete, remote: true  %>
 		    </p>
 		<% else %>
-		    <%= link_to '気になるスポットに登録する', spot_favorites_path(@spot), method: :post %>
+		    <%= link_to '気になるスポットに登録する', spot_favorites_path(@spot), method: :post, remote: true %>
 		<% end %>
 	<% end %>
 	<p><%= @spot.favorites.count %>人のユーザがこのスポットを登録しています</p>

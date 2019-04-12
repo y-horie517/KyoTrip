@@ -7,6 +7,11 @@
     <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
   <% end %>
 </dl>
+
+<div class="">
+    <%= link_to "スポット登録", new_spot_path, class: "" %>
+</div>
+
 <div class="spot-index">
 	<% @spots.each do |s| %>
 		<div class="spot-content">

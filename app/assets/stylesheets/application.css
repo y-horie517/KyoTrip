@@ -25,7 +25,17 @@ header{
 	/*background-color: #3b7960;*/
 	 display: flex;
 	 position: relative;
-	 /*justify-content: space-between;*/
+	background-image: url("bg3.jpg");	 /*justify-content: space-between;*/
+}
+
+body{
+	
+	/*background-size: cover;*/
+	background-position: top center;
+	background-repeat: repeat;
+	background-color: (0,0,0, .3)
+	top: 0;
+	left: 0;
 }
 
 .site-logo{
