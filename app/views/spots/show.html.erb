@@ -17,7 +17,7 @@
 		    <%= link_to '気になるスポットに登録する', spot_favorites_path(@spot), method: :post, remote: true %>
 		<% end %>
 	<% end %>
-	<p><%= @spot.favorites.count %>人のユーザがこのスポットを登録しています</p>
+	<p><%= @spot.favoritecount %>人のユーザがこのスポットを登録しています</p>
 
 		<!-- 訪問した日登録 -->
 	<% if user_signed_in? %>

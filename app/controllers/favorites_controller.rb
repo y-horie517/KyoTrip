@@ -10,7 +10,10 @@ class FavoritesController < ApplicationController
         spot = Spot.find(params[:spot_id])
         @user = current_user
         favorite = @user.favorites.new(spot_id: spot.id)
-  		favorite.save
+  		if favorite.save
+            spot.favoritecount = spot.favorites.count
+            spot.save
+        end
   		redirect_back(fallback_location: user_favorites_path(@user))
     end
 
@@ -26,8 +29,9 @@ class FavoritesController < ApplicationController
         spot = Spot.find(id)
         @user = current_user
         favorite = @user.favorites.find_by(spot_id: spot.id)
-
 		if favorite.destroy
+            spot.favoritecount = spot.favorites.count
+            spot.save
 			flash[:notice] = "お気に入りを解除しました。"
 			redirect_back(fallback_location: user_favorites_path(@user))
 		else

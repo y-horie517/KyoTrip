@@ -21,6 +21,9 @@ class VisitsController < ApplicationController
 		i+=1
 	end
 
+	spot.visitcount = spot.visits.select(:user_id).distinct.count
+	spot.save
+
 	flash[:notice] = "訪問履歴に追加しました。"
 	redirect_to spot_path(spot)
   end
@@ -40,6 +43,9 @@ class VisitsController < ApplicationController
 			v.save
 			i+=1
 		end
+		spot = Spot.find(spot_id)
+		spot.visitcount = spot.visits.select(:user_id).distinct.count
+		spot.save
 
 		flash[:notice] = "訪問履歴から削除しました。"
 		redirect_back(fallback_location: user_visits_path(@user))
