@@ -77,35 +77,54 @@
     color: #555;
 }
 
-.topic-area{
-	background-color: gray;
-	overflow: hidden;
-}
-
-
 .review-box{
-	float: left;
+	display: inline-block;
 }
 
 .lastreview-area{
+	// 画面幅狭めた時の改行を防ぐ。
+	white-space: nowrap;
+	// overflow-y: scroll;
 	background-color: #180614;
 	color: white;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	padding-left: 25px;
+	padding-left: 10px;
 	margin-top: 50px;
 	margin-bottom: 50px;
 	overflow: hidden;
 }
-
-.topic-area{
-	// height: 250px;
+.topic{
 	background-color: gray;
 	color: white;
+}
+.topic h3{
+	padding-top: 15px;
+	padding-left: 10px;
+}
+.topic-area{
+	background-color: gray;
+	// 画面幅狭めた時の改行を防ぐ。
+	white-space: nowrap;
+	// overflow-y: scroll;
 	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 25px;
-	margin-top: 50px;
+	padding-bottom: 30px;
 	margin-bottom: 50px;
 	overflow: hidden;
+}
+
+.topic-area p{
+
+	padding-left: 10px;
+	color: white;
+	text-decoration: none;
+}
+
+.slick-prev{
+	transform: scale(-1, 1);
+	left:98%; /* 任意の値 */
+}
+.slick-next{
+	transform: scale(-1, 1);
+	left:2%; /* 任意の値 */
 }

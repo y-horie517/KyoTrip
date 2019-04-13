@@ -3,20 +3,23 @@
 	<%= flash[:warning] %>
 </div>
 
+<div class="topic">
+<h3>世界遺産</h3>
 <div class="topic-area">
-	<h3>世界遺産</h3>
 	<% @w_heritages.each do |s| %>
 		<div class="review-box">
 			<div class="topic-img-area">
 				<%= link_to spot_path(s.id) do %>
 				<%= image_tag s.spotimage, :size => '270x196', class: "review-img img-trim" %>
+				
+				<% end %>
 				<div class="review-info">
 					<p><%= s.name %></p>
 				</div>
-				<% end %>
 			</div>
 		</div>
 	<% end %>
+</div>
 </div>
 
 <div class="lastreview-area">
@@ -72,6 +75,33 @@
 	
 </script>
 
+<script>
+	$(document).ready(function(){
+  $('.topic-area').slick({
+  	infinite: true,
+  	// 左右の次へ、前へボタンを表示するかどうか
+  	arrows: true,
+  	// appendArrows
+
+  	 // アクセシビリティ。左右ボタンで画像の切り替えをできるかどうか
+ 	accessibility: true,
+ 	// 自動再生。trueで自動再生される。
+  	autoplay: true,
+    // 自動再生で切り替えをする時間
+	autoplaySpeed: 3000,
+	speed: 1000,
+  	// 自動再生時にスライドのエリアにマウスオンで一時停止するかどうか
+	pauseOnHover: true,
+    // 5枚表示
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    // 表示中の画像を中央へ
+ 	 centerMode: true,
+ 	// 中央のpadding
+	centerPadding: '10px'
+  });
+});
+</script>
 
 
 
