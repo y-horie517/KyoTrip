@@ -12,4 +12,8 @@ class TopController < ApplicationController
   	render :layout => "application"
   	# render :layout => "top"
   end
+
+  def about
+    render :layout => "application"
+  end
 end

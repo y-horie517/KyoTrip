@@ -1,4 +1,21 @@
 <h1>スポット検索</h1>
+<dl class="searchbox">
+  <%= search_form_for @search, url: spots_path do |f| %>
+    <dt><%= f.text_field :name_cont ,placeholder: '検索するスポット名を入力...' %></dt>
+    <dt><label>カテゴリー</label>
+		<%= f.collection_select :category_id_eq, Category.all, :id, :category_name, { include_blank: true, placeholder: "カテゴリー"} ,class: "form" %></dt>
+    <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+    <p>並べ替え</p>
+    <%= sort_link(@search, :visitcount, '訪れたユーザ数順') %>
+    <%= sort_link(@search, :favoritecount, 'お気に入り数順') %>
+    <%= sort_link(@search, :reviewcount, 'レビュー件数順') %>
+  <% end %>
+</dl>
+
+<div class="">
+    <%= link_to "スポット登録", new_spot_path, class: "" %>
+</div>
+
 <div class="spot-index">
 	<% @spots.each do |s| %>
 		<div class="spot-content">
@@ -19,8 +36,8 @@
 			<% end %>
 
 			<p>カテゴリ：<%= s.category.category_name %></p>
-			<p>レビュー数：<%= s.reviews.count %>件</p>
-			<p>このスポットが気になっているユーザ：<%= s.favorites.count %>人</p>
+			<p>この場所を訪れたユーザ：<%= s.visitcount %>人</p>
+			<p>このスポットが気になっているユーザ：<%= s.favoritecount %>人</p>
 			<% if user_signed_in? %>
 				<% if s.favorited_by?(current_user) %>
 					<p>気になるスポットに登録済み
@@ -30,8 +47,11 @@
 		    		<%= link_to '気になるスポットに登録する', spot_favorites_path(s), method: :post %>
 				<% end %>
 			<% end %>
-		</div>
+			<p>レビュー数：<%= s.reviewcount %>件</p>
 		</div>
 	<% end %>
-
+</div>
+<div class="paginate">
+	<%= page_entries_info(@spots) %>
+	<%= paginate(@spots, :window => 2, :left => 1, :right => 1) %>
 </div>

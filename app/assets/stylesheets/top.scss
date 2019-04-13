@@ -6,16 +6,8 @@
 	margin: 0;
 }
 
-// .topbg{
-// 	width: 100%;
-// 	height: 1000px;
-// 	background-image: url(/images/topbg.jpg);
-// 	background-size: cover;
-// }
-
 .mainlogo{
-	background-color: rgba(255,255,255,1);
-	border-radius: 0%;
+
 }
 
 .topbg {
@@ -29,17 +21,6 @@
 	top: 0;
 	left: 0;
 }
-
-// .bgcover{
-// 	position: fixed;
-// 	width: 100%;
-// 	height: 100%;
-// 	top: 0;
-// 	left: 0;
-// 	background-color: black;
-// 	opacity: .5;
-// 	z-index: 10;
-// }
 
 .bgcover {
 	position: absolute;
@@ -57,84 +38,44 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	top: 10%;
+	top: 5%;
 }
-
-// .top-text-area{
-// 	position: absolute;
-// 	width: 150px;
-// 	height: 600px;
-// 	top: 100px;
-// 	left: 1000px;
-// 	// background-color: white;
-// 	z-index: 20;
-// 	font-size: 30px;
-// 	color: #eaedf7;
-// 	font-family: 'HiraMinPro-W6','MS Mincho';
-// //縦書き
-// 	-ms-writing-mode: tb-rl;
-//   	writing-mode: vertical-rl;
-// }
 
 .top-text-area {
 	width: 90px;
 	height: 580px;
 	font-size: 30px;
 	color: #eaedf7;
-	opacity: .8;
 	font-family: 'HiraMinPro-W6','MS Mincho';
 	-ms-writing-mode: tb-rl;
   	writing-mode: vertical-rl;
   	position: absolute;
   	right: 50%;
-    top: 50%;
+    top: 55%;
     transform: translate(350px, -65%);
 }
-
-// .top-title-area{
-// 	position: absolute;
-// 	width: 350px;
-// 	height: 350px;
-// 	top: 500px;
-// 	left: 545px;
-// 	// background-color: white;
-// 	z-index: 20;
-// 	text-align: center;
-// }
 
 .top-title-area{
 	width: 350px;
 	height: 350px;
+	text-align: center;
 }
 
-// .enter {
-// 	display: none;
-//     border: 0;
-//     line-height: 2.5;
-//     padding: 8px 40px;
-//     font-size: 1rem;
-//     font-family: 'HiraMinPro-W6','MS Mincho';
-//     text-align: center;
-//     color: #fff;
-//     text-shadow: 1px 1px 1px #000;
-//     border-radius: 10px;
-//     background-color: rgba(168, 168, 169, 1);
-//     background-image: linear-gradient(to top left,
-//                                       rgba(0, 0, 0, .2),
-//                                       rgba(0, 0, 0, .2) 30%,
-//                                       rgba(0, 0, 0, 0));
-//     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
-//                 inset -2px -2px 3px rgba(0, 0, 0, .6);
-// }
+.enter {
+    border: 0;
+    line-height: 2.5;
+    margin-left: 20px;
+    padding: 0px 80px;
+    font-size: 18px;
+    font-family: 'HiraMinPro-W6','MS Mincho';
+    text-align: center;
+    color: #000;
+    background-color: #eaedf7;
+   }
 
-// .enter:hover {
-//     background-color: rgba(188, 188, 189, 1);
-// }
-
-// .enter:active {
-//     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
-//                 inset 2px 2px 3px rgba(0, 0, 0, .6);
-// }
+.enter:hover {
+    color: #555;
+}
 
 
 .review-box{
@@ -142,7 +83,7 @@
 }
 
 .lastreview-area{
-	background-color: black;
+	background-color: #180614;
 	color: white;
 	margin-top: 50px;
 	margin-bottom: 50px;

@@ -14,29 +14,39 @@
   </head>
 
   <header>
-     <%= image_tag 'sitelogo-x3.png', :size =>'278x108', class: "sublogo" %>
-      <%= image_tag 'sitelogo-x2.png', :size =>'278x128', class: "sublogo" %>
-    <div class="">
-        <%= link_to "ホーム", index_path, class: "" %>
-    </div>
-     <div class="">
-        <%= link_to "スポットを探す", spots_path, class: "" %>
-      </div>
-    <% if user_signed_in? %>
-      <div class="">
-        <%= link_to "スポット登録", new_spot_path, class: "" %>
-      </div>
-      <div class="">
-        <%= link_to "マイページ", user_path(current_user.id), class: "" %>
-      </div>
-      <div class="sign_out_button">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "" %>
-      </div>
-    <!-- ユーザがログインしていなかった場合 -->
-    <% else %>
-      <div class="button sign_up_button">新規登録</div>
-      <div class="button sign_in_button">ログイン</div>
+    <h1 class="site-logo">
+    <%= link_to index_path do %>
+      <%= image_tag 'sublogo1.png',:size =>'267x150', class: "sublogo" %>
     <% end %>
+  </h1>
+  <nav class="nav">
+    <ul class="nav-menu"  id="main-menu">
+      <li class="nav-menu-item"><%= link_to "ホーム", index_path, class: "item" %></li>
+      <li class="nav-menu-item"><%= link_to "当サイトについて", about_path, class: "item" %></li>
+      <li class="nav-menu-item"><%= link_to "スポットを探す", spots_path, class: "item" %></li>
+    </ul>
+  </nav>
+
+<!-- ユーザがログインしていた場合 -->
+   <nav>
+   <% if user_signed_in? %>
+   <ul class="nav-menu" id="user-menu">
+      <li><%= current_user.username %>さん</li>
+      <li>
+        <%= link_to "マイページ", user_path(current_user.id), class: "item" %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "item" %>
+      </li>
+    </ul>
+<!-- ユーザがログインしていなかった場合 -->
+    <% else %>
+    <ul class="nav-menu" id="user-menu">
+      <li class="av-menu-item button sign_up_button">新規登録</li>
+      <li class="av-menu-item button sign_in_button">ログイン</li>
+    </ul>
+    <% end %>
+    </nav>
   </header>
 
   <body>
@@ -107,7 +117,7 @@
 
 <footer>
   <%= image_tag 'sitelogo-x.png', :size =>'278x108', class: "sublogo" %>
-All Rights Reserved
+@2019 YH All Rights Reserved
 </footer>
 
 </html>

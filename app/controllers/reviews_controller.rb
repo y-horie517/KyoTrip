@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+	before_action :check_mydata_authority, only: [:index]
 	# ユーザごとの投稿一覧
 	def index
 		@user = User.find(params[:user_id])
@@ -10,6 +11,8 @@ class ReviewsController < ApplicationController
 		review = current_user.reviews.new(review_params)
 		review.spot_id = spot.id
 		if review.save
+			spot.reviewcount = spot.reviews.count
+			spot.save
 			flash[:notice] = "投稿が完了しました。"
 			redirect_back(fallback_location: spot_path(spot))
 		else
@@ -20,8 +23,11 @@ class ReviewsController < ApplicationController
 
 	def destroy
 		review = Review.find(params[:id])
+		spot = Spot.find(review.spot_id)
 		@user = review.user
 		if review.destroy
+			spot.reviewcount = spot.reviews.count
+			spot.save
 			flash[:notice] = "投稿を削除しました。"
 			redirect_back(fallback_location: user_reviews_path(@user))
 		else
