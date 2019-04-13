@@ -77,6 +77,11 @@
     color: #555;
 }
 
+.topic-area{
+	background-color: gray;
+	overflow: hidden;
+}
+
 
 .review-box{
 	float: left;
@@ -85,6 +90,21 @@
 .lastreview-area{
 	background-color: #180614;
 	color: white;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 25px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	overflow: hidden;
+}
+
+.topic-area{
+	// height: 250px;
+	background-color: gray;
+	color: white;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 25px;
 	margin-top: 50px;
 	margin-bottom: 50px;
 	overflow: hidden;

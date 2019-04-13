@@ -3,6 +3,22 @@
 	<%= flash[:warning] %>
 </div>
 
+<div class="topic-area">
+	<h3>世界遺産</h3>
+	<% @w_heritages.each do |s| %>
+		<div class="review-box">
+			<div class="topic-img-area">
+				<%= link_to spot_path(s.id) do %>
+				<%= image_tag s.spotimage, :size => '270x196', class: "review-img img-trim" %>
+				<div class="review-info">
+					<p><%= s.name %></p>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>
+
 <div class="lastreview-area">
 	<h3>最新のレビュー</h3>
 	<% @reviews.each do |review| %>
@@ -11,14 +27,14 @@
 			<p><%= review.spot.name.truncate(18) %></p>
 			<!-- 投稿画像 後ほど５件までなど制限する-->
 			<% if review.reviewimages.attached? %>
-			<!-- 1件目のみ表示してリンクにする -->
+			<!-- 1枚目の画像のみ表示してリンクにする -->
 				<%= link_to spot_path(review.spot.id) do %>
-	   				<%= image_tag review.reviewimages[0], :size => '275x200', class: "review-img img-trim" %>
+	   				<%= image_tag review.reviewimages[0], :size => '270x196', class: "review-img img-trim" %>
 	   			<% end %>
 			<% else %>
 			<!-- 投稿がなければNoイメージかスポットの画像を表示する -->
 				<%= link_to spot_path(review.spot.id) do %>
-					<%= image_tag("no_spotimage.jpg", :size => '275x200',class: "review-img img-trim") %>
+					<%= image_tag("no_spotimage.jpg", :size => '270x196',class: "review-img img-trim") %>
 				<% end %>
 			<% end %>
 		</div>
