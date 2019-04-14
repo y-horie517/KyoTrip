@@ -9,39 +9,38 @@
 
 <script src="https://maps.google.com/maps/api/js?v=3.exp&amp;key=AIzaSyDSm9JoN7yTni_Q6NOHxFPl9WxiGKn5J9U&amp;language=ja&amp;libraries=places"></script>
 
-<div id="map-content" class="container-fluid mp0">
-	<!-- 検索バー -->
-	<div id="menu" style="width: 270px; height: 100px;">
-		<div style="margin-top:20px">
-			<span>登録したいスポット名を検索してください
+<div id="map-content">
+	<div id="menu">
+		<div>
+			<span>①登録したいスポット名を検索してください
+			<!-- 検索バー -->
 			<div class="input-group">
-				<input type="text" id="find-place-query" class="form-control" placeholder="スポット名 (例: 清水寺)">
-				<button id="find-place-query-button" class="" type="button">検索</button>
+				<input type="text" id="find-place-query" placeholder="スポット名 (例: 清水寺)">
+				<button id="find-place-query-button" type="button">検索</button>
 			</div>
-			<textarea id="result-area" style="width:100%; height:100px;font-size:.85em;" wrap="off"></textarea>
+			<!-- <textarea id="result-area" style="width:100%; height:100px;font-size:.85em;" wrap="off"></textarea> -->
 			</span>
 		</div>
 		<div class="spotform">
-			<%= image_tag("no_spotimage.jpg", :size => "350x200") %>
+			<span>②以下のフォームを入力してください。<br>・名称とカテゴリは必須項目です。<br>・画像は350x200にトリミングされます。</span><br>
+			<!-- image_tag("no_spotimage.jpg", :size => "350x200") -->
 			<!-- local:trueを外すと、remote:trueになる -->
 			<%= form_with model: @spot, local: true  do |f| %>
 			  <%= f.file_field :spotimage %><br>
+			  <!-- ユーザに見えないところでplace_idを登録 -->
+			  <%= f.hidden_field :mapid, id: "s_mapid", class: "" %>
 			<table>
 			  <tr>
 			  	<th align="right"><label>名称&nbsp;</label></th>
 			  	<th><%= f.text_field :name, id: "s_name", class: "spotinput" %></th>
 			  </tr>
 			   <tr>
-			  	<th align="right"><label>詳細情報&nbsp;</label></th>
-			  	<th><%= f.text_field :description, class: "spotinput" %></th>
-			  </tr>
-			   <tr>
 			  	<th align="right"><label>住所&nbsp;</label></th>
 			  	<th><%= f.text_field :address, id: "s_address", class: "spotinput" %></th>
 			  </tr>
 			   <tr>
-			  	<th align="right"><label>ホームページのURL&nbsp;</label></th>
-			  	<th><%= f.text_field :url, class: "s_web spotinput"%></th>
+			  	<th align="right"><label>URL&nbsp;</label></th>
+			  	<th><%= f.text_field :url, id: "s_web", class: "spotinput"%></th>
 			  </tr>
   			   <tr>
 			  	<th align="right"><label>カテゴリ&nbsp;</label></th>
@@ -56,59 +55,6 @@
 	<!-- マップ表示 -->
 	<div id="map"></div>
 </div>
-
-<style>
-	.spotsubmit{
-
-	}
-	#find-place-query-button{
-		padding: 3px;
-	}
-
-	.spotinput{
-		width: 350px;
-		height: 20px;
-	}
-	.spotform{
-		height: 500px;
-		width: 300px;
-		display: block;
-	}
-
-	#map-content{
-		height: 500px;
-		width: 100%;
-		white-space: nowrap;
-		margin-bottom: 100px;
-		padding-left: 10%;
-	}
-
-	#find-place-query{
-		height: 20px;
-	}
-
-	#map{
-		height: 100%;
-		width: 500px;
-		/*float: right;*/
-		/*margin-right: 100px;*/
-		display: inline-block;
-		/*white-space: nowrap;*/
-	}
-
-	#menu{
-		height: 100%;
-		width: 300px;
-		margin-right: 20%;
-		/*float: left;*/
-		display: inline-block;
-		/*white-space: nowrap;*/
-	}
-
-	#result-area{
-
-	}
-</style>
 
 <script>
 $(function() {
@@ -146,12 +92,19 @@ $(function() {
 
 			// 結果を返す部分
 			$('#result-area').val(JSON.stringify(results, null, '\t'));
-
+			$('#s_mapid').val(results[0].place_id);
  			$('#s_name').val(results[0].name);
-
-			// var addr = results[0].formatted_address.replace(/日本/g , "");
-			// alert(1);
+ 			// 日本の表記を削除する
  			$('#s_address').val(results[0].formatted_address.replace(/日本、/g , ""));
+
+ 			// 取得したIDから詳細取得メソッドを呼び出し、urlを取得
+ 			_placesService.getDetails({
+				placeId: results[0].place_id,
+				fields: ['website']
+			}, function(place, status) {
+				console.log(place);
+				$('#s_web').val(place.website);
+			});
 
 			if (status == google.maps.places.PlacesServiceStatus.OK) {
 				for (var i = 0; i < results.length; i++) {
@@ -163,10 +116,9 @@ $(function() {
 				alert('失敗しました。' + status);
 			}
 		});
+
+		
 	};
-
-
-
 
 	// 詳細情報検索
 	var placeDetails = function() {
@@ -233,27 +185,27 @@ $(function() {
 
 <!-- プレビュー機能 -->
 <script>
-// 	$(document).on('turbolinks:load', function() {
+	$(document).on('turbolinks:load', function() {
 
-//   $('#item_images').on('change',function(e){
-//     var files = e.target.files;
-//     var d = (new $.Deferred()).resolve();
-//     $.each(files,function(i,file){
-//       d = d.then(function(){return previewImage(file)});
-//     });
-//   })
+  $('#item_images').on('change',function(e){
+    var files = e.target.files;
+    var d = (new $.Deferred()).resolve();
+    $.each(files,function(i,file){
+      d = d.then(function(){return previewImage(file)});
+    });
+  })
 
-//   var previewImage = function(imageFile){
-//     var reader = new FileReader();
-//     var img = new Image();
-//     var def =$.Deferred();
-//     reader.onload = function(e){
-//       $('.images_field').append(img);
-//       img.src = e.target.result;
-//       def.resolve(img);
-//     };
-//     reader.readAsDataURL(imageFile);
-//     return def.promise();
-//   }
-// })
+  var previewImage = function(imageFile){
+    var reader = new FileReader();
+    var img = new Image();
+    var def =$.Deferred();
+    reader.onload = function(e){
+      $('.images_field').append(img);
+      img.src = e.target.result;
+      def.resolve(img);
+    };
+    reader.readAsDataURL(imageFile);
+    return def.promise();
+  }
+})
 </script>
