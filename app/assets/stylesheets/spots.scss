@@ -31,7 +31,7 @@
 	width: 100%;
 	margin-top: 50px;
 	// overflow:hidden;
-	float: left;
+	float: right;
 }
 
 .review_form{
@@ -64,4 +64,9 @@
 
 .paginate{
 	margin-bottom: 50px;
+}
+
+// スポット登録ページ
+.map_canvas{
+	float: left;
 }
