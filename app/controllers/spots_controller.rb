@@ -28,10 +28,13 @@ class SpotsController < ApplicationController
   def show
   	@spot = Spot.find(params[:id])
     # ユーザ情報を紐付ける
-    @review  = @spot.reviews.build(user_id: current_user.id)
+    if user_signed_in?
+      @review  = @spot.reviews.build(user_id: current_user.id)
+      @favorite  = @spot.favorites.build(user_id: current_user.id)
+      @visit = @spot.visits.build(user_id: current_user.id)
+    end
     @reviews = @spot.reviews.all.reverse_order
-    @favorite  = @spot.favorites.build(user_id: current_user.id)
-    @visit = @spot.visits.build(user_id: current_user.id)
+    
   end
 
   def edit
@@ -53,6 +56,6 @@ class SpotsController < ApplicationController
 
   private
   def spot_params
-  	params.require(:spot).permit(:name, :description, :address, :url, :category_id, :spotimage)
+  	params.require(:spot).permit(:name, :description, :address, :url, :category_id, :mapid, :spotimage)
   end
 end

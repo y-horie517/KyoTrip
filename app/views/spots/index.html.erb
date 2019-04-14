@@ -1,10 +1,13 @@
 <h1>スポット検索</h1>
+
 <dl class="searchbox">
   <%= search_form_for @search, url: spots_path do |f| %>
     <dt><%= f.text_field :name_cont ,placeholder: '検索するスポット名を入力...' %></dt>
     <dt><label>カテゴリー</label>
 		<%= f.collection_select :category_id_eq, Category.all, :id, :category_name, { include_blank: true, placeholder: "カテゴリー"} ,class: "form" %></dt>
     <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+
+
     <p>並べ替え</p>
     <%= sort_link(@search, :visitcount, '訪れたユーザ数順') %>
     <%= sort_link(@search, :favoritecount, 'お気に入り数順') %>
