@@ -78,7 +78,7 @@
 // 	}
 // };
 
-<script src="https://maps.google.com/maps/api/js?v=3.exp&amp;key=&amp;language=ja&amp;libraries=places"></script>
+
 
 <div id="map-content">
 	<div id="menu">
@@ -98,6 +98,7 @@
 			<!-- image_tag("no_spotimage.jpg", :size => "350x200") -->
 			<!-- local:trueを外すと、remote:trueになる -->
 			<%= form_with model: @spot, local: true  do |f| %>
+			<label>スポットの画像</label>
 			  <%= f.file_field :spotimage %><br>
 			  <!-- ユーザに見えないところでplace_idを登録 -->
 			  <%= f.hidden_field :mapid, id: "s_mapid", class: "" %>
@@ -127,6 +128,8 @@
 	<!-- マップ表示 -->
 	<div id="map"></div>
 </div>
+
+<script src="https://maps.google.com/maps/api/js?v=3.exp&amp;key=&amp;language=ja&amp;libraries=places"></script>
 
 <script>
 $(function() {
