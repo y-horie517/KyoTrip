@@ -92,7 +92,7 @@ $(function() {
 			console.log(results);
 
 			// 結果を返す部分
-			$('#result-area').val(JSON.stringify(results, null, '\t'));
+			// $('#result-area').val(JSON.stringify(results, null, '\t'));
 			$('#s_mapid').val(results[0].place_id);
  			$('#s_name').val(results[0].name);
  			// 日本の表記を削除する
@@ -122,21 +122,21 @@ $(function() {
 	};
 
 	// 詳細情報検索
-	var placeDetails = function() {
-		clearMarkers();
-		_placesService.getDetails({
-			placeId: $('#place-details').val(),
-			fields: ['website']
-		}, function(place, status) {
-			console.log(place);
-			$('#result-area').val(JSON.stringify(place, null, '\t'));
-			// if (status == google.maps.places.PlacesServiceStatus.OK) {
-			// 	createMarker(place);
-			// } else {
-			// 	alert('失敗しました。' + status);
-			// }
-		});
-	};
+	// var placeDetails = function() {
+	// 	clearMarkers();
+	// 	_placesService.getDetails({
+	// 		placeId: $('#place-details').val(),
+	// 		fields: ['website']
+	// 	}, function(place, status) {
+	// 		console.log(place);
+	// 		$('#result-area').val(JSON.stringify(place, null, '\t'));
+	// 		// if (status == google.maps.places.PlacesServiceStatus.OK) {
+	// 		// 	createMarker(place);
+	// 		// } else {
+	// 		// 	alert('失敗しました。' + status);
+	// 		// }
+	// 	});
+	// };
 
 	var clearMarkers = function() {
 		$.each(_markers, function(i, marker) {
