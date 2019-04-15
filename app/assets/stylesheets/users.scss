@@ -7,16 +7,19 @@
 }
 
 #userchart{
-	float: left;
+	display: inline-block;
+	// float: left;
 	// height: 300px;
 	// width: 300px;
 	// position:relative;
 }
 
 .userinfo{
-	margin-top: 80px;
+	// margin-top: 80px;
 	margin-left: 5%;
-	float: left;
+	padding-left: 50px;
+	display: inline-block;
+	// float: left;
 }
 
 .profileimg{
@@ -25,7 +28,7 @@
 }
 
 .user-link{
-	margin-top: 100px;
+	margin-top: 50px;
 	margin-bottom: 50px;
 }
 
@@ -35,6 +38,13 @@
 	clear: both;
 }
 
-#map{
-	margin: 0 auto;
+/*投稿画像を表示サイズにトリミングして表示*/
+.profileimg{
+	object-fit: cover;
+}
+
+.topinfo{
+	margin-top: 50px;
+	// 画面幅狭めた時の改行を防ぐ。
+	white-space: nowrap;
 }
