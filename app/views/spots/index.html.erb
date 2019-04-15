@@ -1,17 +1,21 @@
 <h1>スポット検索</h1>
+<div class="flash_area">
+	<%= flash[:notice] %>
+	<%= flash[:warning] %>
+</div>
 
 <dl class="searchbox">
   <%= search_form_for @search, url: spots_path do |f| %>
-    <dt><%= f.text_field :name_cont ,placeholder: '検索するスポット名を入力...' %></dt>
+    <dt><%= f.text_field :name_cont ,placeholder: '検索するスポット名を入力...', class: "searchform" %></dt>
     <dt><label>カテゴリー</label>
 		<%= f.collection_select :category_id_eq, Category.all, :id, :category_name, { include_blank: true, placeholder: "カテゴリー"} ,class: "form" %></dt>
     <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
 
 
-    <p>並べ替え</p>
-    <%= sort_link(@search, :visitcount, '訪れたユーザ数順') %>
-    <%= sort_link(@search, :favoritecount, 'お気に入り数順') %>
-    <%= sort_link(@search, :reviewcount, 'レビュー件数順') %>
+    <p>並べ替え表示</p>
+    <%= sort_link(@search, :visitcount, '訪れたユーザ数順', default_order: :desc) %>
+    <%= sort_link(@search, :favoritecount, 'お気に入り数順', default_order: :desc) %>
+    <%= sort_link(@search, :reviewcount, 'レビュー件数順', default_order: :desc) %>
   <% end %>
 </dl>
 
@@ -51,6 +55,9 @@
 				<% end %>
 			<% end %>
 			<p>レビュー数：<%= s.reviewcount %>件</p>
+			<% if current_user.is_admin == true %>
+				<%= link_to 'スポット削除', spot_path(s.id), method: :delete %>
+			<% end %>
 		</div>
 	<% end %>
 </div>
