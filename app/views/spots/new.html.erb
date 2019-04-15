@@ -83,7 +83,8 @@
 <div id="map-content">
 	<div id="menu">
 		<div>
-			<span>①登録したいスポット名を検索してください
+			<span>①登録したいスポット名を検索してください<br>
+				右側にマップが表示されていない場合はページをリロードしてください。
 			<!-- 検索バー -->
 			<div class="input-group">
 				<input type="text" id="find-place-query" placeholder="スポット名 (例: 清水寺)">
@@ -243,6 +244,10 @@ $(function() {
 			}
 		});
 	};
+
+
+
+
 	// 起動時の処理
 	$(window).on('load', function() {
 		initMap();

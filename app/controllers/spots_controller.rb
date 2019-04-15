@@ -53,6 +53,17 @@ class SpotsController < ApplicationController
     end
   end
 
+  def destroy
+    spot = Spot.find(params[:id])
+    if spot.destroy
+      flash[:notice] = "スポットを削除しました。"
+      redirect_to spots_path
+    else
+      flash[:warning] = "スポットの削除に失敗しました。"
+      render edit_spot_paths
+    end
+  end
+
 
   private
   def spot_params
