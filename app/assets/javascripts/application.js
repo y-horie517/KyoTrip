@@ -49,3 +49,6 @@ $(function(){
         $(".count").text(text_length);
     });
 });
+
+
+

@@ -47,9 +47,6 @@
 	    <label>住所:<%= @spot.address %></label>
 	</div>
 	<div class="spot-info">
-		<label>詳細情報: <%= @spot.description %></label><br>
-
-
 		<label>ホームページのURL: <%= link_to @spot.url,"http://www.#{@spot.url}", :target => "_blank" %></label><br>
 
 		<label>カテゴリ: <%= @spot.category.category_name %></label><br>

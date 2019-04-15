@@ -2,9 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// mew.html.erb
+// new.html.erb edit.html.erb
 .input-group{
-	margin-bottom: 50px;
+	margin-bottom: 200px;
+}
+
+.edit-input-group{
+	margin-bottom: 10px;
 }
 
 .spotsubmit{
@@ -23,8 +27,10 @@
 .spotform{
 	height: 500px;
 	width: 300px;
+	// margin-bottom: 100px;
 	display: block;
 }
+
 
 #map-content{
 	height: 500px;
@@ -38,6 +44,8 @@
 #find-place-query{
 	height: 30px;
 	width: 300px;
+	margin-top: 10px;
+	margin-left: 60px;
 }
 
 #map{
