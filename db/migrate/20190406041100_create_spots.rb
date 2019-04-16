@@ -6,7 +6,8 @@ class CreateSpots < ActiveRecord::Migration[5.2]
     	t.string :address
     	t.text	 :url
     	t.references  :category, foreign_key: true
-    	t.references  :user, foreign_key: true
+    	# t.references  :user, foreign_key: true
+      t.integer :user_id
 
       t.timestamps
     end

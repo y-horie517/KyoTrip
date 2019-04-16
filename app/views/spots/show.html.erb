@@ -47,8 +47,7 @@
 	  width="500"
 	  height="345"
 	  frameborder="0" style="border:0"
-	  src="https://www.google.com/maps/embed/v1/place?key=
-	    &zoom=12&q=place_id:<%= @spot.mapid %>" allowfullscreen>
+	  src="https://www.google.com/maps/embed/v1/place?key=<%=Rails.application.credentials.dig(:google, :map_api_key)%>&zoom=12&q=place_id:<%= @spot.mapid %>" allowfullscreen>
 	</iframe><br>
 
 
@@ -104,7 +103,7 @@
 	<div class="review">
 			<div class="">
 				<div class="review-img-area">
-					<!-- 投稿画像 後ほど５件までなど制限する-->
+
 					<% if review.reviewimages.attached? %>
 	  					<% review.reviewimages.each do |image| %>
 	    					<%= image_tag image, :size => '320x200', class: "review-img img-trim" %>
@@ -121,8 +120,10 @@
 				</div>
 			</div>
 			<div class="">
-				<% if (user_signed_in? && review.user == current_user) || (current_user.is_admin == true) %>
+				<% if user_signed_in? %>
+				 	<% if (review.user == current_user) || (current_user.is_admin == true) %>
 					<%= link_to '削除', [@spot,review], :method => :delete, data: { confirm: '削除しますか？' } , class: "" %>
+					<% end %>
 				<% end %>
 				<br>
 			</div>

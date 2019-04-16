@@ -143,6 +143,15 @@
 	text-align: center;
 }
 
+.areabutton:hover{
+	opacity: .8;
+}
+
+.areabutton:active{
+	   padding-top:6px;
+    padding-bottom:4px;
+}
+
 .areamap{
 	margin: 0 auto 100px auto;
 	height: 600px;

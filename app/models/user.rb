@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 	# ユーザが消えても投稿したスポットは消えないようにする。
-	has_many :spots
+	# has_many :spots
+	
 	# レビューはユーザと一緒に消えて良い
 	has_many :reviews, dependent: :destroy
 	has_many :favorites, dependent: :destroy

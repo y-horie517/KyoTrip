@@ -47,8 +47,8 @@
     width="1000"
     height="700"
     frameborder="0" style="border:0"
-    src="https://www.google.com/maps/embed/v1/place?key=A
-      &zoom=12&q=京都駅" allowfullscreen>
+
+    src="https://www.google.com/maps/embed/v1/place?key=<%=Rails.application.credentials.dig(:google, :map_api_key)%>&zoom=12&q=京都駅" allowfullscreen>
   </iframe><br>
 </div>
 
