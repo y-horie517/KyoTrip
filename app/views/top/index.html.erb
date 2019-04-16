@@ -42,37 +42,57 @@
 		</div>
 		<div class="review-info">
 			<p>投稿者：<%= review.user.username %></p>
-			<p><strong><%= review.title %></strong></p>
+			<p><strong><%= review.title.truncate(18)  %></strong></p>
 		</div>
 	</div>
 	<% end %>
 </div>
 
 
-<script>
-	function topSlide(area, btn, speed) {
-		var windowWidth  = $(window).outerWidth();
-		var windowHeight = $(window).outerHeight();
+<div class="areamap">
+	<h2>エリア検索</h2>
+	<%= image_tag("areamap.png", :size => '846x600',class: "areaimg") %>
 
-		$('.content').css('height', windowHeight); //コンテンツ充実すればいらない
+	<!-- ransack用のクエリパラメタを渡す -->
+	<%= link_to controller: :spots, action: :index, q:{ area_id_eq: :"1" }  ,class: "arealink" do %>
+		<div id="area-center" class="areabutton">
+			<p>洛中エリア</p>
+		</div>
+	<% end %>
 
-		$(btn).on('click', function(){ //ボタン変えてね
-			$('html, body').scrollTop(0);
+	<%= link_to controller: :spots, action: :index, q:{ area_id_eq: :"2" } ,class: "" do %>
+		<div id="area-north" class="areabutton">
+			<p>洛北エリア</p>
+		</div>
+	<% end %>
 
-			$(area).animate({
-				top: -(windowHeight),
-				// 'opacity' : 0
-			}, speed, 'swing');
-			$(area).hide(speed);
-		});
+	<%= link_to controller: :spots, action: :index, q:{ area_id_eq: :"3" } ,class: "" do %>
+		<div id="area-east" class="areabutton">
+			<p>洛東エリア</p>
+		</div>
+	<% end %>
 
-	}
 
-	$(window).on('load resize', function(){
-		topSlide('.topbg', '.top-title-area', 2000);
-	});
-	
-</script>
+	<%= link_to controller: :spots, action: :index, q:{ area_id_eq: :"4" } ,class: "" do %>
+		<div id="area-west" class="areabutton">
+			<p>洛西エリア</p>
+		</div>
+	<% end %>
+
+	<%= link_to  controller: :spots, action: :index, q:{ area_id_eq: :"5" } ,class: "" do %>
+		<div id="area-south" class="areabutton">
+			<p>洛南エリア</p>
+		</div>
+	<% end %>
+
+
+	<%= link_to   controller: :spots, action: :index, q:{ area_id_eq: :"6" } ,class: "" do %>
+		<div id="area-out" class="areabutton">
+			<p>京都市外</p>
+		</div>
+	<% end %>
+
+</div>
 
 <script>
 	$(document).ready(function(){

@@ -128,3 +128,76 @@
 	transform: scale(-1, 1);
 	left:2%; /* 任意の値 */
 }
+
+// マップ検索部分
+.areabutton p{
+	color: white;
+	text-decoration: none;
+	text-decoration-style: none;
+	line-height: 150px;
+}
+
+.areabutton{
+	width: 150px;
+	height: 150px;
+	text-align: center;
+}
+
+.areamap{
+	margin: 0 auto 100px auto;
+	height: 600px;
+	width: 846px;
+	text-align: center;
+	position: relative;
+}
+
+.areaimg{
+	// position: relative;
+}
+
+
+#area-center{
+	position: absolute;
+	top: 45%;
+	left: 46%;
+	background-color: #fc0000;
+}
+
+#area-north{
+	position: absolute;
+	top: 10%;
+	left: 50%;
+		background-color: #9900ff;
+}
+
+#area-east{
+	position: absolute;
+	top: 50%;
+	left: 79%;
+	background-color: #38761c;
+}
+
+#area-west{
+	position: absolute;
+	top: 30%;
+	left: 8%;
+	background-color: #fc9d0e;
+}
+
+#area-south{
+	position: absolute;
+	top: 82%;
+	left: 46%;
+	background-color: #0800ff;
+}
+
+#area-out{
+	position: absolute;
+	top: 82%;
+	left: 8%;
+	background-color: gray;
+}
+
+
+
+
