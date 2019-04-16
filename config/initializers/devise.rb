@@ -10,6 +10,9 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '2ae0262260acd6b2ceb0763f8ea5d9af0c91fc88471310a055c1267b6ba45895550f78a1728f0a41c06613e045fb557aa197addbb90ba811b3b0b516e1a4cad1'
 
+config.warden do |manager|
+  manager.failure_app = CustomFailure
+end
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
