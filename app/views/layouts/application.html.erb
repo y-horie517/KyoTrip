@@ -31,10 +31,10 @@
   </h1>
   <nav class="nav">
     <ul class="nav-menu"  id="main-menu">
-      <li class="nav-menu-item"><%= link_to "ホーム", index_path, class: "item" %></li>
-      <li class="nav-menu-item"><%= link_to "当サイトについて", about_path, class: "item" %></li>
-      <li class="nav-menu-item"><%= link_to "スポットを探す", spots_path, class: "item" %></li>
-      <li class="nav-menu-item"><%= link_to "お問い合わせ", about_path, class: "item" %></li>
+      <li class="nav-menu-item"><%= link_to "ホーム", index_path, class: "item headermenu" %></li>
+      <li class="nav-menu-item"><%= link_to "当サイトについて", about_path, class: "item headermenu" %></li>
+      <li class="nav-menu-item"><%= link_to "スポットを探す", spots_path, class: "item headermenu" %></li>
+      <li class="nav-menu-item"><%= link_to "お問い合わせ", about_path, class: "item headermenu" %></li>
     </ul>
   </nav>
 
@@ -42,20 +42,20 @@
    <nav>
    <% if user_signed_in? %>
    <ul class="nav-menu" id="user-menu">
-      <li><%= current_user.username %>さん</li>
+      <li class="header-user-name"><%= current_user.username %>さん</li>
       <li>
-        <%= link_to "マイページ", user_path(current_user.id), class: "item" %>
+        <%= link_to "マイページ", user_path(current_user.id), class: "item header-user-link" %>
       </li>
       <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "item" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "item header-user-link" %>
       </li>
       
     </ul>
 <!-- ユーザがログインしていなかった場合 -->
     <% else %>
     <ul class="nav-menu" id="user-menu">
-      <li class="av-menu-item button sign_up_button">新規登録</li>
-      <li class="av-menu-item button sign_in_button">ログイン</li>
+      <li class="nav-menu-item button sign_up_button header-user-link">新規登録</li>
+      <li class="nav-menu-item button sign_in_button header-user-link">ログイン</li>
     </ul>
     <% end %>
     </nav>
@@ -111,11 +111,11 @@
               <input autocomplete="current-password" type="password" name="user[password]">
             </div>
 
-              <div class="field">
+             <!--  <div class="field">
                 <input name="user[remember_me]" type="hidden" value="0"><input type="checkbox" value="1" name="user[remember_me]">
                 <label for="user_remember_me">記憶させる</label>
               </div>
-
+ -->
             <div class="actions">
               <input type="submit" name="commit" value="ログイン" data-disable-with="処理中">
             </div>
@@ -128,8 +128,7 @@
   </body>
 
 <footer>
-  <%= image_tag 'sitelogo-x.png', :size =>'278x108', class: "sublogo" %>
-@2019 YH All Rights Reserved
+  <p id="copyright">@2019 YH All Rights Reserved</p>
 </footer>
 
 </html>

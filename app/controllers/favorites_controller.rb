@@ -14,7 +14,7 @@ class FavoritesController < ApplicationController
             spot.favoritecount = spot.favorites.count
             spot.save
         end
-  		redirect_back(fallback_location: user_favorites_path(@user))
+  		# redirect_back(fallback_location: user_favorites_path(@user))
     end
 
 	def destroy
@@ -35,8 +35,8 @@ class FavoritesController < ApplicationController
 			flash[:notice] = "お気に入りを解除しました。"
 			redirect_back(fallback_location: user_favorites_path(@user))
 		else
-			flash[:warning] = "お気に入りを解除できませんでした。"
-			redirect_back(fallback_location: user_favorites_path(@user))
+			# flash[:warning] = "お気に入りを解除できませんでした。"
+			# redirect_back(fallback_location: user_favorites_path(@user))
 		end
     end
 end

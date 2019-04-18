@@ -75,8 +75,8 @@
 		<div class="panel-body">
 			<%= form_with model: [@spot, @review], local: true  do |f| %>
 			<!-- エラーメッセージ表示 -->
-				<label>投稿写真(3枚まで) トリミングされます。</label>
-				 <%= f.file_field :reviewimages, multiple: true %><br>
+				<label>投稿写真(3枚まで登録可能。320x200にトリミングされて表示されます。)</label><br>
+				 <%= f.file_field :reviewimages, multiple: true %><br><br>
 				<label>タイトル</label>
 				<%= f.text_field :title, value: '無題' %>
 				<br><br>

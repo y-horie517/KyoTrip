@@ -13,8 +13,10 @@
 
 .spotsubmit{
 	width: 50px;
-	height: 20px;
+	height: 25px;
 }
+
+
 
 #find-place-query-button{
 	padding: 3px;
@@ -70,10 +72,57 @@
 
 }
 
+
+
+.searchbox{
+	margin-top: 50px;
+	font-size: 18px;
+	// display: block;
+	// overflow: hidden;
+
+}
+
+.searchbox dt{
+	display: inline-block;
+	margin-right: 30px;
+}
+
+.searchbox dd{
+	display: inline-block;
+	margin-right: 30px;
+}
+
+.searchbox label{
+	margin-top: 20px;
+}
+
+
 //index.html.erb
+
+.spotindex{
+	padding-left: 10%;
+	// overflow: hidden;
+}
+
+#spot-register-link{
+	font-size: 18px;
+	text-align: right;
+	margin-right: 20%;
+}
+
 .searchform{
 	width: 200px;
-	height:20px;
+	height: 25px;
+}
+
+.selectform{
+	height: 25px;
+}
+
+.search-btn{
+	width: 100px;
+	font-size: 20px;
+
 }
 
 .spot-index{
@@ -85,9 +134,84 @@
 	overflow:hidden;
 }
 
+.spot-content{
+	height: 300px;
+	// margin-bottom: 30px;
+}
+
+.spot-content-img{
+	display: inline-block;
+}
+
+.spot-content-text{
+	// height: 200px;
+	line-height: 190%;
+	padding-left: 100px;
+	display: inline-block;
+}
+
+.visited{
+	color: white;
+	background-color: #2ca9e1;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.favoritedtext{
+	background-color: #c0c6c9;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.categorytag{
+	border-radius: 5px;
+	color: white;
+	padding: 5px;
+}
+
+#category1{
+	background-color: #001950;
+}
+
+#category2{
+	background-color: #003e7d;
+}
+
+#category3{
+	background-color: #1168ad;
+}
+
+#category4{
+	background-color: #509458;
+}
+
+#category5{
+	background-color: #80c686;
+}
+
+#category6{
+	background-color: #ffef00;
+}
+
+#category7{
+	background-color: #f4d002;
+}
+
+#category8{
+	background-color: gray;
+}
+
 .img-trim{
 	object-fit: cover;
 }
+
+// .fav-create{
+// 	color: red;
+// }
+
+// .fav-destroy{
+// 	color: blue;
+// }
 
 .spot-img{
 	text-align: center;
@@ -138,6 +262,8 @@
 }
 
 .paginate{
+	margin-left: auto;
+	margin-right: auto;
 	margin-bottom: 50px;
 }
 
