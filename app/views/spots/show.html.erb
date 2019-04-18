@@ -42,15 +42,19 @@
 	</div>
 
 	<div class="spot-map">
-		<iframe width="500"
-	    height="345" src="https://maps.google.co.jp/maps?output=embed&z=12&q=<%= @spot.name %>}"></iframe><br>
+
+	<iframe
+	  width="500"
+	  height="345"
+	  frameborder="0" style="border:0"
+	  src="https://www.google.com/maps/embed/v1/place?key=<%=Rails.application.credentials.dig(:google, :map_api_key)%>&zoom=12&q=place_id:<%= @spot.mapid %>" allowfullscreen>
+	</iframe><br>
+
+
 	    <label>住所:<%= @spot.address %></label>
 	</div>
 	<div class="spot-info">
-		<label>詳細情報: <%= @spot.description %></label><br>
-
-
-		<label>ホームページのURL: <%= link_to @spot.url,"http://www.#{@spot.url}", :target => "_blank" %></label><br>
+		<label>ホームページのURL: <%= link_to @spot.url,"#{@spot.url}", :target => "_blank" %></label><br>
 
 		<label>カテゴリ: <%= @spot.category.category_name %></label><br>
 
@@ -71,7 +75,7 @@
 		<div class="panel-body">
 			<%= form_with model: [@spot, @review], local: true  do |f| %>
 			<!-- エラーメッセージ表示 -->
-				<label>投稿写真(3枚まで)</label>
+				<label>投稿写真(3枚まで) トリミングされます。</label>
 				 <%= f.file_field :reviewimages, multiple: true %><br>
 				<label>タイトル</label>
 				<%= f.text_field :title, value: '無題' %>
@@ -99,13 +103,13 @@
 	<div class="review">
 			<div class="">
 				<div class="review-img-area">
-					<!-- 投稿画像 後ほど５件までなど制限する-->
+
 					<% if review.reviewimages.attached? %>
 	  					<% review.reviewimages.each do |image| %>
-	    					<%= image_tag image, :height => 250, class: "review-img" %>
+	    					<%= image_tag image, :size => '320x200', class: "review-img img-trim" %>
 						<% end %>
 					<% else %>
-						<%= image_tag("no_spotimage.jpg", :size => '320x200',class: "review-img") %>
+						<%= image_tag("no_spotimage.jpg", :size => '320x200',class: "review-img img-trim") %>
 					<% end %>
 				</div>
 				<div class="review-info">
@@ -116,8 +120,10 @@
 				</div>
 			</div>
 			<div class="">
-				<% if (user_signed_in? && review.user == current_user) || (current_user.is_admin == true) %>
+				<% if user_signed_in? %>
+				 	<% if (review.user == current_user) || (current_user.is_admin == true) %>
 					<%= link_to '削除', [@spot,review], :method => :delete, data: { confirm: '削除しますか？' } , class: "" %>
+					<% end %>
 				<% end %>
 				<br>
 			</div>

@@ -9,7 +9,7 @@
 		<%= image_tag("no_spotimage.jpg", :size => "350x200") %><br>
 		<% end %>
 		<% end %>
-		<p>訪問日時：<%= v.date %></p>
+		<p>訪問日時：<%= v.date.strftime('%Y年%m月%d日%H時%M分') %></p>
 		<%= link_to spot_path(v.spot_id) do %>
 		<%= v.spot.name %><br>
 		<% end %>

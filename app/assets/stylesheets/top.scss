@@ -77,15 +77,136 @@
     color: #555;
 }
 
-
 .review-box{
-	float: left;
+	display: inline-block;
 }
 
 .lastreview-area{
+	// 画面幅狭めた時の改行を防ぐ。
+	white-space: nowrap;
+	// overflow-y: scroll;
 	background-color: #180614;
 	color: white;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
 	margin-top: 50px;
 	margin-bottom: 50px;
 	overflow: hidden;
 }
+.topic{
+	background-color: gray;
+	color: white;
+}
+.topic h3{
+	padding-top: 15px;
+	padding-left: 10px;
+}
+.topic-area{
+	background-color: gray;
+	// 画面幅狭めた時の改行を防ぐ。
+	white-space: nowrap;
+	// overflow-y: scroll;
+	padding-top: 10px;
+	padding-bottom: 30px;
+	margin-bottom: 50px;
+	overflow: hidden;
+}
+
+.topic-area p{
+
+	padding-left: 10px;
+	color: white;
+	text-decoration: none;
+}
+
+.slick-prev{
+	transform: scale(-1, 1);
+	left:98%; /* 任意の値 */
+}
+.slick-next{
+	transform: scale(-1, 1);
+	left:2%; /* 任意の値 */
+}
+
+// マップ検索部分
+.areabutton p{
+	color: white;
+	text-decoration: none;
+	text-decoration-style: none;
+	line-height: 150px;
+}
+
+.areabutton{
+	width: 150px;
+	height: 150px;
+	text-align: center;
+}
+
+.areabutton:hover{
+	opacity: .8;
+}
+
+.areabutton:active{
+	   padding-top:6px;
+    padding-bottom:4px;
+}
+
+.areamap{
+	margin: 0 auto 100px auto;
+	height: 600px;
+	width: 846px;
+	text-align: center;
+	position: relative;
+}
+
+.areaimg{
+	// position: relative;
+}
+
+
+#area-center{
+	position: absolute;
+	top: 45%;
+	left: 46%;
+	background-color: #fc0000;
+}
+
+#area-north{
+	position: absolute;
+	top: 10%;
+	left: 50%;
+		background-color: #9900ff;
+}
+
+#area-east{
+	position: absolute;
+	top: 50%;
+	left: 79%;
+	background-color: #38761c;
+}
+
+#area-west{
+	position: absolute;
+	top: 30%;
+	left: 8%;
+	background-color: #fc9d0e;
+}
+
+#area-south{
+	position: absolute;
+	top: 82%;
+	left: 46%;
+	background-color: #0800ff;
+}
+
+#area-out{
+	position: absolute;
+	top: 82%;
+	left: 8%;
+	background-color: gray;
+}
+
+
+
+

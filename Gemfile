@@ -66,3 +66,6 @@ gem 'kaminari', '~> 1.1.1'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'ransack'
+gem "jquery-slick-rails"
+gem 'hirb'         # モデルの出力結果を表形式で表示するGem
+gem 'hirb-unicode' # 日本語などマルチバイト文字の出力時の出力結果のずれに対応
