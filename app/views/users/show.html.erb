@@ -2,6 +2,7 @@
 <div class="flash_area">
 	<%= flash[:notice] %>
 </div>
+
 <!-- 取得データをJSONに変換し、HTML要素のdata属性に設定(viewに埋め込む) -->
 <div id="tag_info" data-json="<%= @category_names.to_json %>" ></div>
 <!-- ユーザのカテゴリ別訪問数 -->
@@ -81,14 +82,6 @@
               "#ffef00",
               "#f4d002",
               "gray"
-              // "#C7000B",
-              // "#D28300",
-              // "#DFD000",
-              // "#00873C",
-              // "#005AA0",
-              // "#181878",
-              // "#800073",
-              // "gray"
           ],
           // それぞれの訪問数
           data: categorycount

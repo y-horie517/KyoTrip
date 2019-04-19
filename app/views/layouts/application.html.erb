@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Kyoto</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Kyoto</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <!-- chart.js用 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css">
 
-    <!-- <link rel="stylesheet" type="text/css" href="slick/slick.css"/> -->
-     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <!-- <link rel="stylesheet" type="text/css" href="slick/slick.css"/> -->
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <!-- フォント -->
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP:400,700&amp;subset=japanese" rel="stylesheet">
 
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <!-- chart.js用 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!-- chart.js用 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <!-- <script type="text/javascript" src="slick/slick.min.js"></script> -->
+</head>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <!-- <script type="text/javascript" src="slick/slick.min.js"></script> -->
-  </head>
-
-  <header>
-    <h1 class="site-logo">
+<header>
+  <i class="site-logo">
     <%= link_to index_path do %>
-      <%= image_tag 'sublogo1.png',:size =>'267x150', class: "sublogo" %>
+    <%= image_tag 'sublogo1.png',:size =>'267x150', class: "sublogo" %>
     <% end %>
-  </h1>
+  </i>
   <nav class="nav">
     <ul class="nav-menu"  id="main-menu">
       <li class="nav-menu-item"><%= link_to "ホーム", index_path, class: "item headermenu" %></li>
@@ -38,84 +39,84 @@
     </ul>
   </nav>
 
-<!-- ユーザがログインしていた場合 -->
-   <nav>
+  <!-- ユーザがログインしていた場合 -->
+  <nav>
    <% if user_signed_in? %>
    <ul class="nav-menu" id="user-menu">
-      <li class="header-user-name"><%= current_user.username %>さん</li>
-      <li>
-        <%= link_to "マイページ", user_path(current_user.id), class: "item header-user-link" %>
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "item header-user-link" %>
-      </li>
-      
-    </ul>
-<!-- ユーザがログインしていなかった場合 -->
-    <% else %>
-    <ul class="nav-menu" id="user-menu">
-      <li class="nav-menu-item button sign_up_button header-user-link">新規登録</li>
-      <li class="nav-menu-item button sign_in_button header-user-link">ログイン</li>
-    </ul>
-    <% end %>
-    </nav>
-  </header>
+    <li class="header-user-name"><%= current_user.username %>さん</li>
+    <li>
+      <%= link_to "マイページ", user_path(current_user.id), class: "item header-user-link" %>
+    </li>
+    <li>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "item header-user-link" %>
+    </li>
 
-  <body>
+  </ul>
+  <!-- ユーザがログインしていなかった場合 -->
+  <% else %>
+  <ul class="nav-menu" id="user-menu">
+    <li class="nav-menu-item button sign_up_button header-user-link">新規登録</li>
+    <li class="nav-menu-item button sign_in_button header-user-link">ログイン</li>
+  </ul>
+  <% end %>
+</nav>
+</header>
 
-    <!-- ボックスが表示されている間の背景 -->
-    <div class="sign_modal_wrapper"></div>
-    <!-- フォームの枠 -->
-    <div class="sign_modal">
-      <!--フォームを消すためのボタンを配置する領域  -->
-      <div class="sign_modal_head"></div>
-      <!-- 入力フォーム -->
-      <div class="sign_modal_body">
-        <div class="sign_modal_up">
-          <form class="new_user" action="/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="zaWPa69TQbS3WaB1t9cAnUmmFcuA5BNYc9sSJ0cFFy60r3smDjGYTEM0U7PFfcVZnwTrxh7cNEDkJOWEGSAAzw==">
-            <div class="field">
-              <label for="user_username">ユーザ名</label><br>
-              <input autofocus="autofocus" autocomplete="username" type="text" value="" name="user[username]">
-            </div>
-            <div class="field">
-              <label for="user_email">メールアドレス</label><br>
-              <input autocomplete="email" type="email" value="" name="user[email]">
-            </div>
+<body>
 
-            <div class="field">
-              <label for="user_password">パスワード</label>
-              <em>(６文字以上)</em>
-              <br>
-              <input autocomplete="new-password" type="password" name="user[password]" aria-autocomplete="list">
-            </div>
+  <!-- ボックスが表示されている間の背景 -->
+  <div class="sign_modal_wrapper"></div>
+  <!-- フォームの枠 -->
+  <div class="sign_modal">
+    <!--フォームを消すためのボタンを配置する領域  -->
+    <div class="sign_modal_head"></div>
+    <!-- 入力フォーム -->
+    <div class="sign_modal_body">
+      <div class="sign_modal_up">
+        <form class="new_user" action="/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="zaWPa69TQbS3WaB1t9cAnUmmFcuA5BNYc9sSJ0cFFy60r3smDjGYTEM0U7PFfcVZnwTrxh7cNEDkJOWEGSAAzw==">
+          <div class="field">
+            <label for="user_username">ユーザ名</label><br>
+            <input autofocus="autofocus" autocomplete="username" type="text" value="" name="user[username]">
+          </div>
+          <div class="field">
+            <label for="user_email">メールアドレス</label><br>
+            <input autocomplete="email" type="email" value="" name="user[email]">
+          </div>
 
-            <div class="field">
-              <label for="user_password_confirmation">パスワード（確認用）</label><br>
-              <input autocomplete="new-password" type="password" name="user[password_confirmation]">
-            </div>
+          <div class="field">
+            <label for="user_password">パスワード</label>
+            <em>(６文字以上)</em>
+            <br>
+            <input autocomplete="new-password" type="password" name="user[password]" aria-autocomplete="list">
+          </div>
 
-            <div class="actions">
-              <input type="submit" name="commit" value="新規登録" data-disable-with="処理中">
-            </div>
-          </form>
-        </div>
-        <div class="sign_modal_in">
-          <form class="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="afGFsJ9Ql1eL+k/GqHv+ADOmyM1/IQiSGQWm9NSvQrUQ+3H9PjJOr3+XvADa0TvE5QQ2wOEZL4qO+lFXiopVVA==">
-            <div class="field">
-              <label for="user_email">メールアドレス</label><br>
-              <input autofocus="autofocus" autocomplete="email" type="email" value="" name="user[email]">
-            </div>
+          <div class="field">
+            <label for="user_password_confirmation">パスワード（確認用）</label><br>
+            <input autocomplete="new-password" type="password" name="user[password_confirmation]">
+          </div>
 
-            <div class="field">
-              <label for="user_password">パスワード</label><br>
-              <input autocomplete="current-password" type="password" name="user[password]">
-            </div>
+          <div class="actions">
+            <input type="submit" name="commit" value="新規登録" data-disable-with="処理中">
+          </div>
+        </form>
+      </div>
+      <div class="sign_modal_in">
+        <form class="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="afGFsJ9Ql1eL+k/GqHv+ADOmyM1/IQiSGQWm9NSvQrUQ+3H9PjJOr3+XvADa0TvE5QQ2wOEZL4qO+lFXiopVVA==">
+          <div class="field">
+            <label for="user_email">メールアドレス</label><br>
+            <input autofocus="autofocus" autocomplete="email" type="email" value="" name="user[email]">
+          </div>
+
+          <div class="field">
+            <label for="user_password">パスワード</label><br>
+            <input autocomplete="current-password" type="password" name="user[password]">
+          </div>
 
              <!--  <div class="field">
                 <input name="user[remember_me]" type="hidden" value="0"><input type="checkbox" value="1" name="user[remember_me]">
                 <label for="user_remember_me">記憶させる</label>
               </div>
- -->
+            -->
             <div class="actions">
               <input type="submit" name="commit" value="ログイン" data-disable-with="処理中">
             </div>
@@ -127,8 +128,8 @@
     <%= yield %>
   </body>
 
-<footer>
-  <p id="copyright">@2019 YH All Rights Reserved</p>
-</footer>
+  <footer>
+    <p id="copyright">&copy;2019 京都に恋する. All Rights Reserved.</p>
+  </footer>
 
-</html>
+  </html>

@@ -96,7 +96,7 @@
 }
 .topic{
 	margin-top: 100px;
-	background-color: gray;
+	background-color: #180614;
 	color: white;
 }
 .topic h3{
@@ -104,7 +104,7 @@
 	padding-left: 10px;
 }
 .topic-area{
-	background-color: gray;
+	background-color: #180614;
 	// 画面幅狭めた時の改行を防ぐ。
 	white-space: nowrap;
 	// overflow-y: scroll;
@@ -208,6 +208,10 @@
 	background-color: gray;
 }
 
-
+#mapcopyright{
+	position: absolute;
+	right: 0px;
+	bottom: -55px;
+}
 
 
