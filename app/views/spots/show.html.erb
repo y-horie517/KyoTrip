@@ -4,9 +4,32 @@
 	<%= flash[:warning] %>
 </div>
 
+<div class="spot-show">
 <div class="spot-area">
 	<div class="spot-show-head">
 		<h2><%= @spot.name %></h2>
+
+	<div class="spot-info">
+		<label>カテゴリ：
+			<% for i in 1..8 do%>
+				<% case @spot.category.id
+					when i %>
+						<span id="category<%= i %>" class="categorytag"><%= @spot.category.category_name %></span>
+	  			<% end %>
+			<% end %>
+		</label><br><br>
+		<label>ホームページのURL: <%= link_to @spot.url,"#{@spot.url}", :target => "_blank" %></label><br><br>
+
+		<% if user_signed_in? %>
+		<!-- ここにログインしているときだけに表示する処理を書く -->
+			<!-- 管理者または投稿ユーザのみ編集可能 -->
+			<% if (current_user.id == @spot.user_id) || (current_user.is_admin == true) %>
+				<%= link_to '編集', edit_spot_path %>
+			<% end %>
+		<% end %>
+	</div>
+
+
 	<!-- お気に入り登録ボタン -->
 	<% if user_signed_in? %>
 		<% if @spot.favorited_by?(current_user) %>
@@ -17,12 +40,12 @@
 		    <%= link_to '気になるスポットに登録する', spot_favorites_path(@spot), method: :post, remote: true %>
 		<% end %>
 	<% end %>
-	<p><%= @spot.favoritecount %>人のユーザがこのスポットを登録しています</p>
+	<p><%= @spot.favoritecount %>人のユーザがこのスポットを登録しています</p><br>
 
 		<!-- 訪問した日登録 -->
 	<% if user_signed_in? %>
-	<div class="panel panel-default review_form">
-		<div class="panel-body">
+	<div class="">
+		<div class="">
 			<%= form_with model: [@spot, @visit], local: true  do |f| %>
 				<label>訪問日時：</label>
 				<%= f.datetime_select :date, {default: Date.today + 0.hour}   %>
@@ -32,7 +55,7 @@
 	</div>
 	<% end %>
 
-	</div>
+	</div><br>
 	<div class="spot-img">
 		<% if @spot.spotimage.attached? %>
 			<%= image_tag @spot.spotimage, :size => '500x350', class: "img-trim" %><br>
@@ -49,22 +72,7 @@
 	  frameborder="0" style="border:0"
 	  src="https://www.google.com/maps/embed/v1/place?key=<%=Rails.application.credentials.dig(:google, :map_api_key)%>&zoom=12&q=place_id:<%= @spot.mapid %>" allowfullscreen>
 	</iframe><br>
-
-
 	    <label>住所:<%= @spot.address %></label>
-	</div>
-	<div class="spot-info">
-		<label>ホームページのURL: <%= link_to @spot.url,"#{@spot.url}", :target => "_blank" %></label><br>
-
-		<label>カテゴリ: <%= @spot.category.category_name %></label><br>
-
-		<% if user_signed_in? %>
-		<!-- ここにログインしているときだけに表示する処理を書く -->
-			<!-- 管理者または投稿ユーザのみ編集可能 -->
-			<% if (current_user.id == @spot.user_id) || (current_user.is_admin == true) %>
-				<%= link_to '編集', edit_spot_path %>
-			<% end %>
-		<% end %>
 	</div>
 </div>
 
@@ -75,7 +83,7 @@
 		<div class="panel-body">
 			<%= form_with model: [@spot, @review], local: true  do |f| %>
 			<!-- エラーメッセージ表示 -->
-				<label>投稿写真(3枚まで登録可能。320x200にトリミングされて表示されます。)</label><br>
+				<label>投稿写真(3枚まで登録可能。320*200にトリミングされて表示されます。)</label><br>
 				 <%= f.file_field :reviewimages, multiple: true %><br><br>
 				<label>タイトル</label>
 				<%= f.text_field :title, value: '無題' %>
@@ -129,4 +137,10 @@
 			</div>
 	</div>
 	<% end %>
+</div>
+
+<div class="paginate">
+	<%= page_entries_info(@reviews) %>
+	<%= paginate(@reviews, :window => 2, :left => 1, :right => 1) %>
+</div>
 </div>

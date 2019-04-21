@@ -19,13 +19,14 @@
     <dt><%= sort_link(@search, :visitcount, '訪れたユーザ数順', default_order: :desc) %></dt>
     <dt><%= sort_link(@search, :favoritecount, 'お気に入り数順', default_order: :desc) %></dt>
     <dt><%= sort_link(@search, :reviewcount, 'レビュー件数順', default_order: :desc) %></dt>
+    <%= link_to "新規スポット登録", new_spot_path, id: "spot-register-btn" %>
   <% end %>
 </dl>
-
+<!-- 
 <div id="spot-register-link">
-    <%= link_to "新規スポット登録", new_spot_path, class: "" %>
+    <%#= link_to "新規スポット登録", new_spot_path, id: "spot-register-btn" %>
 </div>
-
+ -->
 <div class="spot-index">
 	<% @spots.each do |s| %>
 		<div class="spot-content">
@@ -41,7 +42,7 @@
 
 			<div class="spot-content-text">
 				<p>
-					<%= link_to spot_path(s.id) do %>
+					<%= link_to spot_path(s.id), class: "spot-content-text-name" do %>
 						<%= s.name %>
 					<% end %>
 					<%if user_signed_in? %>
@@ -93,11 +94,12 @@
 			</div>
 		</div>
 	<% end %>
-</div>
-<div class="paginate">
+	<div class="paginate">
 	<%= page_entries_info(@spots) %>
 	<%= paginate(@spots, :window => 2, :left => 1, :right => 1) %>
 </div>
+</div>
+
 </div>
 
 <script>

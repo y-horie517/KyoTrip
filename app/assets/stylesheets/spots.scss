@@ -75,9 +75,12 @@
 
 
 .searchbox{
-	margin-top: 50px;
 	font-size: 18px;
-	margin-left: 15%;
+	padding-top: 30px;
+	padding-left: 15%;
+	padding-bottom: 30px;
+	background-color: #FEFDED;
+	margin-bottom: 20px;
 	// display: block;
 	// overflow: hidden;
 
@@ -95,6 +98,7 @@
 
 .searchbox label{
 	margin-top: 20px;
+
 }
 
 
@@ -110,6 +114,21 @@
 	font-size: 18px;
 	text-align: right;
 	margin-right: 20%;
+}
+#spot-register-btn{
+	color: black;
+	background-color: white;
+	border: solid 1px rgb(216, 216, 216);
+	border-radius: 5px;
+	padding: 5px 15px 5px 15px;
+	text-decoration: none;
+	font-size: 14px;
+	font-family: system-ui;
+	margin-left: 230px;
+}
+
+#spot-register-btn:active{
+	background-color: #4169E1;
 }
 
 .searchform{
@@ -127,19 +146,48 @@
 
 }
 
+.sort_link{
+	// border-radius: 5px;
+	// border: solid 1px black;
+	// padding: 5px;
+	// text-decoration: none;
+	color: black;
+}
+
+.sort_link:hover{
+	color: orange;
+}
+
 .spot-index{
 	margin-top: 50px;
-	margin-left: 15%;
+	margin-left: 10%;
+	margin-right: 10%;
 	margin-bottom: 50px;
 }
 
+.spot-show{
+	padding-left: 10%;
+	padding-right: 10%;
+	margin-bottom: 30px;
+}
+
 .spot-area{
+	margin-top: 20px;
+	padding: 0 50px 50px 50px;
+	background-color: #FEFDED;
 	overflow:hidden;
 }
 
 .spot-content{
-	height: 300px;
+	width: auto;
+	padding: 50px;
+	background-color: #FEFDED;
+	// height: 300px;
 	overflow: hidden;
+}
+
+.spot-area h2{
+	padding-top: 20px;
 }
 
 .spot-content-img{
@@ -150,6 +198,15 @@
 	line-height: 190%;
 	padding-left: 100px;
 	display: inline-block;
+}
+
+.spot-content-text-name{
+	font-size: 20px;
+	color: black;
+}
+
+.spot-content-text-name:hover{
+	color: orange;
 }
 
 .visited{
@@ -230,13 +287,16 @@
 
 .spot-info{
 	width: 100%;
-	margin-top: 50px;
+	margin-top: 10px;
 	// overflow:hidden;
 	float: right;
 }
 
 .review_form{
+	background-color: #FEFDED;
+	padding: 20px 50px 50px 50px;
 	margin-top: 50px;
+	margin-bottom: 50px;
 	// float: none;
 }
 
@@ -245,10 +305,17 @@
 	float: left;
 }
 
+.review-index{
+	padding: 20px 50px 50px 50px;
+	background-color: #FEFDED;
+}
+
 .review{
-	padding-top: 20px;
-	background-color: #ede4cd;
-	border-bottom: solid 3px #16160e;
+	padding: 20px;
+	// background-color: #ede4cd;
+	background-color: #FEFDED;
+	border-top: solid 1px #16160e;
+	// border-bottom: solid 1px #16160e;
 	overflow:hidden;
 }
 
@@ -264,7 +331,10 @@
 }
 
 .paginate{
-	margin-left: 45%;
+	background-color: #FEFDED;
+	// margin-left: 45%;
+	padding-bottom: 30px;
+	text-align: center;
 	margin-bottom: 50px;
 }
 

@@ -1,6 +1,6 @@
 <div class="favorite-head">
-		<h1>気になるスポット</h1>
-	</div>
+	<h1>気になるスポット</h1>
+</div>
 
 <div class="flash_area">
 	<%= flash[:notice] %>
@@ -8,24 +8,28 @@
 </div>
 
 <div class="favorites">
-	<div class="favorite-content-area">
-		<% @favorites.each do |f|%>
-			<div class="favorite-content">
-				<%= link_to spot_path(f.spot_id) do %>
-					<% if f.spot.spotimage.attached? %>
-						<%= image_tag f.spot.spotimage, :size => "350x200", class: "img-trim" %><br>
-					<% else %>
-						<%= image_tag("no_spotimage.jpg", :size => "350x200") %><br>
-					<% end %>
-				<% end %>
-				
-				<%= link_to spot_path(f.spot_id) do %>
-					<%= f.spot.name %><br>
-				<% end %>
-				<!-- [@user, f.spot], -->
-				
-				<%= link_to '削除',user_favorite_path(@user,f.spot_id), :method => :delete, data: { confirm: '削除しますか？' } , class: ""  %>
-			</div>
+	<% @favorites.each do |f|%>
+	<div class="favorite-content">
+		<%= link_to spot_path(f.spot_id) do %>
+		<% if f.spot.spotimage.attached? %>
+		<%= image_tag f.spot.spotimage, :size => "350x200", class: "img-trim" %><br>
+		<% else %>
+		<%= image_tag("no_spotimage.jpg", :size => "350x200") %><br>
 		<% end %>
+		<% end %>
+
+		<%= link_to spot_path(f.spot_id), class: "spot-content-text-name" do %>
+		<%= f.spot.name %><br>
+		<% end %>
+		<!-- [@user, f.spot], -->
+		<%= link_to '削除する',user_favorite_path(@user,f.spot_id), :method => :delete, data: { confirm: '削除しますか？' } , id: "destroybtn"  %>
+	</div>
+	<% end %>
+
+	<div class="paginate" id="fav-pagenate">
+		<%= page_entries_info(@favorites) %>
+		<%= paginate(@favorites, :window => 2, :left => 1, :right => 1) %>
 	</div>
 </div>
+
+

@@ -42,7 +42,7 @@
     outline: none;
     background: transparent;
     /*left: 500px;*/
-    z-index: 100;
+    z-index: 4;
 }
 .slick-prev:hover,
 .slick-prev:focus,

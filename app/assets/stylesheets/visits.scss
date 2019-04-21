@@ -1,3 +1,29 @@
 // Place all the styles related to the Visits controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.visit-index{
+	width: 80%;
+
+	padding-top: 50px;
+	background-color: #FEFDED;
+	margin-top: 30px;
+	margin-left: 10%;
+	margin-left: 10%;
+	margin-bottom: 50px;
+	overflow: scroll;
+	z-index: 3;
+}
+
+.visit-content{
+	margin-left: 20%;
+	margin-bottom: 30px;
+	float: none;
+	display: flex;
+	
+}
+
+.visit-text{
+	display: inline-block;
+	margin-left: 30px;
+}

@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
 	# ユーザごとの投稿一覧
 	def index
 		@user = User.find(params[:user_id])
-		@reviews = @user.reviews.reverse_order
+		@reviews = @user.reviews.reverse_order.page(params[:page])
 	end
 
 	def create

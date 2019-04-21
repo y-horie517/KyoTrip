@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
     
  	def index
 		@user = User.find(params[:user_id])
-		@favorites = @user.favorites.reverse_order
+		@favorites = @user.favorites.reverse_order.page(params[:page])
 	end
 
     def create

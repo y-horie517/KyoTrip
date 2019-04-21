@@ -1,52 +1,57 @@
 <div class="flash_area">
 	<% if notice%>
-		<div class="notice">
-			<%= notice %>
-		</div>
+	<div class="notice">
+		<%= notice %>
+	</div>
 	<% end%>
 
-	 <% if alert %>
-		<div class="alert">
-			<%= alert %>
-		</div>
+	<% if alert %>
+	<div class="alert">
+		<%= alert %>
+	</div>
 	<% end %>
 </div>
 
 <div class="topic">
-<h3>世界遺産</h3>
-<div class="topic-area">
-	<% @w_heritages.each do |s| %>
+	<h2>世界遺産を巡る</h2>
+	<div class="topic-area">
+		<% @w_heritages.each do |s| %>
 		<div class="review-box">
 			<div class="topic-img-area">
 				<%= link_to spot_path(s.id) do %>
+				<!-- 世界遺産スポットは管理者側で用意するため画像が必ず存在する -->
 				<%= image_tag s.spotimage, :size => '270x196', class: "review-img img-trim" %>
 				<% end %>
 				<div class="review-info">
+					<%= link_to spot_path(s.id), class: "spot-name" do %>
 					<p><%= s.name %></p>
+					<% end %>
 				</div>
 			</div>
 		</div>
-	<% end %>
-</div>
+		<% end %>
+	</div>
 </div>
 
 <div class="lastreview-area">
-	<h3>最新のレビュー</h3>
+	<h2>最新のレビュー</h2>
 	<% @reviews.each do |review| %>
 	<div class="review-box">
 		<div class="review-img-area">
+			<%= link_to spot_path(review.spot.id), class: "spot-name" do %>
 			<p><%= review.spot.name.truncate(18) %></p>
+			<% end %>
 			<!-- 投稿画像 後ほど５件までなど制限する-->
 			<% if review.reviewimages.attached? %>
 			<!-- 1枚目の画像のみ表示してリンクにする -->
-				<%= link_to spot_path(review.spot.id) do %>
-	   				<%= image_tag review.reviewimages[0], :size => '270x196', class: "review-img img-trim" %>
-	   			<% end %>
+			<%= link_to spot_path(review.spot.id) do %>
+			<%= image_tag review.reviewimages[0], :size => '270x196', class: "review-img img-trim" %>
+			<% end %>
 			<% else %>
 			<!-- 投稿がなければNoイメージかスポットの画像を表示する -->
-				<%= link_to spot_path(review.spot.id) do %>
-					<%= image_tag("no_spotimage.jpg", :size => '270x196',class: "review-img img-trim") %>
-				<% end %>
+			<%= link_to spot_path(review.spot.id) do %>
+			<%= image_tag("no_spotimage.jpg", :size => '270x196',class: "review-img img-trim") %>
+			<% end %>
 			<% end %>
 		</div>
 		<div class="review-info">
@@ -57,79 +62,80 @@
 	<% end %>
 </div>
 
+<div class="areasearch">
+	<h2>エリアで探す</h2>
+	<div class="areamap">
+		<%= image_tag("areamap.png", :size => '846x600', class: "areaimg") %>
 
-<div class="areamap">
-	<h2>エリア検索</h2>
-	<%= image_tag("areamap.png", :size => '846x600', class: "areaimg") %>
-
-	<!-- ransack用のクエリパラメタを渡す -->
-	<%= link_to controller: :spots, action: :index, q:{ area_id_eq: :"1" }, class: "arealink" do %>
+		<!-- ransack用のクエリパラメタを渡す -->
+		<%= link_to controller: :spots, action: :index, q:{ area_id_eq: :"1" }, class: "arealink" do %>
 		<div id="area-center" class="areabutton">
 			<p>洛中エリア</p>
 		</div>
-	<% end %>
+		<% end %>
 
-	<%= link_to controller: :spots, action: :index, q:{ area_id_eq: :"2" }, class: "" do %>
+		<%= link_to controller: :spots, action: :index, q:{ area_id_eq: :"2" }, class: "" do %>
 		<div id="area-north" class="areabutton">
 			<p>洛北エリア</p>
 		</div>
-	<% end %>
+		<% end %>
 
-	<%= link_to controller: :spots, action: :index, q:{ area_id_eq: :"3" }, class: "" do %>
+		<%= link_to controller: :spots, action: :index, q:{ area_id_eq: :"3" }, class: "" do %>
 		<div id="area-east" class="areabutton">
 			<p>洛東エリア</p>
 		</div>
-	<% end %>
+		<% end %>
 
 
-	<%= link_to controller: :spots, action: :index, q:{ area_id_eq: :"4" }, class: "" do %>
+		<%= link_to controller: :spots, action: :index, q:{ area_id_eq: :"4" }, class: "" do %>
 		<div id="area-west" class="areabutton">
 			<p>洛西エリア</p>
 		</div>
-	<% end %>
+		<% end %>
 
-	<%= link_to  controller: :spots, action: :index, q:{ area_id_eq: :"5" }, class: "" do %>
+		<%= link_to  controller: :spots, action: :index, q:{ area_id_eq: :"5" }, class: "" do %>
 		<div id="area-south" class="areabutton">
 			<p>洛南エリア</p>
 		</div>
-	<% end %>
+		<% end %>
 
 
-	<%= link_to   controller: :spots, action: :index, q:{ area_id_eq: :"6" }, class: "" do %>
+		<%= link_to   controller: :spots, action: :index, q:{ area_id_eq: :"6" }, class: "" do %>
 		<div id="area-out" class="areabutton">
 			<p>京都市外</p>
 		</div>
-	<% end %>
-	<%= image_tag("mapcopyright.png", :size => '220x20', id: "mapcopyright") %>
+		<% end %>
+		<%= image_tag("mapcopyright.png", :size => '220x20', id: "mapcopyright") %>
 
+	</div>
 </div>
 
 <script>
 	$(document).ready(function(){
-  $('.topic-area').slick({
-  	infinite: true,
+		$('.topic-area').slick({
+			infinite: true,
   	// 左右の次へ、前へボタンを表示するかどうか
   	arrows: true,
   	// appendArrows
 
   	 // アクセシビリティ。左右ボタンで画像の切り替えをできるかどうか
- 	accessibility: true,
+  	 accessibility: true,
  	// 自動再生。trueで自動再生される。
-  	autoplay: true,
+ 	autoplay: true,
     // 自動再生で切り替えをする時間
-	autoplaySpeed: 3000,
-	speed: 1000,
+    autoplaySpeed: 3000,
+    speed: 1000,
   	// 自動再生時にスライドのエリアにマウスオンで一時停止するかどうか
-	pauseOnHover: true,
+  	pauseOnHover: true,
     // 5枚表示
     slidesToShow: 5,
     slidesToScroll: 1,
     // 表示中の画像を中央へ
- 	 centerMode: true,
+    centerMode: true,
  	// 中央のpadding
-	centerPadding: '10px'
-  });
-});
+ 	centerPadding: '10px'
+ });
+	});
 </script>
 
 

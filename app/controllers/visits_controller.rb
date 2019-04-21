@@ -3,7 +3,7 @@ class VisitsController < ApplicationController
 
   def index
   	@user = User.find(params[:user_id])
-	@visits = @user.visits.order(date: "DESC")
+	@visits = @user.visits.order(date: "DESC").page(params[:page])
   end
 
   def create
