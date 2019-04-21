@@ -35,7 +35,7 @@
       <li class="nav-menu-item"><%= link_to "ホーム", index_path, class: "item headermenu" %></li>
       <li class="nav-menu-item"><%= link_to "当サイトについて", about_path, class: "item headermenu" %></li>
       <li class="nav-menu-item"><%= link_to "スポットを探す", spots_path, class: "item headermenu" %></li>
-      <li class="nav-menu-item"><%= link_to "お問い合わせ", about_path, class: "item headermenu" %></li>
+      <li class="nav-menu-item"><%= link_to "お問い合わせ", inquiry_path, class: "item headermenu" %></li>
     </ul>
   </nav>
 
@@ -70,10 +70,13 @@
   <div class="sign_modal">
     <!--フォームを消すためのボタンを配置する領域  -->
     <div class="sign_modal_head"></div>
+
     <!-- 入力フォーム -->
     <div class="sign_modal_body">
       <div class="sign_modal_up">
         <form class="new_user" action="/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="zaWPa69TQbS3WaB1t9cAnUmmFcuA5BNYc9sSJ0cFFy60r3smDjGYTEM0U7PFfcVZnwTrxh7cNEDkJOWEGSAAzw==">
+          <h3>ユーザ新規登録</h3>
+          <br>
           <div class="field">
             <label for="user_username">ユーザ名</label><br>
             <input autofocus="autofocus" autocomplete="username" type="text" value="" name="user[username]">
@@ -100,8 +103,11 @@
           </div>
         </form>
       </div>
+
       <div class="sign_modal_in">
         <form class="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="afGFsJ9Ql1eL+k/GqHv+ADOmyM1/IQiSGQWm9NSvQrUQ+3H9PjJOr3+XvADa0TvE5QQ2wOEZL4qO+lFXiopVVA==">
+          <h3>ログイン</h3>
+          <br>
           <div class="field">
             <label for="user_email">メールアドレス</label><br>
             <input autofocus="autofocus" autocomplete="email" type="email" value="" name="user[email]">
@@ -130,7 +136,16 @@
   </body>
 
   <footer>
+    <div id="footerspot">
+      <p>観光スポットに関すること</p>
+      <%= link_to "スポットを探す", spots_path, class: "footerlink" %><br>
+      <%= link_to "新規スポット登録", new_spot_path, class: "footerlink" %><br>
+    </div>
+    <div id="footersite">
+      <p>サイトに関すること</p>
+      <%= link_to "当サイトについて", about_path, class: "footerlink" %><br>
+      <%= link_to "お問い合わせ", inquiry_path, class: "footerlink" %><br>
+    </div>
     <p id="copyright">&copy;2019 京都に恋する. All Rights Reserved.</p>
-  </footer>
-
+   </footer>
   </html>

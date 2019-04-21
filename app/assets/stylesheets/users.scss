@@ -50,3 +50,13 @@
 	// 画面幅狭めた時の改行を防ぐ。
 	white-space: nowrap;
 }
+
+// ユーザ一覧ページ
+#userindex{
+	background-color: #FEFDED;
+	padding: 50px 10% 50px 10%;
+}
+
+#userindex table{
+	margin: 0 auto;
+}

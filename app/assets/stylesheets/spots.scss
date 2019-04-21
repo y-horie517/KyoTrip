@@ -38,9 +38,10 @@
 	height: 500px;
 	width: 100%;
 	white-space: nowrap;
-	margin-top: 30px;
-	margin-bottom: 150px;
+	padding-top: 60px;
 	padding-left: 10%;
+	padding-bottom: 100px;
+	background-color: #FEFDED;
 }
 
 #find-place-query{
@@ -264,13 +265,6 @@
 	object-fit: cover;
 }
 
-// .fav-create{
-// 	color: red;
-// }
-
-// .fav-destroy{
-// 	color: blue;
-// }
 
 .spot-img{
 	text-align: center;

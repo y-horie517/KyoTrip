@@ -27,4 +27,8 @@ class TopController < ApplicationController
     render :layout => "application"
   end
 
+  def inquiry
+    render :layout => "application"
+  end
+
 end

@@ -127,6 +127,28 @@ footer{
 	position: relative;
 }
 
+footer p{
+	margin-bottom: 10px;
+}
+
+.footerlink{
+	color: white;
+	// padding-bottom: 15px;
+	// position: absolute;
+}
+
+#footersite{
+	position: absolute;
+	top: 10%;
+	left: 30%;
+}
+
+#footerspot{
+	position: absolute;
+	top: 10%;
+	left: 10%;
+}
+
 .button {
 	float: left;
 	cursor: pointer;
@@ -154,7 +176,7 @@ footer{
 
 .sign_modal {
 	position: absolute;
-	background-color: #fff;
+	background-color: #FEFDED;
 	width: 450px;
 	height: 350px;
 	top: 0;
@@ -168,6 +190,12 @@ footer{
 	border: 1px solid #eee;
 	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
 	display: none;
+}
+
+.sign_modal h3{
+	color: white;
+	background-color: #398793;
+	padding: 10px;
 }
 
 .sign_modal_head {

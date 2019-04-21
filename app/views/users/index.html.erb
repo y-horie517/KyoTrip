@@ -1,24 +1,26 @@
-<table class="table table-bordered">
+<div id="userindex">
+<table class="table table-bordered"  border="1">
 		<thead>
 			<tr class="active">
-				<th>ID</th>
-				<th>ユーザ名</th>
-				<th>メールアドレス</th>
+				<th width="100">ID</th>
+				<th width="300">ユーザ名</th>
+				<th width="300">メールアドレス</th>
 				<th>登録状況</th>
 			</tr>
 		</thead>
 
 		<% @users.each do |user| %>
 		<tbody>
-			<tr class="active">
+			<tr class="active" height="30">
 				<th><%= user.id %></th>
-				<th><% if user.is_admin == true %>管理者：<% end %>
+				<th align="left"><% if user.is_admin == true %>管理者：<% end %>
 					<%= link_to user.username, user_path(user), class: "username" %></th>
-				<th><%= user.email %></th>
+				<th align="left"><%= user.email %></th>
 				<!-- ユーザの退会を物理削除にする場合はいらない。 -->
 				<th><% if user.is_deleted == true %> 退会　<% end %></th>
 			</tr>
 		</tbody>
 		<% end %>
 	</table>
+</div>
 </div>
