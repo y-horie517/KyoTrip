@@ -20,6 +20,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+	z-index: 5;
 }
 
 .bgcover {
@@ -77,7 +78,20 @@
     color: #555;
 }
 
+
+.spot-name{
+	// font-size: 20px;
+	color: white;
+	text-decoration: none;
+}
+
+.spot-name:hover{
+	color: orange;
+}
+
+
 .review-box{
+	padding-left: 10px;
 	display: inline-block;
 }
 
@@ -87,37 +101,44 @@
 	// overflow-y: scroll;
 	background-color: #180614;
 	color: white;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 10px;
-	margin-top: 50px;
-	margin-bottom: 50px;
+	// padding-top: 20px;
+	padding-bottom: 20px;
+	margin-top: 100px;
+	margin-bottom: 100px;
 	overflow: hidden;
 }
+
+.lastreview-area h2{
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 30px;
+	background-color: #9EB394;
+}
+
 .topic{
-	background-color: gray;
+	// margin-top: 100px;
+	background-color: #180614;
 	color: white;
 }
-.topic h3{
+.topic h2{
 	padding-top: 15px;
-	padding-left: 10px;
+	padding-bottom: 15px;
+	padding-left: 30px;
+	background-color: #C13A40;
 }
 .topic-area{
-	background-color: gray;
+	background-color: #180614;
 	// 画面幅狭めた時の改行を防ぐ。
 	white-space: nowrap;
 	// overflow-y: scroll;
-	padding-top: 10px;
-	padding-bottom: 30px;
+	padding-top: 20px;
+	padding-bottom: 40px;
 	margin-bottom: 50px;
 	overflow: hidden;
 }
 
 .topic-area p{
-
 	padding-left: 10px;
-	color: white;
-	text-decoration: none;
 }
 
 .slick-prev{
@@ -130,6 +151,15 @@
 }
 
 // マップ検索部分
+.areasearch h2{
+	color: white;
+	background-color: #398793;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 30px;
+
+}
+
 .areabutton p{
 	color: white;
 	text-decoration: none;
@@ -153,7 +183,7 @@
 }
 
 .areamap{
-	margin: 0 auto 100px auto;
+	margin: 0 auto 50px auto;
 	height: 600px;
 	width: 846px;
 	text-align: center;
@@ -167,46 +197,97 @@
 
 #area-center{
 	position: absolute;
-	top: 45%;
+	top: 38%;
 	left: 46%;
 	background-color: #fc0000;
 }
 
 #area-north{
 	position: absolute;
-	top: 10%;
+	top: 1%;
 	left: 50%;
 		background-color: #9900ff;
 }
 
 #area-east{
 	position: absolute;
-	top: 50%;
+	top: 38%;
 	left: 79%;
 	background-color: #38761c;
 }
 
 #area-west{
 	position: absolute;
-	top: 30%;
+	top: 25%;
 	left: 8%;
 	background-color: #fc9d0e;
 }
 
 #area-south{
 	position: absolute;
-	top: 82%;
+	top: 74%;
 	left: 46%;
 	background-color: #0800ff;
 }
 
 #area-out{
 	position: absolute;
-	top: 82%;
+	top: 74%;
 	left: 8%;
 	background-color: gray;
 }
 
+#mapcopyright{
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+}
 
 
+// aboutページ
+
+.about{
+		padding-top: 30px;
+		padding-bottom: 50px;
+		background-color: #FEFDED;
+		margin: 50px;
+	}
+	.about p{
+		font-size: 20px;
+		margin-top: 5px;
+		padding-left: 20px;
+	}
+
+	.about-body div{
+		background-color: #FEFDED;
+		padding: 0px 100px 30px 100px;
+		margin-bottom: 30px;
+	}
+
+	.about span{
+		font-size: 28px;
+		font-weight: 500;
+	}
+
+	.about-spot span{
+		color: #398793;
+	}
+
+	.about-review span{
+		color: #E0B34E;
+	}
+	.about-map span{
+		color: #C13A40;
+	}
+	.about-visit span{
+		color: #57734A;
+	}
+
+.inquiry{
+	font-size: 18px;
+	padding: 30px 10% 50px 10%;
+	padding-bottom: 50px;
+	background-color: #FEFDED;
+	margin: 50px 20% 50px 20%;
+}
 

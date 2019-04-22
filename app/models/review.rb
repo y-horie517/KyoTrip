@@ -10,9 +10,13 @@ class Review < ApplicationRecord
 
   	# Active Storageを用いた画像投稿用(複数枚)
 	has_many_attached :reviewimages
-
 	validate :reviewimages_length
 
+
+	# 一覧表示のページング
+	paginates_per 10
+
+	# 投稿枚数の制限
 	def reviewimages_length
 		if reviewimages.attached?
 			if reviewimages.length > 3

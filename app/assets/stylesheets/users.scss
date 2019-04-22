@@ -34,6 +34,7 @@
 
 .user-map-area{
 	width: 100%;
+	background-color: #FEFDED;
 	text-align: center;
 	clear: both;
 }
@@ -44,7 +45,18 @@
 }
 
 .topinfo{
-	margin-top: 50px;
+	background-color: #FEFDED;
+	padding-top: 50px;
 	// 画面幅狭めた時の改行を防ぐ。
 	white-space: nowrap;
+}
+
+// ユーザ一覧ページ
+#userindex{
+	background-color: #FEFDED;
+	padding: 50px 10% 50px 10%;
+}
+
+#userindex table{
+	margin: 0 auto;
 }

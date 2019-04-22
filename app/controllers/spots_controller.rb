@@ -55,8 +55,7 @@ class SpotsController < ApplicationController
       @favorite  = @spot.favorites.build(user_id: current_user.id)
       @visit = @spot.visits.build(user_id: current_user.id)
     end
-    @reviews = @spot.reviews.all.reverse_order
-    
+    @reviews = @spot.reviews.all.reverse_order.page(params[:page])
   end
 
   def edit

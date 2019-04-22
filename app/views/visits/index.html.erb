@@ -1,21 +1,47 @@
-<div class="favorites">
-	<h2>訪問履歴</h2>
-	<% @visits.each do |v| %>
-	<div class="visit-content">
-		<%= link_to spot_path(v.spot_id) do %>
-		<% if v.spot.spotimage.attached? %>
-		<%= image_tag v.spot.spotimage, :size => "350x200", class: "img-trim" %><br>
-		<% else %>
-		<%= image_tag("no_spotimage.jpg", :size => "350x200") %><br>
-		<% end %>
-		<% end %>
-		<p>訪問日時：<%= v.date.strftime('%Y年%m月%d日%H時%M分') %></p>
-		<%= link_to spot_path(v.spot_id) do %>
-		<%= v.spot.name %><br>
-		<% end %>
-		<%= v.visitcount %>回目の訪問<br>
-		
-		<%= link_to '削除',[@user, v], :method => :delete, data: { confirm: '削除しますか？' } , class: ""  %>
+<div class="flash_area">
+	<% if notice%>
+	<div class="notice">
+		<%= notice %>
+	</div>
+	<% end%>
+
+	<% if alert %>
+	<div class="alert">
+		<%= alert %>
 	</div>
 	<% end %>
 </div>
+
+<h1>訪問履歴</h1>
+<div class="visit-index">
+
+	<% @visits.each do |v| %>
+	<div class="visit-content">
+		<div class="visit-img">
+			<%= link_to spot_path(v.spot_id) do %>
+			<% if v.spot.spotimage.attached? %>
+			<%= image_tag v.spot.spotimage, :size => "350x200", class: "img-trim" %><br>
+			<% else %>
+			<%= image_tag("no_spotimage.jpg", :size => "350x200") %><br>
+			<% end %>
+			<% end %>
+		</div>
+
+		<div class="visit-text">
+			<%= link_to spot_path(v.spot_id), class: "spot-content-text-name" do %>
+			<%= v.spot.name %><br><br>
+			<% end %>
+
+			<p>訪問日時：<%= v.date.strftime('%Y年%m月%d日%H時%M分') %></p>
+			<%= v.visitcount %>回目の訪問<br>
+
+			<%= link_to '削除',[@user, v], :method => :delete, data: { confirm: '削除しますか？' } , id: "destroybtn"  %>
+		</div>
+	</div>
+	<% end %>
+	<div class="paginate">
+		<%= page_entries_info(@visits) %>
+		<%= paginate(@visits, :window => 2, :left => 1, :right => 1) %>
+	</div>
+</div>
+

@@ -13,8 +13,10 @@
 
 .spotsubmit{
 	width: 50px;
-	height: 20px;
+	height: 25px;
 }
+
+
 
 #find-place-query-button{
 	padding: 3px;
@@ -36,9 +38,10 @@
 	height: 500px;
 	width: 100%;
 	white-space: nowrap;
-	margin-top: 30px;
-	margin-bottom: 150px;
+	padding-top: 60px;
 	padding-left: 10%;
+	padding-bottom: 100px;
+	background-color: #FEFDED;
 }
 
 #find-place-query{
@@ -70,24 +73,198 @@
 
 }
 
+
+
+.searchbox{
+	font-size: 18px;
+	padding-top: 30px;
+	padding-left: 15%;
+	padding-bottom: 30px;
+	background-color: #FEFDED;
+	margin-bottom: 20px;
+	// display: block;
+	// overflow: hidden;
+
+}
+
+.searchbox dt{
+	display: inline-block;
+	margin-right: 30px;
+}
+
+.searchbox dd{
+	display: inline-block;
+	margin-right: 30px;
+}
+
+.searchbox label{
+	margin-top: 20px;
+
+}
+
+
 //index.html.erb
+
+.spotindex{
+	// width: 100%;
+	// padding-left: 10%;
+	// overflow: hidden;
+}
+
+#spot-register-link{
+	font-size: 18px;
+	text-align: right;
+	margin-right: 20%;
+}
+#spot-register-btn{
+	color: black;
+	background-color: white;
+	border: solid 1px rgb(216, 216, 216);
+	border-radius: 5px;
+	padding: 5px 15px 5px 15px;
+	text-decoration: none;
+	font-size: 14px;
+	font-family: system-ui;
+	margin-left: 230px;
+}
+
+#spot-register-btn:active{
+	background-color: #4169E1;
+}
+
 .searchform{
 	width: 200px;
-	height:20px;
+	height: 25px;
+}
+
+.selectform{
+	height: 25px;
+}
+
+.search-btn{
+	width: 100px;
+	font-size: 20px;
+
+}
+
+.sort_link{
+	// border-radius: 5px;
+	// border: solid 1px black;
+	// padding: 5px;
+	// text-decoration: none;
+	color: black;
+}
+
+.sort_link:hover{
+	color: orange;
 }
 
 .spot-index{
 	margin-top: 50px;
+	margin-left: 10%;
+	margin-right: 10%;
 	margin-bottom: 50px;
 }
 
+.spot-show{
+	padding-left: 10%;
+	padding-right: 10%;
+	margin-bottom: 30px;
+}
+
 .spot-area{
+	margin-top: 20px;
+	padding: 0 50px 50px 50px;
+	background-color: #FEFDED;
 	overflow:hidden;
+}
+
+.spot-content{
+	width: auto;
+	padding: 50px;
+	background-color: #FEFDED;
+	// height: 300px;
+	overflow: hidden;
+}
+
+.spot-area h2{
+	padding-top: 20px;
+}
+
+.spot-content-img{
+	display: inline-block;
+}
+
+.spot-content-text{
+	line-height: 190%;
+	padding-left: 100px;
+	display: inline-block;
+}
+
+.spot-content-text-name{
+	font-size: 20px;
+	color: black;
+}
+
+.spot-content-text-name:hover{
+	color: orange;
+}
+
+.visited{
+	color: white;
+	background-color: #B1B4AD;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.favoritedtext{
+	background-color: #c0c6c9;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.categorytag{
+	border-radius: 5px;
+	color: white;
+	padding: 5px;
+}
+
+#category1{
+	background-color: #001950;
+}
+
+#category2{
+	background-color: #003e7d;
+}
+
+#category3{
+	background-color: #1168ad;
+}
+
+#category4{
+	background-color: #509458;
+}
+
+#category5{
+	background-color: #80c686;
+}
+
+#category6{
+	background-color: #ffef00;
+}
+
+#category7{
+	background-color: #f4d002;
+}
+
+#category8{
+	background-color: gray;
 }
 
 .img-trim{
 	object-fit: cover;
 }
+
 
 .spot-img{
 	text-align: center;
@@ -104,13 +281,16 @@
 
 .spot-info{
 	width: 100%;
-	margin-top: 50px;
+	margin-top: 10px;
 	// overflow:hidden;
 	float: right;
 }
 
 .review_form{
+	background-color: #FEFDED;
+	padding: 20px 50px 50px 50px;
 	margin-top: 50px;
+	margin-bottom: 50px;
 	// float: none;
 }
 
@@ -119,10 +299,17 @@
 	float: left;
 }
 
+.review-index{
+	padding: 20px 50px 50px 50px;
+	background-color: #FEFDED;
+}
+
 .review{
-	padding-top: 20px;
-	background-color: #ede4cd;
-	border-bottom: solid 3px #16160e;
+	padding: 20px;
+	// background-color: #ede4cd;
+	background-color: #FEFDED;
+	border-top: solid 1px #16160e;
+	// border-bottom: solid 1px #16160e;
 	overflow:hidden;
 }
 
@@ -138,6 +325,10 @@
 }
 
 .paginate{
+	background-color: #FEFDED;
+	// margin-left: 45%;
+	padding-bottom: 30px;
+	text-align: center;
 	margin-bottom: 50px;
 }
 

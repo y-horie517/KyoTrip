@@ -1,0 +1,7 @@
+<div id="favoritesbtn_<%= spot.id %>">
+	<p>このスポットが気になっているユーザ：<%= spot.favoritecount %>人</p>
+	<p>
+	<%= link_to  spot_favorite_path(spot,current_user), method: :delete, remote: true, class: "fav-destroy" do %>
+		<span id="unfav" class="button unfav">気になるスポットに登録済み</span></p>
+	<% end %><br>
+</div>

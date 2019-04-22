@@ -1,10 +1,20 @@
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+<h1>投稿一覧</h1>
 <div class="flash_area">
-	<%= flash[:notice] %>
-	<%= flash[:warning] %>
+	<% if notice%>
+	<div class="notice">
+		<%= notice %>
+	</div>
+	<% end%>
+
+	<% if alert %>
+	<div class="alert">
+		<%= alert %>
+	</div>
+	<% end %>
 </div>
 
+<div class="userreviews">
 <% @reviews.each do |review| %>
 	<div class="review">
 			<div class="">
@@ -12,7 +22,7 @@
 					<!-- 投稿画像 投稿が3件までに制限されている-->
 					<% if review.reviewimages.attached? %>
 	  					<% review.reviewimages.each do |image| %>
-	    					<%= image_tag image, :height => 250, class: "review-img" %>
+	    					<%= image_tag image,  :size => '320x200', class: "review-img" %>
 						<% end %>
 					<% else %>
 						<%= image_tag("no_spotimage.jpg", :size => '320x200',class: "review-img") %>
@@ -34,3 +44,9 @@
 			</div>
 	</div>
 <% end %>
+<div class="paginate">
+	<%= page_entries_info(@reviews) %>
+	<%= paginate(@reviews, :window => 2, :left => 1, :right => 1) %>
+</div>
+</div>
+

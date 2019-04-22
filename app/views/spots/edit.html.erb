@@ -2,15 +2,20 @@
 	<h1>スポット編集</h1>
 </div>
 <div class="flash_area">
-	<%= flash[:notice] %>
-	<%= flash[:warning] %>
+	<% if notice%>
+	<div class="notice">
+		<%= notice %>
+	</div>
+	<% end%>
+
+	<% if alert %>
+	<div class="alert">
+		<%= alert %>
+	</div>
+	<% end %>
 </div>
 
-<<<<<<< HEAD
-<script src="https://maps.google.com/maps/api/js?v=3.exp&amp;key=&amp;language=ja&amp;libraries=places"></script>
-=======
 <script src="https://maps.google.com/maps/api/js?v=3.exp&amp;key=<%=Rails.application.credentials.dig(:google, :map_api_key)%>&amp;language=ja&amp;libraries=places"></script>
->>>>>>> 4e27136... [Fix]apiキー
 
 <div id="map-content">
 	<div id="menu">
@@ -28,7 +33,7 @@
 		</div>
 		<% end %>
 		<div class="spotform">
-			<span>以下のフォームを編集してください。<br>・名称とカテゴリは必須項目です。<br>・画像は350x200にトリミングされます。<br>・右側のマップが表示されない場合はページをリロードしてください。</span><br><br>
+			<span>以下のフォームを編集してください。<br>・名称とカテゴリは必須項目です。<br>・画像は350*200にトリミングされます。<br>・右側のマップが表示されない場合はページをリロードしてください。</span><br><br>
 			<!-- image_tag("no_spotimage.jpg", :size => "350x200") -->
 			<!-- local:trueを外すと、remote:trueになる -->
 			<% if @spot.spotimage.attached? %>

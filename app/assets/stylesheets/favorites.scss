@@ -4,11 +4,43 @@
 
 .favorite-content{
 	margin-right: 10px;
-	float: left;
+	margin-bottom: 15px;
+	// float: left;
+	display: inline-block;
 
 }
 
 .favorites{
+	margin-top: 30px;
+	background-color: #FEFDED;
+	padding: 30px;
+	margin-right: 10%;
+	margin-left: 10%;
+	margin-bottom: 20px;
 	overflow: hidden;
+	display: flex;
+	flex-wrap: wrap;
+	// justify-content: center;
 }
 
+#fav-pagenate{
+	margin-top: 20px;
+	width: 100%;
+	// text-align: center;
+}
+
+#destroybtn{
+	color: black;
+	background-color: white;
+	border: solid 1px rgb(216, 216, 216);
+	border-radius: 5px;
+	padding: 5px 15px 5px 15px;
+	text-decoration: none;
+	font-size: 14px;
+	font-family: system-ui;
+	margin-left: 230px;
+}
+
+#destroybtn:active{
+	background-color: #4169E1;
+}

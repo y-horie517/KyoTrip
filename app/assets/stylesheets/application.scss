@@ -16,39 +16,42 @@
 
 // @import 'slick';
 // @import 'slick-theme';
-
-/*和風な色のカラーコード https://www.colordic.org/w/*/
+// @import "bootstrap-sprockets";
+// @import "bootstrap";
 
 header{
 	width: 100%;
 	height: 200px;
-	/*木賊色　とくさいろ*/
-	/*background-color: #3b7960;*/
-	 display: flex;
-	 position: relative;
-	background-image: url("bg3.jpg");	 /*justify-content: space-between;*/
+	display: flex;
+	position: relative;
+	background-image: url("bg3.jpg");
+	/*justify-content: space-between;*/
+	font-family: 'Noto Serif JP', serif;
 }
 
 body{
-	
+	position: relative;
 	/*background-size: cover;*/
 	background-position: top center;
-	background-repeat: repeat;
-	background-color: #c7dc68;
-	/*opacity: 0.7;*/
+	background-repeat: no-repeat;
+	background-size: cover;
+	// 縦長の大きい画像を表示
+	background-image: url("seasons.jpg");
+	// background-color: #f8fbf8;
 	top: 0;
 	left: 0;
+	font-family: 'Noto Serif JP', serif;
 }
 
 .site-logo{
 	position: absolute;
-   	/*left: 10px;*/
-   	top: 20%;
+	top: 15%;
+	left: 2%;
 }
 
 .site-logo img{
-   	height: 150px;
-   	width: auto;
+	height: 150px;
+	width: auto;
 }
 
 .nav-menu{
@@ -56,97 +59,223 @@ body{
 	display: flex;
 	list-style: none;
 	text-decoration: none;
+
 }
 
 #main-menu{
 	bottom: 0;
-	left: 35%;
+	left: 26%;
 }
 
+.header-user-name{
+	padding: 5px;
+	background-color: white;
+}
+
+.header-user-link{
+	padding: 5px;
+   	// margin-right: 5px;
+   	background-color: white;
+}
+
+.header-user-link:hover{
+   	color: orange;
+
+}
+
+.header-user-link:active{
+   	color: orange;
+   	border-bottom: solid 2px orange;
+}
+
+.headermenu{
+   	font-size: 20px;
+   	padding-bottom: 5px 5px 2px 5px;
+   	// margin-bottom: 2px;
+   	background-color: white;
+}
+
+.headermenu:hover{
+   	color: orange;
+}
+
+.headermenu:active{
+   	color: orange;
+   	border-bottom: solid 2px orange;
+}
+
+
+
 #user-menu{
-	top: 10px;
-	right: 30px;
+   	top: 10px;
+   	right: 30px;
 }
 
 .item{
-	color:#000000;
-	text-decoration: none;
-	margin-left: 50px;
+   	color:#000000;
+   	text-decoration: none;
+   	margin-left: 50px;
 }
 
 
 footer{
-	width: 100%;
-	height: 200px;
-	color: #eaedf7;
+   	width: 100%;
+   	height: 200px;
+   	color: #eaedf7;
 	/*烏羽色 からすばいろ*/
 	background-color: #180614;
+	position: relative;
 }
 
- .button {
-    float: left;
-    cursor: pointer;
-  }
+footer p{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 
-  .button:nth-child(1) {
-    margin-right: 30px;
-  }
+.footerlink{
+	color: white;
+}
 
-  .clear {
-    clear: left;
-  }
+#footersite{
+	position: absolute;
+	top: 10%;
+	left: 30%;
+}
 
-  .sign_modal_wrapper {
-		position: fixed;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		background-color: #16160e;
-		opacity: .7;
-		z-index: 100;
-		display: none;
-	}
+#footerspot{
+	position: absolute;
+	top: 10%;
+	left: 10%;
+}
 
-	.sign_modal {
-		position: absolute;
-		background-color: #fff;
-		width: 450px;
-		height: 350px;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		right: 0;
-		text-align: center;
-		margin: 0 auto;
-		margin-top: 100px;
-		z-index: 3500;
-		border: 1px solid #eee;
-		box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-		display: none;
-	}
+.button {
+	float: left;
+	cursor: pointer;
+}
 
-	.sign_modal_head {
+.button:nth-child(1) {
+	margin-right: 30px;
+}
 
-	}
+.clear {
+	clear: left;
+}
 
-	.sign_modal_body {
-		
-	}
+.sign_modal_wrapper {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: #16160e;
+	opacity: .7;
+	z-index: 100;
+	display: none;
+}
 
-	.sign_modal_up {
-		display: none;
-	}
+.sign_modal {
+	position: absolute;
+	background-color: #FEFDED;
+	width: 450px;
+	height: 350px;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 100px;
+	z-index: 3500;
+	border: 1px solid #eee;
+	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+	display: none;
+}
 
-	.sign_modal_in {
-		display: none;
-	}
+.sign_modal h3{
+	color: white;
+	background-color: #398793;
+	padding: 10px;
+}
+
+.sign_modal_head {
+
+}
+
+.sign_modal_body {
+
+}
+
+.sign_modal_up {
+	display: none;
+}
+
+.sign_modal_in {
+	display: none;
+}
+
+.notice{
+	padding-top: 5px;
+	padding-left: 30px;
+	padding-bottom: 5px;
+	color: white;
+	background-color: #7ebea5;
+}
+
+.alert{
+	padding-top: 5px;
+	padding-left: 30px;
+	padding-bottom: 5px;
+	color: white;
+	background-color: #ec6d71;
+}
+
+#copyright{
+	position: absolute;	
+	right: 30px;
+	bottom: 20px;
+}
+
+#pagebg-cover{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.5);
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
 
 
+// 各ページのヘッダ
+h1{
+	font-weight: 500;
+	padding-top: 20px;
+	padding-left: 100px;
+	padding-bottom: 20px;
+	background-color:#ECC2AA;
+}
 
-	/*スポット詳細ページのスポット名*/
-	h2{
-		margin-top: 30px;
-		margin-bottom: 20px;
-	}
+.button{
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	border-radius: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
 
+#fav{
+	background-color: #398793;
+}
+
+#fav:hover{
+	opacity: 0.8;
+}
+
+#unfav{
+	background-color: #57734A;
+}
+
+// #unfav:hover{
+// 	background-color: #BA2A2A;
+// }
