@@ -128,13 +128,12 @@ footer{
 }
 
 footer p{
+	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
 .footerlink{
 	color: white;
-	// padding-bottom: 15px;
-	// position: absolute;
 }
 
 #footersite{
@@ -256,3 +255,27 @@ h1{
 	background-color:#ECC2AA;
 }
 
+.button{
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	border-radius: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#fav{
+	background-color: #398793;
+}
+
+#fav:hover{
+	opacity: 0.8;
+}
+
+#unfav{
+	background-color: #57734A;
+}
+
+// #unfav:hover{
+// 	background-color: #BA2A2A;
+// }

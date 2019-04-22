@@ -1,0 +1,7 @@
+<div id="favoritesbtn_<%= spot.id %>">
+<p>このスポットが気になっているユーザ：<%= spot.favoritecount %>人</p>
+<p>
+<%= link_to  spot_favorites_path(spot), method: :post, remote: true, class: "fav-create" do %>
+<span id="fav" class="button">気になるスポットに登録する</span></p>
+<% end %><br>
+</div>

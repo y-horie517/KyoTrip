@@ -16,6 +16,7 @@ class Review < ApplicationRecord
 	# 一覧表示のページング
 	paginates_per 10
 
+	# 投稿枚数の制限
 	def reviewimages_length
 		if reviewimages.attached?
 			if reviewimages.length > 3

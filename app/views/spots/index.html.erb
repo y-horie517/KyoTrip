@@ -1,120 +1,119 @@
 <div class="spotindex">
-<h1>スポット検索</h1>
-<div class="flash_area">
-	<%#= flash[:notice] %>
-	<%#= flash[:warning] %>
-</div>
+	<h1>スポット検索</h1>
+	<div class="flash_area">
+		<%#= flash[:notice] %>
+		<%#= flash[:warning] %>
+	</div>
 
-<dl class="searchbox">
-  <%= search_form_for @search, url: spots_path do |f| %>
-    <dt><label>スポット名で検索</label>
-    	<%= f.text_field :name_cont ,placeholder: '検索するスポット名を入力...', class: "searchform" %></dt>
-   	<dt><label>エリアで絞り込み</label>
-		<%= f.collection_select :area_id_eq, Area.all, :id, :name, { include_blank: true, placeholder: "エリア"} ,class: "selectform" %></dt>
-    <dt><label>カテゴリで絞り込み</label>
-		<%= f.collection_select :category_id_eq, Category.all, :id, :category_name, { include_blank: true, placeholder: "カテゴリー"} ,class: "selectform" %></dt>
-    <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
-	<br><br>
-    <dt><p>並べ替え表示</p></dt>
-    <dt><%= sort_link(@search, :visitcount, '訪れたユーザ数順', default_order: :desc) %></dt>
-    <dt><%= sort_link(@search, :favoritecount, 'お気に入り数順', default_order: :desc) %></dt>
-    <dt><%= sort_link(@search, :reviewcount, 'レビュー件数順', default_order: :desc) %></dt>
-    <%= link_to "新規スポット登録", new_spot_path, id: "spot-register-btn" %>
-  <% end %>
-</dl>
+	<dl class="searchbox">
+		<%= search_form_for @search, url: spots_path do |f| %>
+		<dt><label>スポット名で検索</label>
+			<%= f.text_field :name_cont ,placeholder: '検索するスポット名を入力...', class: "searchform" %></dt>
+			<dt><label>エリアで絞り込み</label>
+				<%= f.collection_select :area_id_eq, Area.all, :id, :name, { include_blank: true, placeholder: "エリア"} ,class: "selectform" %></dt>
+				<dt><label>カテゴリで絞り込み</label>
+					<%= f.collection_select :category_id_eq, Category.all, :id, :category_name, { include_blank: true, placeholder: "カテゴリー"} ,class: "selectform" %></dt>
+					<dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+					<br><br>
+					<dt><p>並べ替え表示</p></dt>
+					<dt><%= sort_link(@search, :visitcount, '訪れたユーザ数順', default_order: :desc) %></dt>
+					<dt><%= sort_link(@search, :favoritecount, 'お気に入り数順', default_order: :desc) %></dt>
+					<dt><%= sort_link(@search, :reviewcount, 'レビュー件数順', default_order: :desc) %></dt>
+					<%= link_to "新規スポット登録", new_spot_path, id: "spot-register-btn" %>
+					<% end %>
+				</dl>
 <!-- 
 <div id="spot-register-link">
     <%#= link_to "新規スポット登録", new_spot_path, id: "spot-register-btn" %>
 </div>
- -->
+-->
 <div class="spot-index">
 	<% @spots.each do |s| %>
-		<div class="spot-content">
-			<div class="spot-content-img">
+	<div class="spot-content">
+		<div class="spot-content-img">
 			<%= link_to spot_path(s.id) do %>
-				<% if s.spotimage.attached? %>
-					<%= image_tag s.spotimage, :size => "350x200", class: "img-trim" %>
-				<% else %>
-					<%= image_tag("no_spotimage.jpg", :size => "350x200") %>
-				<% end %>
+			<% if s.spotimage.attached? %>
+			<%= image_tag s.spotimage, :size => "350x200", class: "img-trim" %>
+			<% else %>
+			<%= image_tag("no_spotimage.jpg", :size => "350x200") %>
 			<% end %>
-			</div>
+			<% end %>
+		</div>
 
-			<div class="spot-content-text">
-				<p>
-					<%= link_to spot_path(s.id), class: "spot-content-text-name" do %>
-						<%= s.name %>
+		<div class="spot-content-text">
+			<p>
+				<%= link_to spot_path(s.id), class: "spot-content-text-name" do %>
+				<%= s.name %>
+				<% end %>
+				<%if user_signed_in? %>
+				<% if current_user.is_admin == true %>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<%= link_to 'スポット削除', spot_path(s.id), method: :delete %>
+				<% end %>
+				<% end %>
+			</p>
+
+
+			<p>カテゴリ：
+				<% for i in 1..8 do%>
+				<% case s.category.id
+					when i %>
+					<span id="category<%= i %>" class="categorytag"><%= s.category.category_name %></span>
 					<% end %>
-					<%if user_signed_in? %>
-						<% if current_user.is_admin == true %>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<%= link_to 'スポット削除', spot_path(s.id), method: :delete %>
-						<% end %>
 					<% end %>
-				</p>
-
-
-				<p>カテゴリ：
-					<% for i in 1..8 do%>
-						<% case s.category.id
-							when i %>
-								<span id="category<%= i %>" class="categorytag"><%= s.category.category_name %></span>
-			  			<% end %>
-		  			<% end %>
-		  		</p><br>
+				</p><br>
 
 				<p>この場所を訪れたユーザ：<%= s.visitcount %>人<% if user_signed_in? %>
 					<% if s.visited_by?(current_user) %>
-						<span class="visited">訪問済み</span>
+					<span class="visited">訪問済み</span>
 					<% end %>
-				<% end %>
+					<% end %>
 				</p>
 
 
-				<p>このスポットが気になっているユーザ：<%= s.favoritecount %>人</p>
-				<% if user_signed_in? %>
-					<% if s.favorited_by?(current_user) %>
-						<p><span class="favoritedtext">気になるスポットに登録済み</span>
-			    		<%= link_to  spot_favorite_path(s,current_user), method: :delete, remote: true do %>
-			    			<span class="fav-destroy">解除する</span>
-			    		<% end %>
-			    		</p>
-					<% else %>
-			    		<%= link_to  spot_favorites_path(s), method: :post, remote: true do %>
-			    			<span class="fav-create">気になるスポットに登録する</span>
-			    		<% end %>
 
-					<% end %>
-					<p>レビュー数：<%= s.reviewcount %>件</p>
+				<% if user_signed_in? %>
+				<% if s.favorited_by?(current_user) %>
+				<%= render 'favorites/unfavorite', spot: s %>
+
+				<% else %>
+				<%= render 'favorites/favorite', spot: s %>
+
+				<% end %>
+
+				<p>レビュー数：<%= s.reviewcount %>件</p>
 				<% else %>
 				<p>レビュー数：<%= s.reviewcount %>件</p>
-					<br>
+				<br>
 				<% end %>
-				
+
 			</div>
 		</div>
-	<% end %>
-	<div class="paginate">
-	<%= page_entries_info(@spots) %>
-	<%= paginate(@spots, :window => 2, :left => 1, :right => 1) %>
-</div>
-</div>
+		<% end %>
+		<div class="paginate">
+			<%= page_entries_info(@spots) %>
+			<%= paginate(@spots, :window => 2, :left => 1, :right => 1) %>
+		</div>
+	</div>
 
 </div>
 
 <script>
-	// お気に入り機能の非同期化
 	$(function(){
-		$("body").on("click", ".fav-create", function(){
-			$(this).addClass("class","fav-destroy");
-			$(this).removeClass("class","fav-create");
-			// $(this).css("color", "red");
-		});
-		$("body").on("click", ".fav-destroy", function(){
-			$(this).addClass("class","fav-create");
-			$(this).removeClass("class","fav-destroy");
-			// $(this).css("color", "gray");
+		$('.unfav').hover(
+		function()
+		{
+			$(this).css({'background-color': '#BA2A2A',
+						 'padding' : '0 53px 0 53px'
+													});
+			$(this).text('登録を解除する');
+		},
+		function()
+		{
+			$(this).css({'background-color': '#57734A',
+						 'padding' : '0 5px 0 5px'
+													});
+			$(this).text('気になるスポットに登録済み');
 		});
 	});
-
 </script>
