@@ -32,13 +32,24 @@ class FavoritesController < ApplicationController
 		if favorite.destroy
             @spot.favoritecount = @spot.favorites.count
             @spot.save
+        end
+    end
 
+    def mypagedestroy
+        if params[:spot_id].nil?
+            id = params[:id]
+        else
+            id = params[:spot_id]
+        end
 
-			# flash[:notice] = "お気に入りを解除しました。"
-			# redirect_back(fallback_location: user_favorites_path(@user))
-		else
-			# flash[:warning] = "お気に入りを解除できませんでした。"
-			# redirect_back(fallback_location: user_favorites_path(@user))
-		end
+        @spot = Spot.find(id)
+        @user = current_user
+        favorite = @user.favorites.find_by(spot_id: @spot.id)
+        if favorite.destroy
+            @spot.favoritecount = @spot.favorites.count
+            @spot.save
+            flash[:notice] = "お気に入りを解除しました。"
+            redirect_back(fallback_location: user_favorites_path(@user))
+        end
     end
 end

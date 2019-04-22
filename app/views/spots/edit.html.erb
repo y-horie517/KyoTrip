@@ -2,8 +2,17 @@
 	<h1>スポット編集</h1>
 </div>
 <div class="flash_area">
-	<%= flash[:notice] %>
-	<%= flash[:warning] %>
+	<% if notice%>
+	<div class="notice">
+		<%= notice %>
+	</div>
+	<% end%>
+
+	<% if alert %>
+	<div class="alert">
+		<%= alert %>
+	</div>
+	<% end %>
 </div>
 
 <script src="https://maps.google.com/maps/api/js?v=3.exp&amp;key=<%=Rails.application.credentials.dig(:google, :map_api_key)%>&amp;language=ja&amp;libraries=places"></script>
