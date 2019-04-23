@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
     before_action :check_mydata_authority, only: [:index]
-    
+
  	def index
 		@user = User.find(params[:user_id])
 		@favorites = @user.favorites.reverse_order.page(params[:page])
@@ -20,13 +20,13 @@ class FavoritesController < ApplicationController
     end
 
 	def destroy
-        if params[:spot_id].nil?
-        	id = params[:id]
-        else
-        	id = params[:spot_id]
-        end
+        # if params[:spot_id].nil?
+        # 	id = params[:id]
+        # else
+        # 	id = params[:spot_id]
+        # end
 
-        @spot = Spot.find(id)
+        @spot = Spot.find(params[:spot_id])
         @user = current_user
         favorite = @user.favorites.find_by(spot_id: @spot.id)
 		if favorite.destroy
@@ -35,14 +35,9 @@ class FavoritesController < ApplicationController
         end
     end
 
+    # お気に入り一覧画面での削除
     def mypagedestroy
-        if params[:spot_id].nil?
-            id = params[:id]
-        else
-            id = params[:spot_id]
-        end
-
-        @spot = Spot.find(id)
+        @spot = Spot.find(params[:id])
         @user = current_user
         favorite = @user.favorites.find_by(spot_id: @spot.id)
         if favorite.destroy
