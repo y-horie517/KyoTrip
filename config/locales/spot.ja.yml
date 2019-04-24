@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        spot:
+          attributes:
+            name:
+              blank: "スポットの名称が未入力です"
+            category:
+              required: "カテゴリが選択されていません"

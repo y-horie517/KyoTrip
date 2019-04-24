@@ -14,36 +14,36 @@ class SpotsController < ApplicationController
   end
 
   def create
-  	spot = Spot.new(spot_params)
-  	spot.user_id = current_user.id
+  	@spot = Spot.new(spot_params)
+  	@spot.user_id = current_user.id
 
     # area_idを付与
-    if spot.address.match?(/上京区|中京区|下京区/)
-      spot.area_id = 1
-    elsif spot.address.match?(/北山区/)
-      spot.area_id = 2
-    elsif spot.address.match?(/左京区|東山区|山科区/)
-      spot.area_id = 3
-    elsif spot.address.match?(/右京区|西京区/)
-      spot.area_id = 4
-    elsif spot.address.match?(/南区|伏見区/)
-      spot.area_id = 5
+    if @spot.address.match?(/上京区|中京区|下京区/)
+      @spot.area_id = 1
+    elsif @spot.address.match?(/北山区/)
+      @spot.area_id = 2
+    elsif @spot.address.match?(/左京区|東山区|山科区/)
+      @spot.area_id = 3
+    elsif @spot.address.match?(/右京区|西京区/)
+      @spot.area_id = 4
+    elsif @spot.address.match?(/南区|伏見区/)
+      @spot.area_id = 5
     # 京都市という文字列がない場合は市外と判断
-    elsif !spot.address.match?(/京都市/)
-      spot.area_id = 6
+    elsif !@spot.address.match?(/京都市/)
+      @spot.area_id = 6
     # 住所未入力の場合
     else
       # その他を念のため用意
-      spot.area_id = 7
+      @spot.area_id = 7
     end
 
   	# DBへ保存する
-    if spot.save
+    if @spot.save
      	flash[:notice] = "スポットが1件登録されました。"
-     	redirect_to spot_path(spot.id)
+     	redirect_to spot_path(@spot.id)
     else
-     	flash[:warning] = "スポットの登録に失敗しました。未入力の項目があります。"
-     	render new_spot_path(spot.id)
+      # @spot = Spot.new(spot_params)
+     	render "spots/new"
     end
   end
 
@@ -58,38 +58,40 @@ class SpotsController < ApplicationController
     @reviews = @spot.reviews.all.reverse_order.page(params[:page])
   end
 
+
   def edit
   	@spot = Spot.find(params[:id])
   end
 
+
   def update
-  	spot = Spot.find(params[:id])
+  	@spot = Spot.find(params[:id])
     # area_idを付与
-    if spot.address.match?(/上京区|中京区|下京区/)
-      spot.area_id = 1
-    elsif spot.address.match?(/北山区/)
-      spot.area_id = 2
-    elsif spot.address.match?(/左京区|東山区|山科区/)
-      spot.area_id = 3
-    elsif spot.address.match?(/右京区|西京区/)
-      spot.area_id = 4
-    elsif spot.address.match?(/南区|伏見区/)
-      spot.area_id = 5
+    if @spot.address.match?(/上京区|中京区|下京区/)
+      @spot.area_id = 1
+    elsif @spot.address.match?(/北山区/)
+      @spot.area_id = 2
+    elsif @spot.address.match?(/左京区|東山区|山科区/)
+      @spot.area_id = 3
+    elsif @spot.address.match?(/右京区|西京区/)
+      @spot.area_id = 4
+    elsif @spot.address.match?(/南区|伏見区/)
+      @spot.area_id = 5
     # 京都市という文字列がない場合は市外と判断
-    elsif !spot.address.match?(/京都市/)
-      spot.area_id = 6
+    elsif !@spot.address.match?(/京都市/)
+      @spot.area_id = 6
     # 住所未入力の場合
     else
       # その他を念のため用意
-      spot.area_id = 7
+      @spot.area_id = 7
     end
   	# DBへ保存する
-    if spot.update(spot_params)
+    if @spot.update(spot_params)
      	flash[:notice] = "情報が更新されました。"
-     	redirect_to spot_path(spot.id)
+     	redirect_to spot_path(@spot.id)
     else
-     	flash[:warning] = "情報の更新に失敗しました。未入力の項目があります。"
-     	render edit_spot_path(spot.id)
+     	# flash[:warning] = "情報の更新に失敗しました。未入力の項目があります。"
+     	render 'spots/edit'
     end
   end
 
