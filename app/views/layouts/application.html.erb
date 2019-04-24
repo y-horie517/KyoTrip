@@ -30,7 +30,7 @@
     <%= image_tag 'sublogo1.png',:size =>'267x150', class: "sublogo" %>
     <% end %>
   </i>
-  <nav class="nav">
+  <nav class="headernav">
     <ul class="nav-menu"  id="main-menu">
       <li class="nav-menu-item"><%= link_to "ホーム", index_path, class: "item headermenu" %></li>
       <li class="nav-menu-item"><%= link_to "当サイトについて", about_path, class: "item headermenu" %></li>
@@ -40,7 +40,7 @@
   </nav>
 
   <!-- ユーザがログインしていた場合 -->
-  <nav>
+  <nav class="usernav">
    <% if user_signed_in? %>
    <ul class="nav-menu" id="user-menu">
     <li class="header-user-name"><%= current_user.username %>さん</li>
@@ -55,8 +55,8 @@
   <!-- ユーザがログインしていなかった場合 -->
   <% else %>
   <ul class="nav-menu" id="user-menu">
-    <li class="nav-menu-item button sign_up_button header-user-link">新規登録</li>
-    <li class="nav-menu-item button sign_in_button header-user-link">ログイン</li>
+    <li class="nav-menu-item button sign_up_button item header-user-link">新規登録</li>
+    <li class="nav-menu-item button sign_in_button item header-user-link">ログイン</li>
   </ul>
   <% end %>
 </nav>

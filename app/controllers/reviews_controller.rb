@@ -7,17 +7,17 @@ class ReviewsController < ApplicationController
 	end
 
 	def create
-		spot = Spot.find(params[:spot_id])
-		review = current_user.reviews.new(review_params)
-		review.spot_id = spot.id
-		if review.save
-			spot.reviewcount = spot.reviews.count
-			spot.save
+		@spot = Spot.find(params[:spot_id])
+		@review = current_user.reviews.new(review_params)
+		@review.spot_id = @spot.id
+		if @review.save
+			@spot.reviewcount = @spot.reviews.count
+			@spot.save
 			flash[:notice] = "投稿が完了しました。"
-			redirect_back(fallback_location: spot_path(spot))
+			redirect_back(fallback_location: spot_path(@spot))
 		else
-			flash[:warning] = "投稿ができませんでした。"
-			redirect_back(fallback_location: spot_path(spot))
+      		flash[:alert] = @review.errors.full_messages
+			redirect_back(fallback_location: spot_path(@spot))
 		end
 	end
 
