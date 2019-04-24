@@ -13,7 +13,7 @@
 		</div>
 		<!-- サイト名を表示する領域 -->
 		<div class="top-title-area">
-			<%= image_tag 'mainlogo1.png', :size =>'390x390', class: "mainlogo" %>
+			<%= image_tag '/images/mainlogo1.png', :size =>'390x390', class: "mainlogo" %>
 		<!-- メニューページへのボタン -->
 		<button class="enter" type="button">中に入る</button>
 		</div>
@@ -71,7 +71,7 @@
 			<% else %>
 			<!-- 投稿がなければNoイメージかスポットの画像を表示する -->
 			<%= link_to spot_path(review.spot.id) do %>
-			<%= image_tag("no_spotimage.jpg", :size => '270x196',class: "review-img img-trim") %>
+			<%= image_tag("/images/no_spotimage.jpg", :size => '270x196',class: "review-img img-trim") %>
 			<% end %>
 			<% end %>
 		</div>
@@ -86,7 +86,7 @@
 <div class="areasearch">
 	<h2>エリアで探す</h2>
 	<div class="areamap">
-		<%= image_tag("areamap.png", :size => '846x600', class: "areaimg") %>
+		<%= image_tag("/images/areamap.png", :size => '846x600', class: "areaimg") %>
 
 		<!-- ransack用のクエリパラメタを渡す -->
 		<%= link_to controller: :spots, action: :index, q:{ area_id_eq: :"1" }, class: "arealink" do %>
@@ -126,7 +126,7 @@
 			<p>京都市外</p>
 		</div>
 		<% end %>
-		<%= image_tag("mapcopyright.png", :size => '220x20', id: "mapcopyright") %>
+		<%= image_tag("/images/mapcopyright.png", :size => '220x20', id: "mapcopyright") %>
 
 	</div>
 </div>

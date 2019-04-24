@@ -24,7 +24,7 @@ header{
 	height: 200px;
 	display: flex;
 	position: relative;
-	background-image: url("bg3.jpg");
+	background-image: url("/images/bg3.jpg");
 	/*justify-content: space-between;*/
 	font-family: 'Noto Serif JP', serif;
 	white-space: nowrap;
@@ -37,7 +37,7 @@ body{
 	background-repeat: no-repeat;
 	background-size: cover;
 	// 縦長の大きい画像を表示
-	background-image: url("seasons.jpg");
+	background-image: url("/images/seasons.jpg");
 	// background-color: #f8fbf8;
 	top: 0;
 	left: 0;

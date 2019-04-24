@@ -23,7 +23,7 @@
 		<% if f.spot.spotimage.attached? %>
 		<%= image_tag f.spot.spotimage, :size => "350x200", class: "img-trim" %><br>
 		<% else %>
-		<%= image_tag("no_spotimage.jpg", :size => "350x200") %><br>
+		<%= image_tag("/images/no_spotimage.jpg", :size => "350x200") %><br>
 		<% end %>
 		<% end %>
 

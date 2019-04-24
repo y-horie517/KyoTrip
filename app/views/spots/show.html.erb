@@ -71,7 +71,7 @@
 				<% if @spot.spotimage.attached? %>
 				<%= image_tag @spot.spotimage, :size => '500x350', class: "img-trim" %><br>
 				<% else %>
-				<%= image_tag("no_spotimage.jpg", :size => '500x350') %><br>
+				<%= image_tag("/images/no_spotimage.jpg", :size => '500x350') %><br>
 				<% end %>
 			</div>
 
@@ -128,7 +128,7 @@
 					<%= image_tag image, :size => '320x200', class: "review-img img-trim" %>
 					<% end %>
 					<% else %>
-					<%= image_tag("no_spotimage.jpg", :size => '320x200',class: "review-img img-trim") %>
+					<%= image_tag("/images/no_spotimage.jpg", :size => '320x200',class: "review-img img-trim") %>
 					<% end %>
 				</div>
 				<div class="review-info">
