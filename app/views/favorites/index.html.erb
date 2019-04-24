@@ -31,7 +31,7 @@
 		<%= f.spot.name %><br>
 		<% end %>
 		<!-- [@user, f.spot], -->
-		<%= link_to '削除する',user_favorite_path(@user,f.spot_id), :method => :delete, data: { confirm: '削除しますか？' } , id: "destroybtn"  %>
+		<%= link_to '削除する',  user_favorite_path(@user,f.spot_id), :method => :delete, data: { confirm: '削除しますか？' } , id: "destroybtn"  %>
 	</div>
 	<% end %>
 

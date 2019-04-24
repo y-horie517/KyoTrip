@@ -15,6 +15,9 @@
 	<% end %>
 </div>
 
+
+<%= render 'layouts/error_messages', model: @spot %>
+
 <script src="https://maps.google.com/maps/api/js?v=3.exp&amp;key=<%=Rails.application.credentials.dig(:google, :map_api_key)%>&amp;language=ja&amp;libraries=places"></script>
 
 <div id="map-content">
@@ -64,7 +67,7 @@
 			  	<th><%= f.collection_select :category_id, Category.all, :id, :category_name, { include_blank: true}, class: "spotinput" %></th>
 			  </tr>
 			</table>
-			<%= f.submit '登録', class: "spotsubmit" %>
+			<%= f.submit '更新', class: "spotsubmit" %>
 			<% end %>
 		</div>
 	</div>

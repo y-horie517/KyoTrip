@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       user = User.find(params[:user_id])
       if ((current_user != user) && (current_user.is_admin == false))
-        flash[:warning] = "閲覧権限のないページが指定されたためTOPページへ遷移しました"
+        flash[:alert] = "閲覧権限のないページが指定されたためTOPページへ遷移しました"
         redirect_to index_path
       end
     else
-      flash[:warning] = "ログインしてください"
+      flash[:alert] = "ログインしてください"
       redirect_to index_path
     end
   end
@@ -16,11 +16,11 @@ class ApplicationController < ActionController::Base
     def require_admin
     if user_signed_in?
       if (current_user.is_admin == false)
-        flash[:warning] = "閲覧権限のないページが指定されたためTOPページへ遷移しました"
+        flash[:alert] = "閲覧権限のないページが指定されたためTOPページへ遷移しました"
         redirect_to index_path
       end
     else
-      flash[:warning] = "閲覧権限のないページが指定されたためTOPページへ遷移しました"
+      flash[:alert] = "閲覧権限のないページが指定されたためTOPページへ遷移しました"
       redirect_to index_path
     end
   end

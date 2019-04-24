@@ -6,11 +6,17 @@
 	<% end%>
 
 	<% if alert %>
-	<div class="alert">
-		<%= alert %>
-	</div>
+ 		<div class="alert alert-warning">
+    		<ul>
+      		<% flash[:alert].each do |message| %>
+        		<li><%= message %></li>
+      		<% end %>
+    		</ul>
+  		</div>
 	<% end %>
 </div>
+
+
 
 <div class="spot-show">
 	<div class="spot-area">
@@ -32,7 +38,7 @@
 					<!-- ここにログインしているときだけに表示する処理を書く -->
 					<!-- 管理者または投稿ユーザのみ編集可能 -->
 					<% if (current_user.id == @spot.user_id) || (current_user.is_admin == true) %>
-					<%= link_to '編集', edit_spot_path %>
+					<%= link_to '編集', edit_spot_path(@spot.id) %>
 					<% end %>
 					<% end %>
 				</div>

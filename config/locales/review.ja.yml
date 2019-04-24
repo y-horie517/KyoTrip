@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        review:
+          attributes:
+            title:
+              blank: "レビューのタイトルが未入力です"
+            body:
+              blank: "レビューの本文が未入力です"
+            category:
+              required: "カテゴリが選択されていません"

@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :update, :destroy] do
     resources :reviews, only: [:index, :destroy]
-    resources :favorites, only: [:index, :destroy]
+    resources :favorites, only: [:index]
+    delete 'favorites/:id' => 'favorites#mypagedestroy', as: 'favorite'
     resources :visits, only: [:index, :destroy]
   end
 

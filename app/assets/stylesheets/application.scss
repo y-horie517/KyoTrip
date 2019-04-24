@@ -27,6 +27,7 @@ header{
 	background-image: url("bg3.jpg");
 	/*justify-content: space-between;*/
 	font-family: 'Noto Serif JP', serif;
+	white-space: nowrap;
 }
 
 body{
@@ -54,8 +55,23 @@ body{
 	width: auto;
 }
 
-.nav-menu{
+.headernav{
 	position: absolute;
+	top: 170px;
+	left: 400px;
+	display: inline-block;
+}
+
+
+.usernav{
+	position: absolute;
+	top: 10px;
+	right: 30px;
+	// display: inline-block;
+}
+
+.nav-menu{
+	// position: absolute;
 	display: flex;
 	list-style: none;
 	text-decoration: none;
@@ -107,8 +123,8 @@ body{
 
 
 #user-menu{
-   	top: 10px;
-   	right: 30px;
+   	// top: 10px;
+   	// right: 30px;
 }
 
 .item{
@@ -139,7 +155,7 @@ footer p{
 #footersite{
 	position: absolute;
 	top: 10%;
-	left: 30%;
+	left: 40%;
 }
 
 #footerspot{
@@ -258,7 +274,7 @@ h1{
 .button{
 	text-align: center;
 	text-decoration: none;
-	color: white;
+	// color: white;
 	border-radius: 5px;
 	padding-left: 5px;
 	padding-right: 5px;

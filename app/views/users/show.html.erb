@@ -1,7 +1,19 @@
 <h1>マイページ</h1>
 <div class="flash_area">
-	<%= flash[:notice] %>
+  <% if notice%>
+    <div class="notice">
+      <%= notice %>
+    </div>
+  <% end%>
+
+  <% if alert %>
+    <div class="alert">
+      <%= alert %>
+    </div>
+  <% end %>
 </div>
+
+<%= render 'layouts/error_messages', model: @user %>
 
 <!-- 取得データをJSONに変換し、HTML要素のdata属性に設定(viewに埋め込む) -->
 <div id="tag_info" data-json="<%= @category_names.to_json %>" ></div>
