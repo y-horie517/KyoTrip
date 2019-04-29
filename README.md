@@ -30,8 +30,8 @@ Ruby 2.3.8
 * Rails version
 Rails 5.2.3
 
-*DB
-development:sqlite3 1.4.0
+* DB  
+development:sqlite3 1.4.0  
 production:MySQL  Ver 14.14 Distrib 5.5.62, for Linux (x86_64) using readline 5.1
 
 ## Licence
